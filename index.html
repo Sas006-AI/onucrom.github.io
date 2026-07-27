@@ -4,123 +4,250 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Onucrom ? Navigating Investments in Bangladesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
+    /* Global Styles */
+    :root {
+      --primary-green: #006747;
+      --primary-dark: #004d35;
+      --accent-red: #d32f2f;
+      --accent-green: #2e7d32;
+      --bg-light: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
-      color: #1a1a1a;
-      background: #fafafa;
-      max-width: 800px;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      max-width: 760px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 24px 16px;
     }
+
+    /* Header Section */
     header {
-      border-bottom: 2px solid #1a1a1a;
-      padding-bottom: 20px;
-      margin-bottom: 40px;
+      background: var(--primary-green);
+      color: #ffffff;
+      padding: 28px 24px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 103, 71, 0.15);
     }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-    .tagline {
-      color: #666;
-      font-size: 1.1rem;
-    }
-    .header-text {
-      background: #fff;
-      border-left: 4px solid #1a1a1a;
-      padding: 20px;
-      margin: 30px 0;
-      font-size: 1.05rem;
-    }
-    .content-block {
-      background: #fff;
-      padding: 24px;
-      margin: 20px 0;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-    .content-block p {
+
+    .brand-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 12px;
     }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+
+    .tagline {
+      color: #e2e8f0;
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    /* Header Text / Editorial Banner */
+    .header-text {
+      background: var(--card-bg);
+      border-left: 5px solid var(--primary-green);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      font-size: 1.05rem;
+      color: #334155;
+    }
+
+    /* Card & Block Styling */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin: 32px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .content-block {
+      background: var(--card-bg);
+      padding: 24px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .content-block p {
+      margin-bottom: 12px;
+      color: #334155;
+    }
+
     .content-block p:last-child {
       margin-bottom: 0;
     }
+
+    /* Table Section */
     .table-section {
-      margin: 40px 0;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      overflow-x: auto;
     }
+
     .table-section h2 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      color: var(--primary-green);
       margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--bg-light);
     }
+
     table.data-table {
       width: 100%;
       border-collapse: collapse;
-      background: #fff;
       font-size: 0.95rem;
     }
+
     table.data-table th {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 12px;
+      background: #f8fafc;
+      color: var(--text-muted);
+      padding: 12px 14px;
       text-align: left;
       font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-color);
     }
+
     table.data-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #eee;
+      padding: 14px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
     }
+
+    table.data-table tr:last-child td {
+      border-bottom: none;
+    }
+
     table.data-table tr:hover td {
-      background: #f5f5f5;
+      background: #f8fafc;
     }
+
+    /* Footer Styling */
     footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      color: #888;
+      margin-top: 48px;
+      padding: 32px 20px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
       font-size: 0.9rem;
       text-align: center;
     }
+
+    .author-tag {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
     .contact {
-      margin-top: 16px;
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
+
     .contact a {
-      color: #1a1a1a;
+      color: var(--primary-green);
       text-decoration: none;
-      border-bottom: 1px solid #1a1a1a;
+      font-weight: 500;
+      transition: color 0.2s;
     }
+
+    .contact a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .timestamp {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    /* Mobile Responsiveness */
     @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      body { padding: 20px 16px; }
-      table.data-table { font-size: 0.85rem; }
-      table.data-table th, table.data-table td { padding: 8px; }
+      body { padding: 12px; }
+      header { padding: 20px 16px; border-radius: 12px; }
+      h1 { font-size: 1.6rem; }
+      .brand-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .header-text, .content-block, .table-section { padding: 16px; }
+      table.data-table th, table.data-table td { padding: 10px 8px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Onucrom</h1>
+    <div class="brand-bar">
+      <h1>Onucrom</h1>
+      <span class="badge">BD Market Insights</span>
+    </div>
     <p class="tagline">Navigating Investments in Bangladesh</p>
   </header>
   
+  <!-- Editorial Header / Overview Block -->
   <div class="header-text">
     <p>Stock Market - July 27 2026</p>
 <p>The market closed in green today. The benchmark index DSEX(+0.96%) gained 55.4 points and closed at 5,839.77. The bluechip index DS30 (+0.70%), the Shariah-based index DSES (+0.96%), and the large-cap index CDSET (+0.74%) closed at 2,201.56, 1,188.58, and 1,154.97 points, respectively. All the large-cap sectors posted positive performance today. Food &amp; Allied booked the highest gain of 1.86% followed by Engineering (+1.85%), NBFI (+1.45%), Bank (+1.04%), Fuel &amp; Power (+0.92%), Telecommunication (+0.24%), and Pharmaceutical (+0.20%), respectively. Block trades contributed 4.1% of the overall market turnover. Far East Knitting &amp; Dyeing Industries PLC. (+3.4%) was the most traded share with a turnover of BDT 318 million.</p>
 
   </div>
   
+  <!-- Main Content Blocks -->
   <div class="content-blocks">
     <p>Inside the market:</p>
   </div>
   
+  <!-- Data Table Block -->
   <div class="table-section">
-    <h2>Events Happening Around</h2>
+    <h2>Events & Market Updates</h2>
     <table class="data-table">
 <thead>
 <tr>
@@ -138,13 +265,18 @@
 </table>
   </div>
   
+  <!-- Footer Block -->
   <footer>
-    <p>Curated by Salim Afzal Shawon, CFA</p>
-    <p class="contact">
-      <a href="https://whatsapp.com/channel/xxxx">Salim Afzal on WhatsApp</a> ? 
+    <p class="author-tag">Curated by Salim Afzal Shawon, CFA</p>
+    <div class="contact">
+      <a href="https://whatsapp.com/channel/xxxx" target="_blank">WhatsApp Channel</a>
+      <span>?</span>
       <a href="mailto:salimafzal.cfa@gmail.com">salimafzal.cfa@gmail.com</a>
+    </div>
+    <p class="timestamp">
+      Last Updated: 7/27/2026, 7:14:06 PM (BST)
     </p>
-    <p style="margin-top: 12px; font-size: 0.8rem;">Last updated: 7/27/2026, 6:46:43 PM</p>
   </footer>
+
 </body>
 </html>
