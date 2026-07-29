@@ -75,6 +75,72 @@
       opacity: 0.9;
     }
 
+    /* Section Headers */
+    .section-header {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin: 28px 0 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Market Summary Styling */
+    .market-summary-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .market-timestamp {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .market-timestamp span {
+      color: var(--primary-green);
+      font-weight: 600;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .market-card {
+      background: #f8fafc;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #edf2f7;
+    }
+
+    .market-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-value {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
     /* Header Text / Editorial Banner */
     .header-text {
       background: var(--card-bg);
@@ -88,16 +154,6 @@
     }
 
     /* Card & Block Styling */
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary-green);
-      margin: 32px 0 16px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .content-block {
       background: var(--card-bg);
       padding: 24px;
@@ -218,7 +274,8 @@
       header { padding: 20px 16px; border-radius: 12px; }
       h1 { font-size: 1.6rem; }
       .brand-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .header-text, .content-block, .table-section { padding: 16px; }
+      .header-text, .content-block, .table-section, .market-summary-container { padding: 16px; }
+      .market-grid { grid-template-columns: 1fr; }
       table.data-table th, table.data-table td { padding: 10px 8px; font-size: 0.85rem; }
     }
   </style>
@@ -233,6 +290,31 @@
     <p class="tagline">Navigating Investments in Bangladesh</p>
   </header>
   
+  <!-- Latest Market Section -->
+  <h2 class="section-header">Latest Market Stats</h2>
+  <div class="market-summary-container"><div class="market-timestamp">As of: <span>Jul 29, 2026 at 2:40 PM</span></div><div class="market-grid">
+      <div class="market-card">
+        <div class="card-label">DSEX Overview</div>
+        <div class="card-value">DSEX Last :5879  | Last 3 Day Avg 5900 | 15 Day Range 5784-5926</div>
+      </div>
+      <div class="market-card">
+        <div class="card-label">ADTV Overview</div>
+        <div class="card-value">ADTV Last: 1343  | Last 3 Day Avg 1150 | 15 Day Range 781-1670 Cr.</div>
+      </div>
+      <div class="market-card">
+        <div class="card-label">Market Breadth</div>
+        <div class="card-value">385 Traded: 113 Up / 239 Down / 39 Unchanged</div>
+      </div>
+      <div class="market-card">
+        <div class="card-label">Turnover Concentration</div>
+        <div class="card-value">Top 20 Turnover = 34.8% Total</div>
+      </div>
+      <div class="market-card full-width">
+        <div class="card-label">Top Value & Most Trades</div>
+        <div class="card-value">Top Value:ARGONDENIM 34.8 Cr (+8.6%), DOMINAGE 33.9 Cr (-2.0%),  
+Most Trades:BEXIMCO 29.2 Cr (-7.5%), BATBC 23.8 Cr (+3.8%),  &quot;)</div>
+      </div></div></div>
+
   <!-- Editorial Header / Overview Block -->
   <div class="header-text">
     <p>Stock Market - July 27 2026</p>
@@ -297,7 +379,7 @@ Premier Bank mobilises BDT 30.03 Bn in fresh deposits in 60 working days  ::
       <a href="mailto:salimafzal.cfa@gmail.com">salimafzal.cfa@gmail.com</a>
     </div>
     <p class="timestamp">
-      Last Updated: 7/29/2026, 4:12:37 PM (BST)
+      Last Updated: 7/29/2026, 4:52:23 PM (BST)
     </p>
   </footer>
 
