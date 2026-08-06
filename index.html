@@ -1,329 +1,43 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onucrom ? Navigating Investments in Bangladesh</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Global Styles */
-    :root {
-      --primary-green: #006747;
-      --primary-dark: #004d35;
-      --accent-red: #d32f2f;
-      --accent-green: #2e7d32;
-      --bg-light: #f4f6f8;
-      --card-bg: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      color: var(--text-main);
-      background-color: var(--bg-light);
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 24px 16px;
-    }
-
-    /* Header Section */
-    header {
-      background: var(--primary-green);
-      color: #ffffff;
-      padding: 28px 24px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(0, 103, 71, 0.15);
-    }
-
-    .brand-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-    }
-
-    .badge {
-      background: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      backdrop-filter: blur(4px);
-    }
-
-    .tagline {
-      color: #e2e8f0;
-      font-size: 1rem;
-      font-weight: 400;
-      opacity: 0.9;
-    }
-
-    /* Section Headers */
-    .section-header {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary-green);
-      margin: 28px 0 14px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Market Summary Styling */
-    .market-summary-container {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      border: 1px solid var(--border-color);
-      margin-bottom: 24px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-    }
-
-    .market-timestamp {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-
-    .market-timestamp span {
-      color: var(--primary-green);
-      font-weight: 600;
-    }
-
-    .market-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .market-card {
-      background: #f8fafc;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #edf2f7;
-    }
-
-    .market-card.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .card-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .card-value {
-      font-size: 0.9rem;
-      color: var(--text-main);
-      font-weight: 500;
-      line-height: 1.45;
-    }
-
-    /* Header Text / Editorial Banner */
-    .header-text {
-      background: var(--card-bg);
-      border-left: 5px solid var(--primary-green);
-      padding: 20px 24px;
-      margin-bottom: 24px;
-      border-radius: 0 12px 12px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      font-size: 1.05rem;
-      color: #334155;
-    }
-
-    /* Card & Block Styling */
-    .content-block {
-      background: var(--card-bg);
-      padding: 24px;
-      margin-bottom: 16px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-    }
-
-    .content-block p {
-      margin-bottom: 12px;
-      color: #334155;
-    }
-
-    .content-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Table Section */
-    .table-section {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      border: 1px solid var(--border-color);
-      margin-bottom: 24px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-      overflow-x: auto;
-    }
-
-    .table-section h2 {
-      font-size: 1.2rem;
-      color: var(--primary-green);
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--bg-light);
-    }
-
-    table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-
-    table.data-table th {
-      background: #f8fafc;
-      color: var(--text-muted);
-      padding: 12px 14px;
-      text-align: left;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    table.data-table td {
-      padding: 14px;
-      border-bottom: 1px solid var(--border-color);
-      color: var(--text-main);
-    }
-
-    table.data-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    table.data-table tr:hover td {
-      background: #f8fafc;
-    }
-
-    /* Footer Styling */
-    footer {
-      margin-top: 48px;
-      padding: 32px 20px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    .author-tag {
-      font-weight: 600;
-      color: var(--text-main);
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-
-    .contact {
-      margin-top: 12px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .contact a {
-      color: var(--primary-green);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .contact a:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-
-    .timestamp {
-      margin-top: 20px;
-      font-size: 0.78rem;
-      color: #94a3b8;
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 600px) {
-      body { padding: 12px; }
-      header { padding: 20px 16px; border-radius: 12px; }
-      h1 { font-size: 1.6rem; }
-      .brand-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .header-text, .content-block, .table-section, .market-summary-container { padding: 16px; }
-      .market-grid { grid-template-columns: 1fr; }
-      table.data-table th, table.data-table td { padding: 10px 8px; font-size: 0.85rem; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="brand-bar">
-      <h1>Onucrom</h1>
-      <span class="badge">BD Market Insights</span>
-    </div>
-    <p class="tagline">Navigating Investments in Bangladesh</p>
-  </header>
-  
-  <!-- Latest Market Section -->
-  <h2 class="section-header">Latest Market Stats</h2>
-  <div class="market-summary-container"><div class="market-timestamp">As of: <span>Aug 04, 2026 at 2:40 PM</span></div><div class="market-grid">
-      <div class="market-card">
-        <div class="card-label">DSEX Overview</div>
-        <div class="card-value">DSEX Last :5894  | Last 3 Day Avg 5900 | 15 Day Range 5784-5926</div>
-      </div>
-      <div class="market-card">
-        <div class="card-label">ADTV Overview</div>
-        <div class="card-value">ADTV Last: 1111  | Last 3 Day Avg 1200 | 15 Day Range 781-1516 Cr.</div>
-      </div>
-      <div class="market-card">
-        <div class="card-label">Market Breadth</div>
-        <div class="card-value">384 Traded: 170 Up / 176 Down / 45 Unchanged</div>
-      </div>
-      <div class="market-card">
-        <div class="card-label">Turnover Concentration</div>
-        <div class="card-value">Top 20 Turnover = 100.0% Total</div>
-      </div>
-      <div class="market-card full-width">
-        <div class="card-label">Top Value & Most Trades</div>
-        <div class="card-value">Top Value:ACMEPL 36.0 Cr (+7.8%), SHARPIND 32.3 Cr (+5.3%),</div>
-      </div></div></div>
-
-  <!-- Editorial Header / Overview Block -->
-  <div class="header-text">
-    <p>About:</p>
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>onucrom ? Market Insight</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><style>/* === RESET & BASE === */* { margin: 0; padding: 0; box-sizing: border-box; }:root {  --bg: #0f172a; --card: #1e293b; --border: #334155;  --text: #f8fafc; --muted: #94a3b8; --accent: #f59e0b;  --up: #22c55e; --down: #ef4444; --caution: #f59e0b;  --input-bg: #fef3c7; --input-text: #1e293b;}body {  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;  background: var(--bg); color: var(--text);  line-height: 1.6; max-width: 760px; margin: 0 auto;  padding: 16px;}a { color: var(--accent); text-decoration: none; }a:hover { text-decoration: underline; }.nav {  display: flex; justify-content: space-between; align-items: center;  padding: 12px 0; margin-bottom: 20px;  border-bottom: 1px solid var(--border);}.nav-brand { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; }.nav-links a { margin-left: 20px; font-size: 0.9rem; color: var(--muted); }.nav-links a.active { color: var(--accent); }.card {  background: var(--card); border: 1px solid var(--border);  border-radius: 12px; padding: 20px; margin-bottom: 16px;}.card-title {  font-size: 1rem; font-weight: 700; color: var(--accent);  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}.card-note {  font-size: 0.8rem; color: var(--muted); margin-top: 12px;  padding-top: 12px; border-top: 1px solid var(--border);}table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }th {  background: var(--bg); color: var(--muted); text-align: left;  padding: 10px 12px; font-size: 0.75rem; text-transform: uppercase;  letter-spacing: 0.05em; border-bottom: 1px solid var(--border);}td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); }tr:hover td { background: rgba(255,255,255,0.02); }.calc-grid {  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;}.calc-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }.calc-row.full { grid-column: 1 / -1; }label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }input[type="number"], input[type="date"], input[type="text"] {  background: var(--input-bg); color: var(--input-text);  border: 1px solid var(--border); border-radius: 6px;  padding: 8px 12px; font-size: 0.95rem; font-family: inherit;  width: 100%;}input:focus { outline: 2px solid var(--accent); }.result-box {  background: var(--bg); border-radius: 8px; padding: 14px;  margin-top: 12px; font-family: "JetBrains Mono", monospace;  font-size: 0.9rem;}.result-good { color: var(--up); }.result-bad { color: var(--down); }.result-caution { color: var(--caution); }footer {  margin-top: 40px; padding: 24px; text-align: center;  color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border);}@media (max-width: 600px) {  .calc-grid { grid-template-columns: 1fr; }  body { padding: 12px; }  .nav-brand { font-size: 1.2rem; }}</style></head><body><nav class="nav"><div class="nav-brand">onucrom</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="tools.html" class="">Tools</a></div></nav><div class="card"><div class="card-title">? Today's Pulse</div><div style="font-size:1.05rem;line-height:1.7"><p>About:</p>
 <p>ONUCROM makes responsible investment opportunities easier to find. It gives people a common place to discover Shariah-aligned investment products and business funding needs, while giving credible providers and enterprises a structured way to reach a broader market.</p>
-
-  </div>
-  
-  <!-- Main Content Blocks -->
-  <div class="content-blocks">
-    <p>______________________________________________</p>
+</div><div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px;text-align:center"><a href="https://whatsapp.com/channel/xxxx" style="font-weight:600">Get this in your pocket ? WhatsApp</a></div></div><div class="card"><div class="card-title">? Market Snapshot</div><table class="data-table">
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Aug 06, 2026 at 2:12 PM</td>
+</tr>
+<tr>
+<td></td>
+<td>DSEX Last :5894  | Last 3 Day Avg 5900 | 15 Day Range 5784-5926</td>
+</tr>
+<tr>
+<td></td>
+<td>ADTV Last: 1111  | Last 3 Day Avg 1200 | 15 Day Range 781-1516 Cr.</td>
+</tr>
+<tr>
+<td></td>
+<td>384 Traded: 88 Up / 263 Down / 41 Unchanged </td>
+</tr>
+<tr>
+<td></td>
+<td>Top 20 Turnover = 100.0% Total</td>
+</tr>
+<tr>
+<td></td>
+<td>Top Value:SHARPIND 48.8 Cr (-6.0%), SIPLC 23.9 Cr (-7.9%),  </td>
+</tr>
+<tr>
+<td></td>
+<td>Most Trades:BEXIMCO 16.3 Cr (+1.7%), SHARPIND 48.8 Cr (-6.0%),  &quot;)</td>
+</tr>
+</tbody>
+</table></div><div class="card"><div class="card-title">? The Read</div><div style="font-size:0.95rem;color:#cbd5e1;line-height:1.7"><p>______________________________________________</p>
 <p>Active Site Developments:</p>
 <p>Block wise and whole maintenance from gsheet</p>
 <p>Homepage blocks, stock market page blocks</p>
@@ -356,13 +70,7 @@
 <p>[ ] Add social meta tags to HTML so shared links display preview cards.</p>
 <p>[ ] Add &quot;Share to Social&quot; buttons pre-filled with project links after submission.</p>
 <p>[ ] Set up one-click sheet approval (Pending \rightarrow Approved) to update the site automatically.</p>
-<p>[ ] Auto-email project owners their live link once approved.</p>
-  </div>
-  
-  <!-- Data Table Block -->
-  <div class="table-section">
-    <h2>Events & Market Updates</h2>
-    <table class="data-table">
+<p>[ ] Auto-email project owners their live link once approved.</p></div></div><div class="card"><div class="card-title">? News Digest</div><table class="data-table">
 <thead>
 <tr>
 <th></th>
@@ -372,88 +80,119 @@
 <tbody>
 <tr>
 <td>As of :</td>
-<td>Tue Aug 04 2026 00:00:00 GMT+0600 (Bangladesh Standard Time)</td>
+<td>Thu Aug 06 2026 00:00:00 GMT+0600 (Bangladesh Standard Time)</td>
 </tr>
 <tr>
 <td>Macro</td>
-<td>Bangladesh and South Korea are set to formally sign a Comprehensive Economic Partnership Agreement (Cepa) on August 04, having recently wrapped up negotiations on the bilateral trade deal.</td>
+<td>Private-sector credit growth fell to 4.47% by the end of June, the lowest level in Bangladesh?s history. The previous record low was 4.72%, registered in March 2026.</td>
 </tr>
 <tr>
 <td>Macro</td>
-<td>Bangladesh recorded its highest monthly exports in the past 12 months in July, with shipments totalling USD 4.72 Bn. Despite the strong performance, exports declined 0.9% year-on-year, and exporters? caution growth is likely to improve in the months ahead.</td>
+<td>Bangladesh's  economic outlook remains broadly optimistic following ongoing structural reforms, greater policy flexibility and easing global energy prices, according to a latest central-bank assessment.</td>
 </tr>
 <tr>
 <td>Macro</td>
-<td>Once the dominant source of foreign direct investment (FDI) in Bangladesh, the United States saw its share of total FDI stock plummet from roughly 22% (USD 3.3 Bn) in 2016 to just 5.36% (USD 1.0 Bn) by late 2025 - a period during which Chinese capital expanded sevenfold to become the nation's top FDI source.</td>
+<td>The Bangladeshi Taka remained one of the most stable currencies in South Asia and neighbouring economies over the past year, depreciating by just 0.59 % against the USD between March 2025 and March 2026, according to the Bangladesh Bank quarterly report.</td>
 </tr>
 <tr>
 <td>Macro</td>
-<td>The National Board of Revenue (NBR) has allowed businesses to use both their old and newly reassigned Business Identification Numbers (BINs) for customs-related activities until November 30, 2026, aiming to ensure uninterrupted import and export operations following the restructuring of VAT commissionerates.</td>
+<td>Bangladesh Bank has relaxed import and export documentation rules for companies trading with their own parent companies, subsidiaries and overseas branches, removing a declaration that previously barred financial links between local importers and foreign exporters.</td>
 </tr>
 <tr>
 <td>Macro</td>
-<td>Bangladesh?s other financial corporations are increasingly parking funds with banks while cutting back on loans and government securities, reflecting weaker financial intermediation even as their balance sheets keep growing.</td>
+<td>A temporary increase in private-sector credit growth could help revive the country's economic activity without significantly fuelling inflation or pushing up interest rates, according to a new Bangladesh Bank analysis.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>The number of Bangladeshis leaving for overseas jobs fell to a five-year low in FY26 as demand from the Middle East weakened amid uncertainty following the US-Israel war on Iran. More than 0.97 Mn people left Bangladesh for overseas jobs during the last fiscal year, down 5% from a year earlier.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>The National Board of Revenue (NBR) has ended the fiscal year 2025-26 with revenue that is BDT 875 Bn short of the target set in the budget.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Money-market analysts have said the volume of deposits that flew out of the banks' vaults continued to rise significantly in recent months due mainly to trust deficit as weak financial condition of a number of banks come to the media spotlight that shakes confidence of the depositors.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>According to the Economic Relations Division (ERD), the development partners made a combined aid commitment of USD 5.24 Bn in the last fiscal year, 37% down from USD 8.32 Bn in FY25.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>38% of TIN holders filed income tax returns, with experts blaming an outdated database and weak enforcement.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Under the agreement, Bangladesh will enjoy duty-free access for 8,428 products to the South Korean market while  South Korea will receive similar market access for 1,054 products to Bangladesh.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>A proposed deal between Iran and Oman to help end five months of war between Iran and the United States would give Tehran control over ships entering the Gulf through the Strait of Hormuz.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>World Bank has said Bangladesh ranked 91st among 103 countries for mobile internet speed and 93rd out of 141 for fixed broadband, citing the Speedtest Global Index for February 2026. The report said Bangladesh records average mobile internet speeds of only 43 Mbps, far below Vietnam's 188 Mbps, while fixed broadband speeds average 66 Mbps in Bangladesh.</td>
+<td>While government data puts installed rooftop solar capacity at 418.1 MW until June 2026, a new study finds that combined capacity across just 239 establishments, including groups of companies, has already reached 667 MW. The Institute for Energy Economics and Financial Analysis (IEEFA) also reveals that such capacity could be as high as 1,000 MW if smaller units (of less than 0.15 MW) are included.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>Only 9% of cottage, micro, small, and medium enterprises secure direct bank loans, while another 14% access financing through microfinance institutions.</td>
+<td>Agricultural lending by Bangladesh?s banking sector rose nearly 15% in fiscal year 2025-26, exceeding the central bank?s annual target, driven by strong lending from specialised and private commercial banks.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>Bangladesh's listed banks came under mounting pressure in their core banking operations in the first half of 2026, as sluggish private sector credit growth and rising deposit costs squeezed earnings from traditional lending.</td>
+<td>Bangladesh Bank has removed the long-standing loan disbursement ceilings on five key corporate branches of Sonali Bank PLC, allowing them to resume lending to large and eligible borrowers subject to due diligence.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>BB has abolished the Telegraphic Transfer (TT) discounting facility for scheduled banks, under which banks were allowed to obtain short-term liquidity by placing liens on their current accounts maintained with the central bank.</td>
+<td>The share of outstanding deposits held by women remained subdued at 33.5% in March 2026, dropping slightly from 33.9% in December 2025, after standing at 32.8% in March 2025.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>A number of garment factories in Gazipur and Narayanganj announced three- to four-day unscheduled holidays as manufacturers of Bangladesh's main export product struggle with persistent gas and electricity shortages.</td>
+<td>The government has devised a five-year strategic plan to help revive Bangladesh's ailing jute sector after export earnings from jute and jute goods fell by nearly 29% over the past five years despite rising domestic production.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>Chevron Bangladesh, a part of the global energy company Chevron, submitted the investment proposal for further hydrocarbon exploration in block-11 and block-12 in the country's gas-rich northeastern region.</td>
+<td>More than 20% of Bangladesh's export-oriented garment factories have declared three-to-four-day holidays, prompting thousands of workers to head to their hometowns.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>The Cabinet says the 2026 list and pricing framework were adopted without consulting the National Drug Advisory Council, as required under the Drugs and Cosmetics Act, 2023.</td>
+<td>Three textile and apparel trade bodies have recommended 370 closed and struggling factories to the Bangladesh Bank for loans under the government?s BDT 600 Bn stimulus package.</td>
+</tr>
+<tr>
+<td>Sector &amp; Industries</td>
+<td>Despite hosting 52 of the world's top 100 LEED-certified facilities, Bangladeshi manufacturers are finding that green credentials rarely translate into higher price tags. The country now has 284 LEED-certified garment factories, including 121 Platinum and 144 Gold-rated facilities.</td>
+</tr>
+<tr>
+<td>Sector &amp; Industries</td>
+<td>The Bangladesh Garment Manufacturers and Exporters Association (BGMEA) has launched an initiative to connect Chinese investors with Bangladeshi garment manufacturers seeking fresh capital, technology or joint venture partners, as the industry looks to strengthen its supply chain and revive underutilised factories.</td>
+</tr>
+<tr>
+<td>Sector &amp; Industries</td>
+<td>Bangladesh has successfully defended its position as the world?s second-largest RMG exporter for the fifth consecutive year, buoyed by American retailers continuing to pivot their sourcing away from China despite significant domestic industrial hurdles.</td>
+</tr>
+<tr>
+<td>Sector &amp; Industries</td>
+<td>Bangladesh's persistent gas crisis is severely disrupting industrial production, with many plastic factories unable to operate beyond 30-40% of their capacity.</td>
 </tr>
 <tr>
 <td>Stocks</td>
-<td>Shares of loss-making Sharp Industries have surged 132.35% in just six weeks despite the company reporting a net loss of BDT 650 Mn in the first nine months of FY2025-26.</td>
+<td>While routine retail counters remain open, corporate clients, importers, and industrial borrowers report severe decision-making bottlenecks across large credit approvals, Letters of Credit (LCs), and working capital lines. The bank's current administration maintains that panic has subsided, fresh deposits are returning, and dependency on central bank liquidity support is decreasing.</td>
 </tr>
 <tr>
 <td>Stocks</td>
-<td>Intraco Refueling Station has fully resumed supplying compressed natural gas (CNG) to industrial belts in Dhaka and Gazipur after nearly nine months, following regulatory clearance for all of its gas transport vehicles amid the country's persistent gas crisis.</td>
+<td>City Bank became the first bank globally to validate and execute live transactions in both sending and receiving roles under Swift?s new retail cross-border payments scheme, said a press release.</td>
 </tr>
 <tr>
 <td>Stocks</td>
-<td>Shares of IT sector-listed Aamra Technologies have surged 65% over the past two months, but the company says there is no undisclosed price-sensitive information (PSI) behind the sharp rise.</td>
+<td>Md Ariful Bari, has been appointed as the deputy managing director (DMD) of Bank Asia PLC. Prior to assuming his new role, he was serving in senior leadership roles in the wholesale banking division of City Bank PLC.</td>
 </tr>
 <tr>
 <td>Stocks</td>
-<td>The Bangladesh Securities and Exchange Commission (BSEC) has asked the Dhaka Stock Exchange (DSE) to investigate unusual trading in the units of EXIM Bank 1st Mutual Fund after the fund's price more than doubled within a month alongside a sharp spike in trading volume.</td>
+<td>Unilever Consumer Care Limited (UCL) recently held its 328th board meeting, during which several key appointments to the board and senior management team were approved. The board of directors elected Ruhul Quddus Khan, chief executive officer and managing director of Unilever Bangladesh Limited, as chairman of the board for a three-year term, effective July 28.</td>
+</tr>
+<tr>
+<td>Stocks</td>
+<td>Sponsor Manzurul Islam of Navana Pharmaceuticals PLC is set to transfer 1.6 Mn shares to the company's Managing Director, Md Jonaid Shafiq, through an off-market transaction approved by the Dhaka Stock Exchange.</td>
 </tr>
 </tbody>
-</table>
-  </div>
-  
-  <!-- Footer Block -->
-  <footer>
-    <p class="author-tag">Curated by Salim Afzal Shawon, CFA</p>
-    <div class="contact">
-      <a href="https://whatsapp.com/channel/xxxx" target="_blank">WhatsApp Channel</a>
-      <span>?</span>
-      <a href="mailto:salimafzal.cfa@gmail.com">salimafzal.cfa@gmail.com</a>
-    </div>
-    <p class="timestamp">
-      Last Updated: 8/6/2026, 10:37:45 AM (BST)
-    </p>
-  </footer>
-
-</body>
-</html>
+</table></div><footer><p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p><p style="margin-top:8px"><a href="https://whatsapp.com/channel/xxxx">WhatsApp</a> ? <a href="mailto:salim@onucrom.com">Email</a></p><p style="margin-top:12px;font-size:0.75rem;color:#64748b">Updated 8/6/2026, 2:37:44 PM BST</p></footer></body></html>
