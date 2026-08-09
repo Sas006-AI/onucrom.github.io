@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>onucrom ? Investment Sanity Check</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/sanity-check.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">onucrom</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="sanity-check.html" class="active">Sanity Check</a>
+    </div>
+  </nav>
+
+  <!-- STEP 0: Search -->
+  <div class="card" id="step0">
+    <div class="card-title">? Investment Sanity Check</div>
+    <p class="subtitle">Free. Anonymous. Instant.</p>
+    <div class="search-row">
+      <input type="text" id="searchName" placeholder="Enter investment or organization name" class="search-input">
+      <button class="btn" onclick="SanityCheck.search()">Start Check</button>
+    </div>
+    <div id="dbResult"></div>
+  </div>
+
+  <!-- STEP 1: Evaluation Form (hidden initially) -->
+  <div class="card hidden" id="evalForm">
+    <div class="card-title">? Investment Details</div>
+    <p class="subtitle">Fill what you know. The more you share, the better the assessment.</p>
+    
+    <div id="basicInfo"></div>
+    <div id="financialDetails"></div>
+    <div id="redFlagQuestions"></div>
+    
+    <button class="btn btn-full" onclick="SanityCheck.evaluate()">? Run Assessment</button>
+  </div>
+
+  <!-- RESULTS (hidden initially) -->
+  <div id="resultsPanel" class="hidden"></div>
+
+  <!-- SUBMISSION (hidden initially) -->
+  <div class="card hidden" id="submissionPanel">
+    <div class="card-title">? Add to Onucrom Database?</div>
+    <p class="subtitle">Adding this helps other investors discover and evaluate it.</p>
+    <div id="submissionForm"></div>
+  </div>
+
+  <footer>
+    <p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p>
+    <p class="footer-links">
+      <a href="#">WhatsApp</a> ? <a href="mailto:salim@onucrom.com">Email</a>
+      <span class="footer-updated">Updated <span id="updateTime"></span></span>
+    </p>
+  </footer>
+
+  <script src="js/sanity-check-db.js"></script>
+  <script src="js/sanity-check-score.js"></script>
+  <script src="js/sanity-check-ui.js"></script>
+  <script>
+    // Initialize on page load
+    document.getElementById('updateTime').textContent = new Date().toLocaleString('en-BD', {timeZone: 'Asia/Dhaka'}) + ' BST';
+    SanityCheck.init();
+  </script>
+</body>
+</html>
