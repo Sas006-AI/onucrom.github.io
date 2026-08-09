@@ -1,0 +1,228 @@
+/* ============================================
+   ONUCROM DESIGN SYSTEM ? MASTER STYLESHEET
+   ============================================ */
+
+/* 1. RESET & VARIABLES */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #f59e0b;
+  --up: #22c55e;
+  --down: #ef4444;
+  --caution: #f59e0b;
+  --input-bg: #fef3c7;
+  --input-text: #1e293b;
+  --radius: 10px;
+  --transition: all 0.2s ease;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 1000px; /* Standardized balanced width for tools & text */
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+a:hover { text-decoration: underline; opacity: 0.9; }
+
+/* 2. NAVIGATION */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+.nav-links a { margin-left: 24px; font-size: 0.9rem; color: var(--muted); font-weight: 500; }
+.nav-links a.active { color: var(--accent); font-weight: 600; }
+
+/* 3. UNIVERSAL CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* 4. FORM ELEMENTS & INPUTS */
+input[type="number"],
+input[type="text"],
+input[type="date"],
+select {
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-weight: 600;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
+  transition: var(--transition);
+}
+input:focus, select:focus { 
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+  border-color: var(--accent);
+}
+
+.input-group, .form-section { margin-bottom: 20px; }
+.section-label, .input-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #0f172a;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+  text-align: center;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-full { width: 100%; margin-top: 12px; }
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+/* 5. TOOL GRID LAYOUT (Desktop: 4 Columns) */
+.tool-grid {
+  display: grid;
+  grid-template-columns: 240px 200px 160px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.col-inputs { display: flex; flex-direction: column; gap: 12px; }
+.col-results {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  height: 100%;
+}
+.res-item { display: flex; justify-content: space-between; gap: 8px; }
+.res-label { color: var(--muted); font-size: 0.75rem; }
+.res-val { font-weight: 700; color: var(--text); }
+
+.col-verdict { display: flex; align-items: center; justify-content: center; height: 100%; }
+.verdict-badge {
+  display: inline-block; width: 100%; text-align: center; padding: 10px;
+  border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.v-good { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid #22c55e; }
+.v-caution { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+.v-bad { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }
+.v-neutral { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid #94a3b8; }
+
+.col-explanation {
+  font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;
+  border-left: 2px solid var(--border); padding-left: 16px; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.col-explanation ul { padding-left: 16px; margin-top: 4px; }
+
+/* 6. SANITY CHECK & FORM SPECIFICS */
+.input-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.input-row label { font-size: 0.85rem; color: var(--text); min-width: 180px; margin-bottom: 0; }
+
+.radio-group { display: flex; flex-direction: column; gap: 8px; }
+.radio-option {
+  display: flex; align-items: center; gap: 10px; font-size: 0.85rem; cursor: pointer;
+  padding: 6px 10px; background: var(--bg); border-radius: 6px; border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.radio-option:hover { border-color: var(--accent); }
+.radio-option input[type="radio"] { accent-color: var(--accent); transform: scale(1.1); }
+
+.question-block {
+  margin-bottom: 16px; padding: 16px; background: var(--bg);
+  border-radius: 8px; border: 1px solid var(--border);
+}
+.question-text { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+
+/* Score & Alerts */
+.score-display { text-align: center; padding: 24px; }
+.score-number { font-size: 3.5rem; font-weight: 800; font-family: "JetBrains Mono", monospace; }
+.score-label { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
+.score-critical { color: var(--down); }
+.score-high { color: #f97316; }
+.score-moderate { color: var(--caution); }
+.score-low { color: var(--up); }
+
+.alert { padding: 14px 18px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 0.85rem; line-height: 1.5; }
+.alert-warning { background: rgba(239,68,68,0.08); border-left: 3px solid var(--down); }
+.alert-caution { background: rgba(245,158,11,0.08); border-left: 3px solid var(--caution); }
+.alert-pass { background: rgba(34,197,94,0.08); border-left: 3px solid var(--up); }
+
+.assessor-note {
+  background: var(--bg); border: 1px solid var(--accent); border-radius: 8px;
+  padding: 16px; margin-top: 16px; font-style: italic; color: #cbd5e1; line-height: 1.7;
+}
+
+/* 7. UTILITIES & FOOTER */
+.hidden { display: none; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+
+footer {
+  margin-top: 60px; padding: 24px; text-align: center;
+  color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border);
+}
+.footer-links { margin-top: 8px; }
+.footer-updated { display: block; margin-top: 8px; font-size: 0.75rem; color: #64748b; }
+
+/* 8. RESPONSIVE BREAKPOINTS */
+@media (max-width: 900px) {
+  .tool-grid { grid-template-columns: 1fr; gap: 16px; }
+  .col-explanation { border-left: none; border-top: 1px dashed var(--border); padding-left: 0; padding-top: 16px; }
+  .input-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .input-row label { min-width: auto; }
+}
