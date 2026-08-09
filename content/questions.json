@@ -1,0 +1,30 @@
+{
+  "basicInfo": [
+    { "id": "invName", "label": "Investment / Company Name", "type": "text" },
+    { "id": "invDesc", "label": "What do they do?", "type": "text", "placeholder": "One line description" },
+    { "id": "invSector", "label": "Sector", "type": "select", "options": ["", "Agriculture", "Construction", "Education", "Energy", "Financial Services", "Healthcare", "Manufacturing", "Real Estate", "Technology", "Textile & RMG", "Trading", "Transportation", "Other"] },
+    { "id": "invFirm", "label": "Firm Structure", "type": "select", "options": ["", "Registered Private Limited Company", "Registered Public Limited Company", "Partnership Firm", "Sole Proprietorship", "Cooperative Society", "NGO / Trust / Foundation", "Unclear / Not Sure", "Individual (person, not entity)"] },
+    { "id": "invLocation", "label": "Location (District)", "type": "text" },
+    { "id": "invSource", "label": "How did you hear about this?", "type": "select", "options": ["", "WhatsApp / Social Media forward", "Friend or family referred", "Advertisement", "Approached by their agent", "Seminar / Event", "Other"] }
+  ],
+  "financialDetails": [
+    { "id": "invType", "label": "Investment Type", "type": "select", "options": ["", "Equity (share in business)", "Debt / Loan (fixed repayment)", "Revenue / Profit Share", "Asset-Backed", "Deposit Scheme", "Convertible", "Unclear / Hybrid"] },
+    { "id": "invMinAmt", "label": "Minimum Investment (BDT)", "type": "number", "placeholder": "50000" },
+    { "id": "invReturn", "label": "Promised Return (%)", "type": "number", "placeholder": "15" },
+    { "id": "invReturnPeriod", "label": "Return Period", "type": "select", "options": ["", "per month", "per year", "over full period", "not specified"] },
+    { "id": "invGuarantee", "label": "Return Guarantee", "type": "select", "options": ["", "Guaranteed / Promised", "Projected / Expected", "Not clearly stated"] },
+    { "id": "invTenor", "label": "Investment Period", "type": "number", "placeholder": "12" },
+    { "id": "invReturnStart", "label": "Returns start", "type": "select", "options": ["", "Immediately / Within 30 days", "After 1-6 months", "After 6-12 months", "After 1+ year", "At end of period only", "Not specified"] }
+  ],
+  "redFlagQuestions": [
+    { "id": "rfPressure", "question": "Are they pressuring you to decide quickly?", "options": ["Yes, urgent pressure", "Some urgency, but reasonable", "No pressure at all"] },
+    { "id": "rfVague", "question": "Is the business model clearly explained?", "options": ["Vague / Cannot explain clearly", "Somewhat clear but gaps remain", "Clearly explained, specific"] },
+    { "id": "rfDocs", "question": "Have you seen any documentation?", "options": ["No documents shown at all", "Some documents, but incomplete", "Yes, proper documentation"] },
+    { "id": "rfPhysical", "question": "Do they have a verifiable physical office?", "options": ["No physical presence shown", "Address given but not verified", "Yes, verified physical office"] },
+    { "id": "rfRegistration", "question": "Are they registered with any regulatory body?", "options": ["No regulatory registration", "Claim registration but not verified", "Yes, registration confirmed"] },
+    { "id": "rfReturnLogic", "question": "Does the return structure make sense for the business?", "options": ["Returns seem disconnected from business", "Unclear connection", "Returns logically tie to business"] },
+    { "id": "rfBankLoan", "question": "Why are they raising from you instead of a bank loan?", "options": ["No good explanation given", "Some explanation, raises questions", "Reasonable explanation given"] },
+    { "id": "rfVerify", "question": "Can you independently verify their claims?", "options": ["No way to verify independently", "Partial verification possible", "Easily verifiable"] },
+    { "id": "rfAgreement", "question": "Will they put everything in a written, stamped agreement?", "options": ["No written agreement offered", "Verbal promises, vague documents", "Yes, proper stamped agreement"] }
+  ]
+}
