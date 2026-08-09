@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About ? onucrom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --card: #1e293b; --border: #334155;
+      --text: #f8fafc; --muted: #94a3b8; --accent: #f59e0b;
+    }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 16px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; }
+    .nav-links a { margin-left: 20px; font-size: 0.9rem; color: var(--muted); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px; margin-bottom: 24px;
+    }
+    h1 { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
+    h2 {
+      font-size: 1.1rem; color: var(--accent); margin: 28px 0 12px 0;
+      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    p { margin-bottom: 14px; color: #cbd5e1; }
+    .tag-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+    .tag {
+      display: inline-block; padding: 6px 12px; border-radius: 6px;
+      font-size: 0.8rem; font-weight: 600;
+    }
+    .tag-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .tag-yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
+    .tag-gray { background: rgba(148,163,184,0.15); color: #94a3b8; }
+
+    footer {
+      margin-top: 40px; padding: 24px; text-align: center;
+      color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border);
+    }
+    .footer-links { margin-top: 8px; }
+    .footer-links a { margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">onucrom</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="sanity-check.html">Sanity Check</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </nav>
+
+  <div class="card">
+    <h1>About Onucrom</h1>
+    <p style="font-size:1.1rem;color:var(--text)">Investment Discovery for Bangladesh</p>
+  </div>
+
+  <div class="card">
+    <h2>What We Do</h2>
+    <p>Onucrom is a unified browsing space for investment opportunities in Bangladesh. We bring together public market instruments, government securities, and private fundraising opportunities in one place ? with a clear, transparent Shariah-compliance lens that lets you filter according to your preferences.</p>
+    <p>We are not a broker. We are not a financial advisor. We are a discovery layer ? a structured window into what exists, so you can decide what fits.</p>
+  </div>
+
+  <div class="card">
+    <h2>Why This Exists</h2>
+    <p>Bangladesh's investment information is scattered. Stock data lives on one site. Government bond auctions on another. Private investment opportunities ? the SME looking for growth capital, the startup raising its first round ? have no centralized home at all. They circulate in closed networks, inaccessible to most.</p>
+    <p>For the investor who wants to browse, compare, and evaluate across these worlds, there is no single starting point. Onucrom is that starting point.</p>
+  </div>
+
+  <div class="card">
+    <h2>The Shariah Dimension</h2>
+    <p>Bangladesh is majority Muslim. Many investors want clarity on whether an investment aligns with Islamic finance principles ? but that clarity is hard to find. Screening methodologies vary, and most platforms ignore the question entirely.</p>
+    <p>We structure every listing with an explicit Shariah marker:</p>
+    <div class="tag-row">
+      <span class="tag tag-green">? Compliant</span>
+      <span class="tag tag-yellow">? Self-Certified</span>
+      <span class="tag tag-gray">? None</span>
+    </div>
+    <p style="margin-top:12px"><strong>Compliant</strong> ? Screened against published Shariah criteria and found to meet AAOIFI-aligned standards based on publicly available financials.</p>
+    <p><strong>Self-Certified</strong> ? The listing party has declared Shariah compliance; documentation is available for investor review.</p>
+    <p><strong>None</strong> ? No Shariah determination has been made or claimed.</p>
+    <p>This is a transparency framework, not a certification. We show you what is claimed and what is verifiable. The decision is yours.</p>
+  </div>
+
+  <div class="card">
+    <h2>How It Works</h2>
+    <p><strong>Public Markets:</strong> We aggregate listed securities with key financial metrics and Shariah tags. Use our on-page screening tools to filter by sector, valuation, dividend yield, and compliance status ? all processing happens in your browser.</p>
+    <p><strong>Government Securities:</strong> Browse treasury bills, bonds, and other government instruments with yield calculators and maturity ladders built directly into the page.</p>
+    <p><strong>Private Fundraising:</strong> Investees self-submit their opportunities. Each listing shows the sector, amount sought, stage, location, and Shariah status. Investors browse, sort, and request introductions ? Onucrom connects the parties. We do not handle funds or intermediate transactions.</p>
+    <p><strong>Sanity Check:</strong> Our free investment evaluation tool lets you check any proposal against common fraud indicators, return reasonability, and structural red flags ? before you commit a single taka.</p>
+  </div>
+
+  <div class="card">
+    <h2>Our Operating Principles</h2>
+    <p><strong>Transparency over authority.</strong> We label, we don't certify. Investors retain full responsibility for due diligence.</p>
+    <p><strong>Capital efficiency.</strong> This platform is built on a near-zero-cost architecture. Utility should be proven before infrastructure is built.</p>
+    <p><strong>Bangladesh first.</strong> Our data, our listings, our tools ? built for the Bangladeshi investor, covering Bangladeshi opportunities.</p>
+    <p><strong>No black boxes.</strong> Screening methodologies are published. Calculations happen client-side. Nothing is hidden.</p>
+  </div>
+
+  <div class="card">
+    <h2>Who Is Behind This</h2>
+    <p>Onucrom is currently a solo-built, independently operated project. It exists because the gap exists. The platform will remain free for investors. Monetization, when introduced, will come from premium features and private-side listing services ? not from selling data or restricting access.</p>
+    <p>For questions, corrections, or to discuss listing your investment opportunity: <a href="mailto:salim@onucrom.com">salim@onucrom.com</a></p>
+  </div>
+
+  <footer>
+    <p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p>
+    <p class="footer-links">
+      <a href="about.html">About</a> ?
+      <a href="disclaimer.html">Disclaimer</a> ?
+      <a href="privacy.html">Privacy</a> ?
+      <a href="terms.html">Terms</a>
+    </p>
+  </footer>
+</body>
+</html>
