@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy ? onucrom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --card: #1e293b; --border: #334155;
+      --text: #f8fafc; --muted: #94a3b8; --accent: #f59e0b;
+    }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 16px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; }
+    .nav-links a { margin-left: 20px; font-size: 0.9rem; color: var(--muted); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px; margin-bottom: 24px;
+    }
+    h1 { font-size: 1.5rem; color: var(--accent); margin-bottom: 16px; }
+    h2 { font-size: 1.05rem; color: var(--accent); margin: 20px 0 10px 0; }
+    p { margin-bottom: 14px; color: #cbd5e1; }
+    ul { margin: 10px 0 16px 20px; color: #cbd5e1; }
+    li { margin-bottom: 6px; }
+
+    footer {
+      margin-top: 40px; padding: 24px; text-align: center;
+      color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border);
+    }
+    .footer-links { margin-top: 8px; }
+    .footer-links a { margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">onucrom</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="sanity-check.html">Sanity Check</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="card">
+    <h1>Privacy</h1>
+    <p><em>Last updated: June 2025</em></p>
+  </div>
+
+  <div class="card">
+    <h2>Our Approach</h2>
+    <p>Onucrom is designed to be privacy-minimal. We do not use cookies for tracking. We do not run analytics scripts, advertising pixels, or third-party trackers. We collect only what is necessary for the platform to function.</p>
+  </div>
+
+  <div class="card">
+    <h2>What We Collect</h2>
+
+    <p><strong>Sanity Check Submissions:</strong> When you use the Investment Sanity Check tool and choose to submit to our database, we store:</p>
+    <ul>
+      <li>The investment details you provided (name, sector, structure, returns, etc.)</li>
+      <li>Your selected role (investee, investor, scam reporter, or public contributor)</li>
+      <li>Timestamp of submission</li>
+    </ul>
+    <p>We do <strong>not</strong> collect your name, email, IP address, or any personally identifiable information through the Sanity Check tool unless you voluntarily provide it.</p>
+
+    <p><strong>Introduction Requests:</strong> If you use a "Request Introduction" feature on a private listing, the information you provide (name, email, message) is forwarded to the listing party. We do not store this information beyond the email transmission record.</p>
+
+    <p><strong>Email Subscriptions (future):</strong> If we introduce update subscriptions, your email address will be stored solely for that purpose and will not be shared, sold, or used for any other communication.</p>
+
+    <p><strong>Hosting Logs:</strong> Our hosting platform (GitHub Pages) may log standard technical information (IP addresses, browser type, pages accessed) for security and performance purposes. This is standard practice for all websites and is not controlled by Onucrom.</p>
+  </div>
+
+  <div class="card">
+    <h2>What We Don't Do</h2>
+    <ul>
+      <li>We do not sell, rent, or share any user data with third parties</li>
+      <li>We do not track your browsing behavior across sites</li>
+      <li>We do not use cookies for advertising or profiling</li>
+      <li>We do not store financial account information</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Data Storage</h2>
+    <p>All data is stored in Google Sheets and Google Drive, managed by the platform operator. Submissions to the Sanity Check database are reviewed before publication. Flagged/scam reports are stored separately and never displayed publicly.</p>
+  </div>
+
+  <div class="card">
+    <h2>Your Rights</h2>
+    <p>You may request deletion of any data you have submitted by emailing <a href="mailto:salim@onucrom.com">salim@onucrom.com</a>. We will comply within a reasonable timeframe, subject to any legal obligations to retain certain records.</p>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p>This platform operates from Bangladesh and follows applicable data protection principles. For any privacy-related questions: <a href="mailto:salim@onucrom.com">salim@onucrom.com</a></p>
+  </div>
+
+  <footer>
+    <p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p>
+    <p class="footer-links">
+      <a href="about.html">About</a> ?
+      <a href="disclaimer.html">Disclaimer</a> ?
+      <a href="privacy.html">Privacy</a> ?
+      <a href="terms.html">Terms</a>
+    </p>
+  </footer>
+</body>
+</html>
