@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclaimer ? onucrom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --card: #1e293b; --border: #334155;
+      --text: #f8fafc; --muted: #94a3b8; --accent: #f59e0b;
+    }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 16px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; }
+    .nav-links a { margin-left: 20px; font-size: 0.9rem; color: var(--muted); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px; margin-bottom: 24px;
+    }
+    h1 { font-size: 1.5rem; color: var(--accent); margin-bottom: 16px; }
+    p { margin-bottom: 14px; color: #cbd5e1; }
+    .important {
+      background: rgba(239,68,68,0.08); border-left: 3px solid #ef4444;
+      padding: 16px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+
+    footer {
+      margin-top: 40px; padding: 24px; text-align: center;
+      color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border);
+    }
+    .footer-links { margin-top: 8px; }
+    .footer-links a { margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">onucrom</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="sanity-check.html">Sanity Check</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="card">
+    <h1>Disclaimer</h1>
+    <p><em>Last updated: June 2025</em></p>
+  </div>
+
+  <div class="card">
+    <p>Onucrom is an information aggregation and discovery platform. We are <strong>not</strong> a stock broker, investment advisor, financial planner, or Shariah certification body. Nothing on this website constitutes investment advice, a solicitation to buy or sell securities, or a religious ruling on permissibility.</p>
+
+    <div class="important">
+      <strong>?? Important:</strong> All Shariah compliance markers are based on either published screening criteria applied to publicly available financial data, or representations made by the listing party. Investors must conduct their own due diligence and consult qualified professionals ? financial, legal, and religious ? before making any investment decision.
+    </div>
+
+    <p>Data on listed securities is sourced from publicly available information and may be delayed or contain inaccuracies. Onucrom makes no warranty regarding the completeness, accuracy, or timeliness of any information displayed.</p>
+
+    <p><strong>Investment involves risk.</strong> Past performance does not guarantee future results. You may lose some or all of your invested capital. The Sanity Check tool provides an automated assessment based on user-provided information and is not a substitute for professional advice.</p>
+
+    <p>Private investment listings are submitted by the listing parties. Onucrom does not verify the accuracy, completeness, or investment merit of these listings beyond basic administrative review. We do not endorse, recommend, or guarantee any investment opportunity listed on this platform.</p>
+
+    <p>By using this website, you acknowledge that Onucrom and its operator(s) bear no liability for any loss or damage arising from your use of the information provided. Your use of this site constitutes acceptance of these terms.</p>
+
+    <p>If you identify an error: <a href="mailto:salim@onucrom.com">salim@onucrom.com</a></p>
+  </div>
+
+  <footer>
+    <p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p>
+    <p class="footer-links">
+      <a href="about.html">About</a> ?
+      <a href="disclaimer.html">Disclaimer</a> ?
+      <a href="privacy.html">Privacy</a> ?
+      <a href="terms.html">Terms</a>
+    </p>
+  </footer>
+</body>
+</html>
