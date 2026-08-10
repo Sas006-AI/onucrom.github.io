@@ -1,1 +1,627 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>onucrom ? Market Insight</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/master.css"></head><body><nav class="nav"><div class="nav-brand">onucrom</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="tools.html" class="">Tools</a><a href="sanity-check.html" class="">Sanity Check</a><a href="about.html" class="">About</a></div></nav><div class="card"><div class="card-title">Investing? How Good Is Your Plan?</div><div class="subtitle">Free check. 60 seconds. No account needed. Just input and check</div><div class="tool-grid"><div class="col-inputs"><div class="input-group"><label for="inv-name">Investment Name</label><input type="text" id="inv-name" placeholder="e.g. S&P 500 Index / Rental Property" required></div><div class="input-group"><label for="inv-business">Business / Asset Type</label><input type="text" id="inv-business" list="business-suggestions" placeholder="Type or select type..."><datalist id="business-suggestions"><option value="Real Estate"><option value="Public Stocks"><option value="Crypto & Digital Assets"><option value="Franchise / Small Business"><option value="Bonds / Fixed Income"><option value="Venture / Startup"></datalist></div><div class="input-group"><label for="inv-amount">Amount ($)</label><input type="number" id="inv-amount" placeholder="10000" min="0"></div><div class="input-group"><label for="inv-org">Org Type</label><select id="inv-org"><option value="Individual">Individual</option><option value="LLC">LLC</option><option value="Corporation">Corporation</option><option value="Trust/IRA">Trust / IRA</option></select></div><div class="input-group"><label for="inv-return">Return Expectation (%)</label><input type="number" id="inv-return" placeholder="e.g. 8" step="0.1"></div><button type="button" class="btn btn-full" onclick="runInvestmentCheck()">Check Plan</button></div><div class="col-results" id="inv-results-box" style="display: none;"><div id="inv-badge-container" class="col-verdict" style="margin-bottom: 12px;"></div><div id="inv-results-details"></div></div><div class="col-explanation" id="inv-placeholder"><p>Enter your investment details on the left and click <strong>Check Plan</strong> to analyze returns, risk flags, and database matches instantly.</p></div></div><div class="mt-16" style="text-align: center; border-top: 1px dashed var(--border); padding-top: 12px;"><p style="font-size: 0.9rem;">Want a more detailed analysis? <a href="sanity-check.html">Click here to run a full diagnostic</a>.</p><p style="font-size: 0.75rem; color: var(--muted); margin-top: 6px;">*Disclaimer: For educational and informational purposes only. This auto-check tool does not constitute financial, legal, or investment advice.</p></div></div><script>const INTERNAL_DB = {"s&p 500": { returnAvg: 10, risk: "Low-Moderate", badge: "v-good", note: "Solid historical benchmark index matching client-side lookup." },"bitcoin": { returnAvg: 15, risk: "High", badge: "v-caution", note: "High volatility asset class requiring strict allocation limits." }};function runInvestmentCheck() {const name = document.getElementById("inv-name").value.trim().toLowerCase();const amount = parseFloat(document.getElementById("inv-amount").value) || 0;const expReturn = parseFloat(document.getElementById("inv-return").value) || 0;const resBox = document.getElementById("inv-results-box");const placeholder = document.getElementById("inv-placeholder");const badgeContainer = document.getElementById("inv-badge-container");const detailsContainer = document.getElementById("inv-results-details");placeholder.style.display = "none";resBox.style.display = "flex";if (INTERNAL_DB[name]) {const dbItem = INTERNAL_DB[name];badgeContainer.innerHTML = `<span class="verdict-badge ${dbItem.badge}">DB Match: ${dbItem.risk} Risk</span>`;detailsContainer.innerHTML = `<div class="res-item"><span class="res-label">Historical Avg:</span><span class="res-val">${dbItem.returnAvg}%</span></div><div class="res-item"><span class="res-label">Status:</span><span class="res-val">Matched in DB</span></div><p style="font-size: 0.8rem; margin-top: 8px; color: var(--muted);">${dbItem.note}</p>`;return;}let badgeClass = "v-good";let verdictText = "Realistic Plan";let noteText = "Expected return aligns with standard market benchmarks.";if (expReturn > 25) {badgeClass = "v-bad";verdictText = "Unrealistic Returns";noteText = "Returns above 25% often carry significant capital loss risk or potential red flags.";} else if (expReturn > 12) {badgeClass = "v-caution";verdictText = "Aggressive Plan";noteText = "Above average return expectation. Requires strong risk mitigation strategy.";}badgeContainer.innerHTML = `<span class="verdict-badge ${badgeClass}">${verdictText}</span>`;detailsContainer.innerHTML = `<div class="res-item"><span class="res-label">Target Amount:</span><span class="res-val">$${amount.toLocaleString()}</span></div><div class="res-item"><span class="res-label">Target Return:</span><span class="res-val">${expReturn}%</span></div><p style="font-size: 0.8rem; margin-top: 8px; color: var(--muted);">${noteText}</p>`;}</script>
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>onucrom ? Market Insight</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/master.css"></head><body><nav class="nav"><div class="nav-brand">onucrom</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="tools.html" class="">Tools</a><a href="sanity-check.html" class="">Sanity Check</a><a href="about.html" class="">About</a></div></nav><div class="card"><div class="card-title">Investing? How Good Is Your Plan?</div><div class="subtitle">Free check. 60 seconds. No account needed. Just input and check</div><div class="tool-grid"><div class="col-inputs"><div class="input-group"><label for="inv-name">Investment Name</label><input type="text" id="inv-name" placeholder="e.g. S&P 500 Index / Rental Property" required></div><div class="input-group"><label for="inv-business">Business / Asset Type</label><input type="text" id="inv-business" list="business-suggestions" placeholder="Type or select type..."><datalist id="business-suggestions"><option value="Real Estate"><option value="Public Stocks"><option value="Crypto & Digital Assets"><option value="Franchise / Small Business"><option value="Bonds / Fixed Income"><option value="Venture / Startup"></datalist></div><div class="input-group"><label for="inv-amount">Amount ($)</label><input type="number" id="inv-amount" placeholder="10000" min="0"></div><div class="input-group"><label for="inv-org">Org Type</label><select id="inv-org"><option value="Individual">Individual</option><option value="LLC">LLC</option><option value="Corporation">Corporation</option><option value="Trust/IRA">Trust / IRA</option></select></div><div class="input-group"><label for="inv-return">Return Expectation (%)</label><input type="number" id="inv-return" placeholder="e.g. 8" step="0.1"></div><button type="button" class="btn btn-full" onclick="runInvestmentCheck()">Check Plan</button></div><div class="col-results" id="inv-results-box" style="display: none;"><div id="inv-badge-container" class="col-verdict" style="margin-bottom: 12px;"></div><div id="inv-results-details"></div></div><div class="col-explanation" id="inv-placeholder"><p>Enter your investment details on the left and click <strong>Check Plan</strong> to analyze returns, risk flags, and database matches instantly.</p></div></div><div class="mt-16" style="text-align: center; border-top: 1px dashed var(--border); padding-top: 12px;"><p style="font-size: 0.9rem;">Want a more detailed analysis? <a href="sanity-check.html">Click here to run a full diagnostic</a>.</p><p style="font-size: 0.75rem; color: var(--muted); margin-top: 6px;">*Disclaimer: For educational and informational purposes only. This auto-check tool does not constitute financial, legal, or investment advice.</p></div></div><script>const INTERNAL_DB = {"s&p 500": { returnAvg: 10, risk: "Low-Moderate", badge: "v-good", note: "Solid historical benchmark index matching client-side lookup." },"bitcoin": { returnAvg: 15, risk: "High", badge: "v-caution", note: "High volatility asset class requiring strict allocation limits." }};function runInvestmentCheck() {const name = document.getElementById("inv-name").value.trim().toLowerCase();const amount = parseFloat(document.getElementById("inv-amount").value) || 0;const expReturn = parseFloat(document.getElementById("inv-return").value) || 0;const resBox = document.getElementById("inv-results-box");const placeholder = document.getElementById("inv-placeholder");const badgeContainer = document.getElementById("inv-badge-container");const detailsContainer = document.getElementById("inv-results-details");placeholder.style.display = "none";resBox.style.display = "flex";if (INTERNAL_DB[name]) {const dbItem = INTERNAL_DB[name];badgeContainer.innerHTML = `<span class="verdict-badge ${dbItem.badge}">DB Match: ${dbItem.risk} Risk</span>`;detailsContainer.innerHTML = `<div class="res-item"><span class="res-label">Historical Avg:</span><span class="res-val">${dbItem.returnAvg}%</span></div><div class="res-item"><span class="res-label">Status:</span><span class="res-val">Matched in DB</span></div><p style="font-size: 0.8rem; margin-top: 8px; color: var(--muted);">${dbItem.note}</p>`;return;}let badgeClass = "v-good";let verdictText = "Realistic Plan";let noteText = "Expected return aligns with standard market benchmarks.";if (expReturn > 25) {badgeClass = "v-bad";verdictText = "Unrealistic Returns";noteText = "Returns above 25% often carry significant capital loss risk or potential red flags.";} else if (expReturn > 12) {badgeClass = "v-caution";verdictText = "Aggressive Plan";noteText = "Above average return expectation. Requires strong risk mitigation strategy.";}badgeContainer.innerHTML = `<span class="verdict-badge ${badgeClass}">${verdictText}</span>`;detailsContainer.innerHTML = `<div class="res-item"><span class="res-label">Target Amount:</span><span class="res-val">$${amount.toLocaleString()}</span></div><div class="res-item"><span class="res-label">Target Return:</span><span class="res-val">${expReturn}%</span></div><p style="font-size: 0.8rem; margin-top: 8px; color: var(--muted);">${noteText}</p>`;}</script><div class="card"><div class="card-title">Today's Pulse</div><div style="font-size:1.05rem;line-height:1.7"><p>About:</p>
+<p>ONUCROM makes responsible investment opportunities easier to find. It gives people a common place to discover Shariah-aligned investment products and business funding needs, while giving credible providers and enterprises a structured way to reach a broader market.</p>
+</div><div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px;text-align:center"><a href="https://whatsapp.com/channel/xxxx" style="font-weight:600">Get this in your pocket ? WhatsApp</a></div></div><div class="card"><div class="card-title">Market Snapshot</div><table class="data-table">
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Aug 10, 2026 at 10:58 AM</td>
+</tr>
+<tr>
+<td></td>
+<td>DSEX Last :5822  | Last 3 Day Avg 5900 | 15 Day Range 5784-5900</td>
+</tr>
+<tr>
+<td></td>
+<td>ADTV Last: 965  | Last 3 Day Avg 1050 | 15 Day Range 781-1343 Cr.</td>
+</tr>
+<tr>
+<td></td>
+<td>381 Traded: 213 Up / 97 Down / 75 Unchanged </td>
+</tr>
+<tr>
+<td></td>
+<td>Top 20 Turnover = 100.0% Total</td>
+</tr>
+<tr>
+<td></td>
+<td>Top Value:MLDYEING 17.9 Cr (+3.3%), BEXIMCO 13.2 Cr (+2.4%),  </td>
+</tr>
+<tr>
+<td></td>
+<td>Most Trades:BEXIMCO 13.2 Cr (+2.4%), MLDYEING 17.9 Cr (+3.3%),  &quot;)</td>
+</tr>
+</tbody>
+</table></div><div class="card"><div class="card-title">News Digest</div><table class="data-table">
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>As of :</td>
+<td>Mon Aug 10 2026 00:00:00 GMT+0600 (Bangladesh Standard Time)</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Bangladesh?s Purchasing Managers? Index (PMI) has risen to 57.8 points in July from 52.9 in June, signalling a stronger expansion in economic activity.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Bangladesh posted a record balance-of-payments surplus worth $6.6 Bn USD in the past fiscal year as stronger financial-account inflows helped outdo a gap left by widening current-account deficit.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Bangladesh?s trade deficit widened to a three-year high in fiscal year 2025-26, as import bills climbed even as export earnings stagnated. The deficit stood at USD 27.28 Bn for the year, a jump of 34% from FY25.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Central bank data shows imports on a free-on-board (FOB) basis rose 10.5% to over USD 71.1 Bn, up from USD 64.36 Bn a year earlier.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>The outstanding stock of government guarantees fell by more than 5.0% to BDT 1.015 Tn as of March 31, 2026, from BDT 1.070 Tn three months earlier, as repayments outpaced the issuance of new guarantees, according to the Finance Division.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>Businesses in Chattogram called for a &quot;Sick Industries Law&quot;, modelled on similar legislation in developed countries, to revive struggling and closed industrial units.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>In the recently concluded FY26, the highest volume of remittance came from Saudi Arabia, totaling USD 5.85 Bn. The remaining nations in the top five are the United Kingdom, the United Arab Emirates (UAE), Malaysia, and the United States.</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td>The Bangladesh Energy Regulatory Commission (BERC) has raised the prices of jet fuel for domestic and international airlines by over 21%, which is expected to have an impact on the cost of travel in the days to come.</td>
+</tr>
+<tr>
+<td>Sector &amp; Industries</td>
+<td>The move comes after two nationwide ISPs -- Race Online Limited and ICC Communication Limited -- sought regulatory approval to bundle digital platforms with their approved internet tariffs.</td>
+</tr>
+<tr>
+<td>Stocks</td>
+<td>The depository authority has moved to ensure the security of the shares of non-listed companies, making their transfer easier and preventing fraudulent transactions. The services will also allow the enterprises to obtain bank loans easily by pledging shares in electronic form.</td>
+</tr>
+<tr>
+<td>Stocks</td>
+<td>Bangladesh Bank has declared four NBFIs non-viable and initiated resolution proceedings against them under the Bank Resolution Act, 2026, citing severe financial weaknesses and their inability to meet obligations to depositors and other creditors. The institutions are Aviva Finance Limited, Fareast Finance and Investment Limited, FAS Finance and Investment Limited, and International Leasing and Financial Services Limited.</td>
+</tr>
+<tr>
+<td>Stocks</td>
+<td>The new policy aims to improve financial transparency and reduce the risk of overvaluation or undervaluation of assets, particularly its substantial holdings in non-listed securities whose fair values had not previously been systematically assessed.</td>
+</tr>
+<tr>
+<td>Stocks</td>
+<td>Bangladesh MFS market leader bKash is ploughing its net earnings back into technological infrastructure and algorithmic products, turning simple mobile transfers into data-driven  financial services.</td>
+</tr>
+<tr>
+<td>Stocks</td>
+<td>Three listed companies -- United Insurance, Saiham Textile and Alltex Industries -- have informed the Dhaka Stock Exchange that there is no undisclosed price-sensitive information (PSI) behind the recent &quot;unusual&quot; surge in their share prices and trading volumes.</td>
+</tr>
+</tbody>
+</table></div><div class="card"><div class="card-title">The Plan</div><div style="font-size:0.95rem;color:#cbd5e1;line-height:1.7"><p>______________________________________________</p>
+<p>Active Site Developments:</p>
+<p>Block wise and whole maintenance from gsheet</p>
+<p>Homepage blocks, stock market page blocks</p>
+<p>Text blocks in separate files</p>
+<p>Html combined from multi file</p>
+<p>Fix footer</p>
+<p>Phase 0: make the site useful for personal use</p>
+<p>Home page blocks and buttons</p>
+<p>Stock market page (in future: onucrom/markets/stocks)</p>
+<p>Quick calculations using client browser and programming (html)</p>
+<p>Forward focused prices and action setup, Stop loss, average, entry planning, exit planning, get stockwise data from dse using html, dividend evaluation</p>
+<p>Am looking to do Quick calculations block for my website, where processing is done using client browser and programming (html)</p>
+<p>What i have in mind- simple Forward focused prices and action setup:</p>
+<p>Allow user to dictate assumptions on current price history of stock (ohlcvvt) - get stockwise data from dse using html ( url - https://www.dsebd.org/day_end_archive.php?startDate=2026-08-01&amp;endDate=2026-08-06&amp;inst=Ticker&amp;archive=data ) and do basic calculations</p>
+<p>1. Estimate Stop loss using% on current price</p>
+<p>2. Use price qty commission inputs to decide if averaging makes sense at a given price, and how costing looks after average,</p>
+<p>3. Basic entry planning and  exit planning with target profit structure,</p>
+<p>4. Finding days till record date, ex dividend at given price and dividend take up evaluation</p>
+<p>Phase 1: Form &amp; Database Basics</p>
+<p>[ ] Set up private Google Sheet for project data (Pending / Approved).</p>
+<p>[ ] Connect Web Form to Sheet using Google Apps Script webhook.</p>
+<p>[ ] Add anti-spam mechanism using free Cloudflare Turnstile on the form.</p>
+<p>[ ] Capture basic contact info (Name + Email/WhatsApp) instead of setting up logins.</p>
+<p>Phase 2: Site Features &amp; Calculations</p>
+<p>[ ] Put financial calculations on client side using simple HTML/Vanilla JS (no server processing).</p>
+<p>[ ] Generate static multi-page HTML layout for separate project pages.</p>
+<p>[ ] Add tracking parameters to links to see where visitors come from.</p>
+<p>[ ] Add Cloudflare Web Analytics for free traffic stats. Or Google analytics</p>
+<p>Phase 3: Social &amp; Daily Workflow</p>
+<p>[ ] Add social meta tags to HTML so shared links display preview cards.</p>
+<p>[ ] Add &quot;Share to Social&quot; buttons pre-filled with project links after submission.</p>
+<p>[ ] Set up one-click sheet approval (Pending \rightarrow Approved) to update the site automatically.</p>
+<p>[ ] Auto-email project owners their live link once approved.</p>
+<p>The Free Investment Proposal Checker:</p>
+<p>?   ? Investment Sanity Check                ?</p>
+<p>?                                             ?</p>
+<p>?   Free. Anonymous. Instant.                 ?</p>
+<p>?                                             ?</p>
+<p>?   Paste any investment proposal details     ?</p>
+<p>?   below. We'll check our database first,    ?</p>
+<p>?   then evaluate what you share.             ?</p>
+<p>?                                             ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?   ? Enter the investment name or        ?   ?</p>
+<p>?   ? organization claiming to offer it   ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ? [                           ]       ?   ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?                                             ?</p>
+<p>?   [Start Check]                             ?</p>
+<p>?                                             ?</p>
+<p>?   ? Nothing you enter is stored or shared.  ?</p>
+<p>?                                             ?</p>
+<p>What happens on &quot;Start Check&quot;:</p>
+<p>User's input is cross-checked against the Onucrom database (loaded as JSON on page load ? all private listings plus any flagged/scam database you maintain).</p>
+<p>Cross-check is NOT just name matching. It uses:</p>
+<p>Organization name (fuzzy match, handles spelling variations)</p>
+<p>Key person names (if database has directors/promoters)</p>
+<p>Phone number patterns (if user enters later)</p>
+<p>Sector + amount similarity (if a construction company asking ~50 lakh exists, and user enters a construction company asking ~45 lakh with a similar name, flag as possible duplicate)</p>
+<p>Outcome A: Exact Match Found in Database</p>
+<p>?? THIS INVESTMENT IS IN OUR DATABASE      ?</p>
+<p>?                                             ?</p>
+<p>?   &quot;XYZ Agro Processing&quot; is already listed   ?</p>
+<p>?   on Onucrom.                               ?</p>
+<p>?                                             ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?   ? Listing Status: Verified Basic ?    ?   ?</p>
+<p>?   ? Listed Since: March 2025            ?   ?</p>
+<p>?   ? Shariah Status: Self-Certified      ?   ?</p>
+<p>?   ? Verification Tier: Basic            ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ? [View Full Listing ?]               ?   ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?                                             ?</p>
+<p>?   If you believe this is a different        ?</p>
+<p>?   investment with a similar name, continue  ?</p>
+<p>?   below and we'll flag it for review.       ?</p>
+<p>?                                             ?</p>
+<p>?   [Continue Evaluation Anyway ?]</p>
+<p>Outcome B: Possible Duplicate Detected</p>
+<p>? POSSIBLE DUPLICATE DETECTED             ?</p>
+<p>?                                             ?</p>
+<p>?   Your entry &quot;Rahman Agro Industries&quot;       ?</p>
+<p>?   closely matches an existing listing:      ?</p>
+<p>?                                             ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?   ? &quot;Rahman Agro Processing Ltd&quot;        ?   ?</p>
+<p>?   ? Same sector: Agriculture            ?   ?</p>
+<p>?   ? Similar amount: 45L vs 50L          ?   ?</p>
+<p>?   ? Similar location: Bogra             ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ? [View Existing Listing ?]           ?   ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?                                             ?</p>
+<p>?   Is this the same investment?              ?</p>
+<p>?   [Yes, this is the same one]               ?</p>
+<p>?   [No, this is different ? continue]</p>
+<p>Outcome C: No Match Found</p>
+<p>? Not in our database.                    ?</p>
+<p>?                                             ?</p>
+<p>?   This investment is not currently listed   ?</p>
+<p>?   on Onucrom. We'll evaluate what you share  ?</p>
+<p>?   and give you our assessment.              ?</p>
+<p>?                                             ?</p>
+<p>?   At the end, you can add it to our         ?</p>
+<p>?   database if you're the investee or have   ?</p>
+<p>?   verified details.                         ?</p>
+<p>?                                             ?</p>
+<p>?   [Continue to Evaluation ?]</p>
+<p>User now sees the evaluation form. This is a single scrolling page, not multiple steps. Mobile-optimized ? each section is a card.</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ? INVESTMENT SANITY CHECK                ?</p>
+<p>?                                             ?</p>
+<p>?   Fill what you know. Empty fields are      ?</p>
+<p>?   skipped. The more you share, the better   ?</p>
+<p>?   the assessment.                           ?</p>
+<p>?                                             ?</p>
+<p>?   ??????????????????????????????????????? ?</p>
+<p>?                                             ?</p>
+<p>?   BASIC INFORMATION                         ?</p>
+<p>?                                             ?</p>
+<p>?   Investment / Company Name                 ?</p>
+<p>?   [                               ]         ?</p>
+<p>?                                             ?</p>
+<p>?   What do they do? (one line)               ?</p>
+<p>?   [                               ]         ?</p>
+<p>?                                             ?</p>
+<p>?   Sector                                    ?</p>
+<p>?   [Select ?]                                ?</p>
+<p>?   Agriculture | Construction | Education |  ?</p>
+<p>?   Energy | Financial Services | Healthcare  ?</p>
+<p>?   | Manufacturing | Real Estate |           ?</p>
+<p>?   Technology | Textile &amp; RMG | Trading     ?</p>
+<p>?   | Transportation | Other                  ?</p>
+<p>?                                             ?</p>
+<p>?   Firm Structure                            ?</p>
+<p>?   ? Registered Private Limited Company      ?</p>
+<p>?   ? Registered Public Limited Company       ?</p>
+<p>?   ? Partnership Firm                        ?</p>
+<p>?   ? Sole Proprietorship                     ?</p>
+<p>?   ? Cooperative Society                     ?</p>
+<p>?   ? NGO / Trust / Foundation                ?</p>
+<p>?   ? Unclear / Not Sure                      ?</p>
+<p>?   ? Individual (person, not entity)         ?</p>
+<p>?                                             ?</p>
+<p>?   Location (District)                       ?</p>
+<p>?   [Select ?]                                ?</p>
+<p>?                                             ?</p>
+<p>?   How did you hear about this?              ?</p>
+<p>?   ? WhatsApp / Social Media forward         ?</p>
+<p>?   ? Friend or family referred               ?</p>
+<p>?   ? Advertisement (online/print)            ?</p>
+<p>?   ? Approached by their agent               ?</p>
+<p>?   ? Seminar / Event / Meeting               ?</p>
+<p>?   ? Other                                   ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   FINANCIAL DETAILS                         ?</p>
+<p>?                                             ?</p>
+<p>?   Investment Type                           ?</p>
+<p>?   ? Equity (share in the business)          ?</p>
+<p>?   ? Debt / Loan (fixed repayment)           ?</p>
+<p>?   ? Revenue / Profit Share (Mudaraba-like)  ?</p>
+<p>?   ? Asset-Backed (you own the asset)        ?</p>
+<p>?   ? Deposit Scheme (promised returns)       ?</p>
+<p>?   ? Convertible (starts as loan, can become ?</p>
+<p>?     equity later)                           ?</p>
+<p>?   ? Unclear / Hybrid                        ?</p>
+<p>?                                             ?</p>
+<p>?   Minimum Investment Amount                 ?</p>
+<p>?   [          ] BDT                          ?</p>
+<p>?                                             ?</p>
+<p>?   Promised or Projected Return              ?</p>
+<p>?   [          ] % per [Select ?]            ?</p>
+<p>?   (Select: per month | per year | over full ?</p>
+<p>?    period | not specified)                  ?</p>
+<p>?                                             ?</p>
+<p>?   Is the return:                            ?</p>
+<p>?   ? Guaranteed / Promised                   ?</p>
+<p>?   ? Projected / Expected (not guaranteed)   ?</p>
+<p>?   ? Not clearly stated                      ?</p>
+<p>?                                             ?</p>
+<p>?   Investment Period / Tenor                 ?</p>
+<p>?   [          ] [Select ?]                  ?</p>
+<p>?   (Months / Years / No fixed period)        ?</p>
+<p>?                                             ?</p>
+<p>?   How soon do returns start?                ?</p>
+<p>?   ? Immediately / Within 30 days            ?</p>
+<p>?   ? After 1-6 months                        ?</p>
+<p>?   ? After 6-12 months                       ?</p>
+<p>?   ? After 1+ year                           ?</p>
+<p>?   ? At end of period only                   ?</p>
+<p>?   ? Not specified                           ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ? RED FLAG CHECK                         ?</p>
+<p>?                                             ?</p>
+<p>?   Answer honestly. &quot;Yes&quot; to any of these    ?</p>
+<p>?   doesn't mean fraud ? but it means you     ?</p>
+<p>?   should ask harder questions.              ?</p>
+<p>?                                             ?</p>
+<p>?   ??????????????????????????????????????? ?</p>
+<p>?                                             ?</p>
+<p>?   1. Are they promising returns that seem   ?</p>
+<p>?      much higher than bank FDR (6-8%)?      ?</p>
+<p>?      ? Yes, significantly higher            ?</p>
+<p>?      ? No, similar or lower                 ?</p>
+<p>?      ? Not sure what bank rates are         ?</p>
+<p>?                                             ?</p>
+<p>?   2. Are they pressuring you to decide      ?</p>
+<p>?      quickly? (&quot;Offer closes soon&quot;,         ?</p>
+<p>?      &quot;Only 5 slots left&quot;)                   ?</p>
+<p>?      ? Yes, urgent pressure                 ?</p>
+<p>?      ? Some urgency, but reasonable         ?</p>
+<p>?      ? No pressure at all                   ?</p>
+<p>?                                             ?</p>
+<p>?   3. Is the business model clearly          ?</p>
+<p>?      explained, or does it rely on vague    ?</p>
+<p>?      terms? (&quot;import-export&quot;, &quot;trading&quot;,    ?</p>
+<p>?      &quot;consultancy&quot; without specifics)       ?</p>
+<p>?      ? Vague / Cannot explain clearly       ?</p>
+<p>?      ? Somewhat clear but gaps remain       ?</p>
+<p>?      ? Clearly explained, specific          ?</p>
+<p>?                                             ?</p>
+<p>?   4. Have you seen any documentation?       ?</p>
+<p>?      (Trade license, RJSC registration,     ?</p>
+<p>?       audited accounts, contracts)           ?</p>
+<p>?      ? No documents shown at all            ?</p>
+<p>?      ? Some documents, but incomplete       ?</p>
+<p>?      ? Yes, proper documentation            ?</p>
+<p>?                                             ?</p>
+<p>?   5. Do they have a physical office or      ?</p>
+<p>?      verifiable business address?           ?</p>
+<p>?      ? No physical presence shown           ?</p>
+<p>?      ? Address given but not verified       ?</p>
+<p>?      ? Yes, verified physical office        ?</p>
+<p>?                                             ?</p>
+<p>?   6. Are they registered with any           ?</p>
+<p>?      regulatory body? (RJSC, Bangladesh     ?</p>
+<p>?      Bank, BSEC, NGO Bureau, etc.)          ?</p>
+<p>?      ? No regulatory registration           ?</p>
+<p>?      ? Claim registration but not verified  ?</p>
+<p>?      ? Yes, registration confirmed          ?</p>
+<p>?                                             ?</p>
+<p>?   7. Does the return structure make sense   ?</p>
+<p>?      for the business? (e.g., a shop        ?</p>
+<p>?      promising 3% monthly return ? how?)    ?</p>
+<p>?      ? Returns seem disconnected from the   ?</p>
+<p>?        business reality                     ?</p>
+<p>?      ? Unclear connection                   ?</p>
+<p>?      ? Returns logically tie to business    ?</p>
+<p>?                                             ?</p>
+<p>?   8. If this business is so profitable,     ?</p>
+<p>?      why are they raising from you instead  ?</p>
+<p>?      of taking a bank loan at 9-12%?        ?</p>
+<p>?      ? No good explanation given            ?</p>
+<p>?      ? Some explanation, raises questions   ?</p>
+<p>?      ? Reasonable explanation (collateral   ?</p>
+<p>?        gap, bank won't lend to this sector, ?</p>
+<p>?        too early for bank, etc.)            ?</p>
+<p>?                                             ?</p>
+<p>?   9. Can you independently verify their     ?</p>
+<p>?      claims? (Existing customers, suppliers, ?</p>
+<p>?      publicly available records)            ?</p>
+<p>?      ? No way to verify independently       ?</p>
+<p>?      ? Partial verification possible        ?</p>
+<p>?      ? Easily verifiable                    ?</p>
+<p>?                                             ?</p>
+<p>?   10. Is the person offering this willing   ?</p>
+<p>?       to put everything in a written,        ?</p>
+<p>?       stamped agreement?                    ?</p>
+<p>?       ? No written agreement offered        ?</p>
+<p>?       ? Verbal promises, vague documents    ?</p>
+<p>?       ? Yes, proper stamped agreement       ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>The Virtual Assessor ? Critique Questions</p>
+<p>This section is the differentiator. It's not just scoring ? it's the platform thinking out loud with the user. These appear as dynamic warnings that populate based on earlier inputs.</p>
+<p>The user clicks [Run Assessment]. The system doesn't just give a score ? it generates specific critique observations.</p>
+<p>Critique Logic Matrix</p>
+<p>User Input</p>
+<p>Critique Generated</p>
+<p>Promised return &gt; 15% AND guaranteed</p>
+<p>&quot;A guaranteed 15%+ return in today's Bangladesh market is exceptional. Banks offer 6-8% FDR. The stock market averages 12-14% with risk. Anything offering significantly more with a guarantee should be treated with extreme skepticism. Ask: what is the underlying asset generating this return, and why isn't institutional money chasing it?&quot;</p>
+<p>Promised return &gt; 24%</p>
+<p>&quot;Returns above 24% are in the territory of the top 1% of businesses globally. In Bangladesh, even successful SMEs rarely sustain this. If the business truly generates this, why would they share it with small investors instead of scaling with institutional capital? The math demands an extraordinary explanation.&quot;</p>
+<p>Firm structure = &quot;Unclear&quot; OR &quot;Individual&quot;</p>
+<p>&quot;Investing in an unclear entity or an individual rather than a registered company removes almost all legal protection. If something goes wrong, you have no RJSC record, no regulatory recourse, and no way to establish ownership. This is the single biggest structural risk in private investing.&quot;</p>
+<p>Investment type = &quot;Deposit Scheme&quot; AND &quot;Unclear entity&quot;</p>
+<p>&quot;Unregistered deposit-taking is illegal in Bangladesh under the Deposit Protection Act and Bangladesh Bank regulations. Only scheduled banks and licensed NBFIs can accept deposits from the public. If this is being pitched as a 'deposit scheme' by an unlicensed entity, it is likely operating outside the law.&quot;</p>
+<p>Source = &quot;WhatsApp / Social Media forward&quot;</p>
+<p>&quot;Investment opportunities that circulate primarily via forwarded messages rather than formal channels have a higher incidence of fraud. Legitimate businesses seeking investment typically have a verifiable presence beyond social media. Ask: can you find their office, their registration, their tax filings?&quot;</p>
+<p>Return starts &quot;Immediately / Within 30 days&quot;</p>
+<p>&quot;Immediate returns from a business investment are structurally unusual. Real businesses take time to deploy capital and generate revenue. Promises of quick payouts are characteristic of schemes that use new investor money to pay earlier investors ? the classic hallmark of a Ponzi structure.&quot;</p>
+<p>Documentation = &quot;None&quot;</p>
+<p>&quot;No legitimate investment should proceed without documentation. At minimum: trade license, RJSC incorporation certificate (for companies), audited or reviewed financial statements, and a formal investment agreement. If none of these exist, the investment exists only in conversation ? and conversation doesn't hold up in court.&quot;</p>
+<p>Pressure = &quot;Yes, urgent&quot;</p>
+<p>&quot;Urgency is a manipulation tactic, not an investment feature. Real investment opportunities are evaluated over days or weeks, with legal review, site visits, and reference checks. Anyone pushing you to decide quickly is trying to prevent exactly the kind of scrutiny this tool provides.&quot;</p>
+<p>Question 8 (bank loan logic) = &quot;No good explanation&quot;</p>
+<p>&quot;This is the question that unravels most bad investments. If a business can genuinely generate returns high enough to pay you 18-24%, they could borrow from a bank at 9-12% and keep the difference. The only reasons to seek expensive retail capital are: (a) banks have rejected them after due diligence, or (b) they don't intend to repay. Either way, you should understand why before proceeding.&quot;</p>
+<p>Return type = &quot;Guaranteed&quot; AND Investment type = &quot;Equity&quot;</p>
+<p>&quot;There is a fundamental contradiction here. Equity means you own part of the business and share in its profits and losses. 'Guaranteed return' means you are promised a fixed outcome regardless of business performance. You cannot have both. If someone is offering 'equity with guaranteed returns,' they either don't understand what they're selling, or they're structuring something that is legally debt but calling it equity ? usually to avoid regulatory scrutiny.&quot;</p>
+<p>Sector = &quot;Trading&quot; AND Description is vague</p>
+<p>&quot;'Trading' and 'import-export' are the most commonly abused categories in investment fraud because they are difficult to verify. Goods move, prices fluctuate, inventory is hard to audit. If the business cannot show: specific products, specific suppliers, specific buyers, warehousing, and shipping documentation ? treat the vagueness as a warning.&quot;</p>
+<p>Results Display</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ? SANITY CHECK REPORT                    ?</p>
+<p>?                                             ?</p>
+<p>?   For: [Investment Name entered]            ?</p>
+<p>?   Date: [Today]                             ?</p>
+<p>?   Onucrom Database: Not Listed (New)        ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   OVERALL ASSESSMENT                        ?</p>
+<p>?                                             ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ?   ? HIGH CONCERN                   ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ?   This investment shows multiple    ?   ?</p>
+<p>?   ?   characteristics commonly          ?   ?</p>
+<p>?   ?   associated with fraudulent or     ?   ?</p>
+<p>?   ?   unsustainable schemes.            ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ?   Proceed only with professional    ?   ?</p>
+<p>?   ?   due diligence.                    ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?                                             ?</p>
+<p>?   Score: 28/100                             ?</p>
+<p>?   (Higher = Lower Concern)                   ?</p>
+<p>?                                             ?</p>
+<p>?   [See Detailed Breakdown ?]                ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>Score ranges and their labels:</p>
+<p>Score</p>
+<p>Label</p>
+<p>Color</p>
+<p>Meaning</p>
+<p>80-100</p>
+<p>LOW CONCERN</p>
+<p>? Green</p>
+<p>Passes basic sanity. Standard due diligence still needed.</p>
+<p>55-79</p>
+<p>MODERATE CONCERN</p>
+<p>? Amber</p>
+<p>Several points need clarification before proceeding.</p>
+<p>30-54</p>
+<p>HIGH CONCERN</p>
+<p>? Orange</p>
+<p>Significant warning signs. Professional investigation advised.</p>
+<p>0-29</p>
+<p>CRITICAL CONCERN</p>
+<p>? Red</p>
+<p>Multiple fraud indicators. Strongly advise against proceeding.</p>
+<p>The Virtual Assessor's Verdict</p>
+<p>This is a generated summary paragraph. It reads like a professional assessor speaking directly to the user.</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ???? ASSESSOR'S NOTE                       ?</p>
+<p>?                                             ?</p>
+<p>?   &quot;Based on what you've shared, this        ?</p>
+<p>?   investment shows several patterns we see  ?</p>
+<p>?   in schemes that eventually fail or turn   ?</p>
+<p>?   out to be fraudulent. The combination of  ?</p>
+<p>?   guaranteed high returns, no regulatory    ?</p>
+<p>?   registration, and pressure to act quickly  ?</p>
+<p>?   is the most common profile of investment   ?</p>
+<p>?   fraud in Bangladesh over the last decade.  ?</p>
+<p>?                                             ?</p>
+<p>?   The specific contradiction ? equity with   ?</p>
+<p>?   guaranteed returns ? suggests either the   ?</p>
+<p>?   promoter doesn't understand the structure  ?</p>
+<p>?   they're offering, or they're deliberately  ?</p>
+<p>?   misrepresenting it. Neither is acceptable  ?</p>
+<p>?   for your money.                            ?</p>
+<p>?                                             ?</p>
+<p>?   If you still want to explore this, insist  ?</p>
+<p>?   on: RJSC registration documents, audited   ?</p>
+<p>?   financials, a physical office visit, and   ?</p>
+<p>?   a proper stamped investment agreement      ?</p>
+<p>?   reviewed by a lawyer. If any of these are  ?</p>
+<p>?   refused, walk away.                        ?</p>
+<p>?                                             ?</p>
+<p>?   This is not a certification that the       ?</p>
+<p>?   investment is fraudulent. It is an         ?</p>
+<p>?   assessment that the risk indicators are    ?</p>
+<p>?   severe enough to require professional due  ?</p>
+<p>?   diligence before any commitment.&quot;          ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>The verdict text is dynamically assembled from template blocks based on which triggers fired. You write ~30 sentence blocks covering all combinations. The JS selects and concatenates. This makes the output feel personalized while being entirely rule-based.</p>
+<p>SUBMISSION TO DATABASE</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ? ADD TO ONUCROM DATABASE?               ?</p>
+<p>?                                             ?</p>
+<p>?   This investment is not currently in our   ?</p>
+<p>?   system. Adding it helps other investors   ?</p>
+<p>?   discover and evaluate it ? and helps      ?</p>
+<p>?   build Bangladesh's investment             ?</p>
+<p>?   transparency.                             ?</p>
+<p>?                                             ?</p>
+<p>?   Who are you?                              ?</p>
+<p>?   ? I am the investee / promoter            ?</p>
+<p>?   ? I am an investor evaluating this        ?</p>
+<p>?   ? I am reporting a suspected scam         ?</p>
+<p>?   ? I just want to add public information   ?</p>
+<p>?                                             ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?   ? ?? IMPORTANT                         ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ? By submitting, you confirm that the  ?   ?</p>
+<p>?   ? information is accurate to the best  ?   ?</p>
+<p>?   ? of your knowledge. Onucrom will      ?   ?</p>
+<p>?   ? review before publishing.           ?   ?</p>
+<p>?   ?                                     ?   ?</p>
+<p>?   ? False or malicious submissions will  ?   ?</p>
+<p>?   ? be rejected.                         ?   ?</p>
+<p>?   ???????????????????????????????????????   ?</p>
+<p>?                                             ?</p>
+<p>?   [Submit to Onucrom Database]              ?</p>
+<p>?   [No, just show me the report]             ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>If Assessment Cannot Be Completed</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ?? INSUFFICIENT INFORMATION               ?</p>
+<p>?                                             ?</p>
+<p>?   We need at least the following to         ?</p>
+<p>?   provide a meaningful assessment:          ?</p>
+<p>?                                             ?</p>
+<p>?   ? Investment type (equity/debt/etc.)      ?</p>
+<p>?   ? Promised return or at least a range    ?</p>
+<p>?   ? Firm structure                          ?</p>
+<p>?                                             ?</p>
+<p>?   Please fill these and try again.          ?</p>
+<p>?   Currently filled: 4 of 7 minimum fields.  ?</p>
+<p>?                                             ?</p>
+<p>?   [Go Back to Form]                         ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>If Something Goes Wrong with Database Check</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   ?? DATABASE CHECK UNAVAILABLE              ?</p>
+<p>?                                             ?</p>
+<p>?   We couldn't check our database right now. ?</p>
+<p>?   You can still run the evaluation ? we     ?</p>
+<p>?   just won't be able to tell you if this    ?</p>
+<p>?   investment is already listed.             ?</p>
+<p>?                                             ?</p>
+<p>?   [Continue without database check]         ?</p>
+<p>?   [Try Again]                               ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>Post-Assessment Action Buttons</p>
+<p>At the bottom of every report:</p>
+<p>???????????????????????????????????????????????</p>
+<p>?                                             ?</p>
+<p>?   What would you like to do?                ?</p>
+<p>?                                             ?</p>
+<p>?   [? Download Report as PDF]               ?</p>
+<p>?   [? Share This Assessment]                ?</p>
+<p>?   [? Browse Verified Investments]          ?</p>
+<p>?   [? Compare with Another Investment]      ?</p>
+<p>?   [? Report This as a Suspected Scam]      ?</p>
+<p>?   [? Get a Verified Lawyer to Review This] ?</p>
+<p>?       (Coming Soon)                         ?</p>
+<p>?                                             ?</p>
+<p>???????????????????????????????????????????????</p>
+<p>Database Structure (Google Sheets Tabs)</p>
+<p>For your backend, you'll need these tabs:</p>
+<p>Tab Name</p>
+<p>Purpose</p>
+<p>privateListings</p>
+<p>All published private investment listings</p>
+<p>pendingReview</p>
+<p>Submitted but not yet approved</p>
+<p>communitySubmissions</p>
+<p>Investor-submitted information, unverified</p>
+<p>flaggedScams</p>
+<p>Reported scams (used for cross-checking only)</p>
+<p>sanityCheckLog</p>
+<p>Anonymous log of assessments run (count only, no PII)</p>
+<p>referenceData</p>
+<p>FDR rates, sector averages, regulatory thresholds (updated quarterly)</p>
+<p>The Architecture</p>
+<p>Google Drive Folder: onucrom-site/</p>
+<p>??? index.html           (built by GAS ? stays as is)</p>
+<p>??? tools.html           (built by GAS ? stays as is)</p>
+<p>??? sanity-check.html    (static, you edit in Drive)</p>
+<p>??? css/</p>
+<p>?   ??? sanity-check.css (static)</p>
+<p>??? js/</p>
+<p>?   ??? sanity-check-db.js   (database lookup logic)</p>
+<p>?   ??? sanity-check-score.js (scoring engine)</p>
+<p>?   ??? sanity-check-ui.js   (form display, results rendering)</p>
+<p>??? content/</p>
+<p>?   ??? about.html       (static page fragment)</p>
+<p>?   ??? disclaimer.html  (static page fragment)</p>
+<p>?   ??? privacy.html     (static page fragment)</p>
+<p>?   ??? questions.json   (the red flag question set)</p>
+<p>??? pages/</p>
+<p>??? about.html       (full page, includes nav/footer)</p>
+<p>??? disclaimer.html</p>
+<p>??? privacy.html</p></div></div><footer><p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p><p style="margin-top:8px"><a href="https://whatsapp.com/channel/xxxx">WhatsApp</a> ? <a href="mailto:salim@onucrom.com">Email</a></p><p style="margin-top:12px;font-size:0.75rem;color:#64748b">Updated 8/10/2026, 10:59:03 AM BST</p></footer></body></html>
