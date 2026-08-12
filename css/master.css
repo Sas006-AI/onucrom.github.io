@@ -26,7 +26,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  max-width: 1000px; /* Standardized balanced width for tools & text */
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px 16px;
 }
@@ -207,7 +207,167 @@ input:focus, select:focus {
   padding: 16px; margin-top: 16px; font-style: italic; color: #cbd5e1; line-height: 1.7;
 }
 
-/* 7. UTILITIES & FOOTER */
+/* 7. TAGS (shared across all blocks) */
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tag-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+.tag-yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.tag-gray { background: rgba(148,163,184,0.15); color: #94a3b8; }
+
+/* 8. ASSET CARDS (Homepage Block 1) */
+.asset-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.asset-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.asset-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.asset-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.asset-card-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+.asset-card-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.asset-card-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.stat-value {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.stat-value.up { color: var(--up); }
+.stat-value.down { color: var(--down); }
+.stat-value.stable { color: var(--muted); }
+
+.asset-card-link {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* 9. ENVIRONMENT STATS (Homepage Block 3) */
+.env-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.env-stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.env-stat-title {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.env-stat-value {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.env-stat-value.up { color: var(--up); }
+.env-stat-value.down { color: var(--down); }
+.env-stat-value.stable { color: var(--text); }
+
+.env-stat-context {
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+/* 10. DATA TABLES (Homepage & Private Listings) */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--border);
+}
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: #cbd5e1;
+}
+.data-table tr:hover td {
+  background: rgba(245,158,11,0.03);
+}
+
+/* 11. EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--muted);
+}
+.empty-state p {
+  margin-bottom: 8px;
+}
+
+/* 12. UTILITIES & FOOTER */
 .hidden { display: none; }
 .mt-12 { margin-top: 12px; }
 .mt-16 { margin-top: 16px; }
@@ -217,12 +377,26 @@ footer {
   color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border);
 }
 .footer-links { margin-top: 8px; }
+.footer-links a { margin: 0 8px; }
 .footer-updated { display: block; margin-top: 8px; font-size: 0.75rem; color: #64748b; }
 
-/* 8. RESPONSIVE BREAKPOINTS */
+/* 13. RESPONSIVE BREAKPOINTS */
 @media (max-width: 900px) {
   .tool-grid { grid-template-columns: 1fr; gap: 16px; }
   .col-explanation { border-left: none; border-top: 1px dashed var(--border); padding-left: 0; padding-top: 16px; }
+  .asset-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .env-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
   .input-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .input-row label { min-width: auto; }
+  .nav-links a { margin-left: 14px; font-size: 0.8rem; }
+}
+
+@media (max-width: 500px) {
+  .asset-cards-grid { grid-template-columns: 1fr; }
+  .env-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .env-stat-card { padding: 12px; }
+  .env-stat-value { font-size: 1rem; }
 }
