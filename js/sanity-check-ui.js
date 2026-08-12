@@ -1,5 +1,5 @@
 // ============================================
-// SANITY CHECK ? UI CONTROLLER
+// SANITY CHECK — UI CONTROLLER
 // ============================================
 var SanityCheck = (function() {
   var API_URL = 'YOUR_SCRIPT_URL_HERE'; // Replace with your deployed web app URL
@@ -22,24 +22,24 @@ var SanityCheck = (function() {
     if (result.found === 'flagged') {
       resultDiv.innerHTML = 
         '<div class="alert alert-warning mt-12">' +
-        '<strong>?? WARNING: Database Match</strong><br>' +
+        '<strong>⚠️ WARNING: Database Match</strong><br>' +
         'This matches an entry in our flagged investment database. Onucrom has received concerning reports about this entity.' +
         '</div>';
     } else if (result.found === 'listed') {
       resultDiv.innerHTML = 
         '<div class="alert alert-pass mt-12">' +
-        '<strong>? Found in Onucrom Database</strong><br>' +
+        '<strong>✅ Found in Onucrom Database</strong><br>' +
         '"' + result.data.name + '" is listed on Onucrom.<br>' +
         'Status: ' + (result.data.status || 'Listed') + ' | Verification: ' + (result.data.verification_tier || 'Basic') +
         '</div>' +
-        '<button class="btn btn-secondary mt-12" onclick="SanityCheck.showEvalForm()">Continue Evaluation Anyway ?</button>';
+        '<button class="btn btn-secondary mt-12" onclick="SanityCheck.showEvalForm()">Continue Evaluation Anyway →</button>';
     } else {
       resultDiv.innerHTML = 
         '<div class="alert alert-pass mt-12">' +
-        '<strong>? Not in our database</strong><br>' +
+        '<strong>✅ Not in our database</strong><br>' +
         'This investment is not currently listed on Onucrom. Evaluate below.' +
         '</div>' +
-        '<button class="btn mt-12" onclick="SanityCheck.showEvalForm()">Continue to Evaluation ?</button>';
+        '<button class="btn mt-12" onclick="SanityCheck.showEvalForm()">Continue to Evaluation →</button>';
     }
   }
 
@@ -99,33 +99,33 @@ var SanityCheck = (function() {
 
     // Passes
     if (result.passes.length > 0) {
-      html += '<div class="alert alert-pass"><strong>? What Passed</strong><br>';
+      html += '<div class="alert alert-pass"><strong>✅ What Passed</strong><br>';
       for (var i = 0; i < result.passes.length; i++) {
-        html += '? ' + result.passes[i] + '<br>';
+        html += '• ' + result.passes[i] + '<br>';
       }
       html += '</div>';
     }
 
     // Cautions
     if (result.cautions.length > 0) {
-      html += '<div class="alert alert-caution"><strong>? Needs Investigation</strong><br>';
+      html += '<div class="alert alert-caution"><strong>🔶 Needs Investigation</strong><br>';
       for (var i = 0; i < result.cautions.length; i++) {
-        html += '? ' + result.cautions[i] + '<br>';
+        html += '• ' + result.cautions[i] + '<br>';
       }
       html += '</div>';
     }
 
     // Warnings
     if (result.warnings.length > 0) {
-      html += '<div class="alert alert-warning"><strong>? Critical Warnings</strong><br>';
+      html += '<div class="alert alert-warning"><strong>🔴 Critical Warnings</strong><br>';
       for (var i = 0; i < result.warnings.length; i++) {
-        html += '? ' + result.warnings[i] + '<br>';
+        html += '• ' + result.warnings[i] + '<br>';
       }
       html += '</div>';
     }
 
     // Assessor note
-    html += '<div class="assessor-note"><strong>???? Assessor\'s Note:</strong> ' + result.note + '</div>';
+    html += '<div class="assessor-note"><strong>🧑‍⚖️ Assessor\'s Note:</strong> ' + result.note + '</div>';
     
     html += '<p style="font-size:0.75rem;color:var(--muted);margin-top:16px">';
     html += 'This is not a certification. It is an assessment based on what you shared. Always conduct independent due diligence.</p>';
@@ -144,9 +144,9 @@ var SanityCheck = (function() {
     SanityDB.submit(assessmentData).then(function(result) {
       var panel = document.getElementById('submissionPanel');
       if (result.success) {
-        panel.innerHTML = '<div class="alert alert-pass"><strong>? Submitted Successfully</strong><br>Thank you. Your submission helps build Bangladesh\'s investment transparency.</div>';
+        panel.innerHTML = '<div class="alert alert-pass"><strong>✅ Submitted Successfully</strong><br>Thank you. Your submission helps build Bangladesh\'s investment transparency.</div>';
       } else {
-        panel.innerHTML = '<div class="alert alert-caution"><strong>?? Submission Unavailable</strong><br>Could not reach database. Your assessment is still valid. Try again later.</div>';
+        panel.innerHTML = '<div class="alert alert-caution"><strong>⚠️ Submission Unavailable</strong><br>Could not reach database. Your assessment is still valid. Try again later.</div>';
       }
     });
   }
