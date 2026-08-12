@@ -1,5 +1,5 @@
 // ============================================
-// SANITY CHECK ? DATABASE MODULE
+// SANITY CHECK — DATABASE MODULE
 // ============================================
 var SanityDB = (function() {
   var API_URL = ''; // Set during init
