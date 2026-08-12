@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>onucrom ? Market Insight</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/master.css"></head><body><nav class="nav"><div class="nav-brand">onucrom</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="tools.html" class="">Tools</a><a href="sanity-check.html" class="">Sanity Check</a><a href="about.html" class="">About</a></div></nav><div class="card" style="margin-bottom: 20px; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px;"><div class="card-title" style="font-size: 1.2rem; font-weight: 800; color: var(--accent); margin-bottom: 4px;">??????? ???????? ????????? (Investment Plan Diagnostic)</div><p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 16px;">?-????? ????? ????? ???????? ???? ?????????? ??????? ????</p><div style="width: 100%; background: var(--bg); border-radius: 10px; height: 8px; overflow: hidden; margin-bottom: 12px; border: 1px solid var(--border);"><div id="wiz-progress" style="width: 25%; background: var(--accent); height: 100%; transition: width 0.3s ease;"></div></div><div id="wiz-slogan" style="font-size: 0.82rem; font-style: italic; color: #fcd34d; background: rgba(245, 158, 11, 0.1); padding: 8px 12px; border-radius: 6px; border-left: 3px solid var(--accent); margin-bottom: 20px;">"In investing, knowing risk always comes before calculating return."</div><div id="wiz-step-1" class="wiz-step" style="display: block;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">??? ? / ?: ????? ???? (Basic Details)</div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">?. ???????? ?? ?????????? ??? ??? (Investment Name)</label><input type="text" id="inv-name" value="Agri Project" placeholder="e.g. Agri Project / Rental Property" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;" required></div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">?. ?????? ?? ??????? ??? ??? (Asset Type)</label><input type="text" id="inv-business" list="business-suggestions" value="Franchise / Small Business" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"><datalist id="business-suggestions"><option value="Franchise / Small Business"><option value="Real Estate"><option value="Public Stocks"><option value="Crypto & Digital Assets"><option value="Bonds / Fixed Income"><option value="Venture / Startup"></datalist></div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">?. ????????? ?????? ?? ????? (Amount in ?)</label><input type="number" id="inv-amount" value="10000" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"></div></div><div id="wiz-step-2" class="wiz-step" style="display: none;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">??? ? / ?: ????????????? (Business Credibility)</div><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">?. ?????????? ???? ???? ???????? (Proposal Source)</label><div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="source-pills"><button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-source-val', 'Personal')">Personal Contact</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'SocialMedia')">Facebook / Social Media</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'Website')">Website</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'Broker')">Broker / Agent</button></div><input type="hidden" id="inv-source-val" value="Personal"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">?. ???????????? ??? ??? (Legal Entity)</label><div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="entity-pills"><button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-entity-val', 'Individual')">??? ??????? (Individual)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Company')">???????? (LLC/Ltd)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Partnership')">???????? (Partnership)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Unknown')">????? / ???????</button></div><input type="hidden" id="inv-entity-val" value="Individual"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">?. ????????????? ?????? ??????? (???? ??? ????? ????):</label><div style="display: flex; flex-direction: column; gap: 8px;"><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_unregistered')">?? ????? ???????? / TIN / BIN ???</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_personal_banking')">?? ?????? ???????????? ???? ?????/???/????????? ??????????? ???? ????? ?????</button></div></div><div id="wiz-step-3" class="wiz-step" style="display: none;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">??? ? / ?: ????? ?????????? (Behavioral Risk Checks)</div><p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 12px;">??????????? ???????? ???? ??? ????? ?????????? ????? ????:</p><div style="display: flex; flex-direction: column; gap: 10px;"><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_chasing')">? ??? ?????? ????????? ???? ??????? ??? ??????</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_urgency')">?? ????? ?? ????? ????? ???? ??? ???????? ??? ?????</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_mlm_members')">? ???? ????? ?? ??? ???? ???? ??????????? ???</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_mlm_bonus')">? ???? ????? ???? ????? ?? ?????? ?????? ????? ???</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_secret_model')">? ???? ???????? ??????? ????, ???? ?? ???????</button></div></div><div id="wiz-step-4" class="wiz-step" style="display: none;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">??? ? / ?: ??????? ? ???????? ????? (Return & Loss Terms)</div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">?. ?? ????? ?????? ?? ????????? ???? ??? ?????? (%)</label><input type="number" id="inv-return" value="12" placeholder="e.g. 15" step="0.1" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"></div><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">?. ?????? ?? ??? ?? ?? ????? ???? (Payment Frequency)</label><div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="freq-pills"><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-freq-val', 'Daily')">????? (Daily)</button><button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-freq-val', 'Monthly')">????? (Monthly)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-freq-val', 'Yearly')">??????? (Yearly)</button></div><input type="hidden" id="inv-freq-val" value="Monthly"><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">?. ???????? ?????? ??? ?? ???? (Loss Scenario)</label><select id="inv-loss-policy" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"><option value="unclear">??????? / ?????? ??? ???? (Unclear)</option><option value="investor_all">???????? ?????? ????? ???? ???? ???? (Investor Risk)</option><option value="guaranteed_back">???% ?????????? ????? ????? (Guaranteed - High Risk Flag)</option><option value="shared">???????? ????? ??? ??? (Shared Risk)</option></select></div></div><div id="wiz-step-results" style="display: none;"><div id="inv-badge-container" style="text-align: center; margin-bottom: 16px;"></div><div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.85rem; margin-bottom: 16px;"><div id="inv-score-breakdown"></div></div><div style="font-size: 0.75rem; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 10px; margin-bottom: 16px;"><strong>????????? ????? (Disclosure Scale):</strong><br>? <b>? - ??:</b> ????????? ????? / ??????????? ???????<br>? <b>?? - ??:</b> ?????? ????? / ????? ???? ???????<br>? <b>?? - ???:</b> ??????? ???????? / ??? ??????? ???????</div><button type="button" class="btn" style="width: 100%; padding: 10px; background: var(--border); color: var(--text); border: none; border-radius: 6px; cursor: pointer;" onclick="resetWizard()">?????? ??????? ???? (Reset)</button></div><div id="wiz-nav" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 16px; margin-top: 16px;"><button type="button" id="wiz-prev-btn" style="padding: 8px 16px; background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; display: none;" onclick="navigateWizard(-1)">? ??????</button><div></div><button type="button" id="wiz-next-btn" style="padding: 10px 20px; background: var(--accent); color: #000; font-weight: 700; border: none; border-radius: 6px; cursor: pointer;" onclick="navigateWizard(1)">??????? ??? ?</button></div></div><style>.pill-btn {background: var(--bg); color: var(--muted); border: 1px solid var(--border);padding: 8px 14px; font-size: 0.8rem; border-radius: 20px; cursor: pointer; transition: all 0.2s;}.pill-btn.active {background: var(--accent); color: #000; font-weight: 700; border-color: var(--accent);}.toggle-pill {background: var(--bg); color: var(--text); border: 1px solid var(--border);padding: 10px 14px; font-size: 0.82rem; border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.2s;}.toggle-pill.selected {background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; font-weight: 600;}</style><script>var currentStep = 1;var totalSteps = 4;var activeFlags = {};var SLOGANS = ["In investing, knowing risk always comes before calculating return.","If the structure is opaque, your capital is vulnerable.","High pressure and secrecy are the twin pillars of financial scams.","Never test the depth of the river with both feet."];function selectPill(btn, hiddenInputId, val) {  var parent = btn.parentElement;  var pills = parent.querySelectorAll(".pill-btn");  for (var i = 0; i < pills.length; i++) { pills[i].classList.remove("active"); }  btn.classList.add("active");  document.getElementById(hiddenInputId).value = val;}function toggleFlagPill(btn, flagKey) {  btn.classList.toggle("selected");  activeFlags[flagKey] = btn.classList.contains("selected");}function navigateWizard(dir) {  if (dir === 1 && currentStep === 1) {    var name = document.getElementById("inv-name").value.trim();    if (!name) { alert("??????? ??? ????????? ??? ??????"); return; }  }  document.getElementById("wiz-step-" + currentStep).style.display = "none";  currentStep += dir;  if (currentStep > totalSteps) {    calculateFinalRisk();    return;  }  document.getElementById("wiz-step-" + currentStep).style.display = "block";  document.getElementById("wiz-progress").style.width = (currentStep / totalSteps * 100) + "%";  document.getElementById("wiz-slogan").innerText = "\"" + SLOGANS[currentStep - 1] + "\"";  document.getElementById("wiz-prev-btn").style.display = currentStep > 1 ? "block" : "none";  if (currentStep === totalSteps) {    document.getElementById("wiz-next-btn").innerText = "????? ????? (Calculate Risk) ?";  } else {    document.getElementById("wiz-next-btn").innerText = "??????? ??? ?";  }}function calculateFinalRisk() {  document.getElementById("wiz-slogan").style.display = "none";  document.getElementById("wiz-nav").style.display = "none";  document.getElementById("wiz-step-results").style.display = "block";  document.getElementById("wiz-progress").style.width = "100%";  var score = 0;  var flagCount = 0;  var keys = Object.keys(activeFlags);  for (var i = 0; i < keys.length; i++) {    if (activeFlags[keys[i]]) {      flagCount++;      score += 12;    }  }  var expReturn = parseFloat(document.getElementById("inv-return").value) || 0;  if (expReturn > 30) { score += 30; }  else if (expReturn > 18) { score += 15; }  var freq = document.getElementById("inv-freq-val").value;  if (freq === "Daily") { score += 20; }  var lossPolicy = document.getElementById("inv-loss-policy").value;  if (lossPolicy === "guaranteed_back") { score += 20; }  if (lossPolicy === "unclear") { score += 10; }  score = Math.min(score, 100);  var badgeClass = "v-good";  var verdict = "??????????? ???????? (Realistic / Low Risk)";  if (score >= 55) {    badgeClass = "v-bad"; verdict = "???? ?????????? / ???????? (Critical Risk)";  } else if (score >= 25) {    badgeClass = "v-caution"; verdict = "?????? ????? (Moderate Risk / Proceed Carefully)";  }  var badgeHTML = "<span class=\"verdict-badge " + badgeClass + "\" style=\"font-size:1rem; padding: 10px 16px;\">" + verdict + "</span>";  document.getElementById("inv-badge-container").innerHTML = badgeHTML;  var breakdownHTML = "";  breakdownHTML += "<div class=\"res-item\"><span class=\"res-label\">??? ????? ????? (Risk Score):</span><span class=\"res-val\">" + score + " / 100</span></div>";  breakdownHTML += "<div class=\"res-item\"><span class=\"res-label\">??????? ??? ??????? (Red Flags):</span><span class=\"res-val\">" + flagCount + " ??</span></div>";  breakdownHTML += "<div class=\"res-item\"><span class=\"res-label\">?????????? ???????:</span><span class=\"res-val\">" + expReturn + "% (" + freq + ")</span></div>";  document.getElementById("inv-score-breakdown").innerHTML = breakdownHTML;}function resetWizard() {  currentStep = 1;  var keys = Object.keys(activeFlags);  for (var i = 0; i < keys.length; i++) { activeFlags[keys[i]] = false; }  var toggles = document.querySelectorAll(".toggle-pill");  for (var i = 0; i < toggles.length; i++) { toggles[i].classList.remove("selected"); }  document.getElementById("wiz-step-results").style.display = "none";  document.getElementById("wiz-step-1").style.display = "block";  document.getElementById("wiz-slogan").style.display = "block";  document.getElementById("wiz-nav").style.display = "flex";  document.getElementById("wiz-progress").style.width = "25%";  document.getElementById("wiz-slogan").innerText = "\"" + SLOGANS[0] + "\"";  document.getElementById("wiz-prev-btn").style.display = "none";  document.getElementById("wiz-next-btn").innerText = "??????? ??? ?";}</script></div><div class="card" id="section-asset_cards"><div class="card-title">? Check What Investments Are Offering</div><p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">See what returns different asset classes typically generate in Bangladesh. Click any card to explore deeper.</p><div class="asset-cards-grid"><a href="stocks.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Stocks (DSE)</span><span class="tag tag-green">? Shariah</span></div><p class="asset-card-desc">Public listed companies</p><div class="asset-card-stat"><span class="stat-label">Avg Annual Return</span><span class="stat-value up">10-14% ?</span></div><span class="asset-card-link">Explore ?</span></a><a href="govt-securities.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Govt Securities</span><span class="tag tag-gray">? Standard</span></div><p class="asset-card-desc">Treasury bills &amp; bonds</p><div class="asset-card-stat"><span class="stat-label">Risk-Free Yield</span><span class="stat-value stable">6-8% ?</span></div><span class="asset-card-link">Explore ?</span></a><a href="private-listings.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Private Fundraising</span><span class="tag tag-yellow">? Self-Certified</span></div><p class="asset-card-desc">SME &amp; startup equity</p><div class="asset-card-stat"><span class="stat-label">Projected Return</span><span class="stat-value up">15-25% ?</span></div><span class="asset-card-link">Explore ?</span></a><a href="fixed-deposits.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Fixed Deposits</span><span class="tag tag-gray">? Standard</span></div><p class="asset-card-desc">Bank FDR schemes</p><div class="asset-card-stat"><span class="stat-label">Guaranteed Rate</span><span class="stat-value stable">6-8% ?</span></div><span class="asset-card-link">Explore ?</span></a><a href="shariah.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Shariah Compliant</span><span class="tag tag-green">? Shariah</span></div><p class="asset-card-desc">Halal-screened only</p><div class="asset-card-stat"><span class="stat-label">Filtered Universe</span><span class="stat-value up">140+ stocks ?</span></div><span class="asset-card-link">Explore ?</span></a></div><p style="font-size:0.7rem;color:var(--muted);margin-top:12px;text-align:center">Returns shown are historical averages or current market rates. Past performance does not guarantee future results.</p></div><div class="card" id="section-private_opps"><div class="card-title">? Check Verified Private Opportunities</div><p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Each listing below has passed our basic verification check. These are businesses and projects actively seeking investment in Bangladesh.</p><div class="empty-state"><p>No verified opportunities yet.</p><p style="font-size:0.85rem;color:var(--muted)">Are you raising capital? <a href="sanity-check.html">Submit your project for verification ?</a></p></div><p style="font-size:0.7rem;color:var(--muted);margin-top:12px">Onucrom connects parties but does not intermediate funds or guarantee outcomes. Conduct your own due diligence.</p></div><div class="card" id="section-env_stats"><div class="card-title">? Get a View on Investing Environment</div><p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Key indicators that shape the investment landscape in Bangladesh right now.</p><div class="env-stats-grid"><div class="env-stat-card"><span class="env-stat-title">Inflation</span><span class="env-stat-value down">0.098 ?</span><span class="env-stat-context">Bangladesh, May 2025</span></div><div class="env-stat-card"><span class="env-stat-title">Policy Rate</span><span class="env-stat-value stable">0.08 ?</span><span class="env-stat-context">Bangladesh Bank</span></div><div class="env-stat-card"><span class="env-stat-title">USD/BDT</span><span class="env-stat-value up">117.5 ?</span><span class="env-stat-context">Exchange Rate</span></div><div class="env-stat-card"><span class="env-stat-title">DSE Market Cap</span><span class="env-stat-value down">?6.8L Cr ?</span><span class="env-stat-context">Sun Jun 01 2025 00:00:00 GMT+0600 (Bangladesh Standard Time)</span></div><div class="env-stat-card"><span class="env-stat-title">Exports</span><span class="env-stat-value up">$5.2B ?</span><span class="env-stat-context">Monthly, May 2025</span></div><div class="env-stat-card"><span class="env-stat-title">Forex Reserves</span><span class="env-stat-value stable">$25.4B ?</span><span class="env-stat-context">Bangladesh Bank</span></div></div><p style="font-size:0.7rem;color:var(--muted);margin-top:12px;text-align:center">Data sourced from Bangladesh Bank, BBS, and DSE. Updated periodically.</p></div><div class="card"><div class="card-title">Today's Pulse</div><div style="font-size:1.05rem;line-height:1.7"><p>About:</p>
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>onucrom — Market Insight</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/master.css"></head><body><nav class="nav"><div class="nav-brand">onucrom</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="tools.html" class="">Tools</a><a href="sanity-check.html" class="">Sanity Check</a><a href="about.html" class="">About</a></div></nav><div class="card" style="margin-bottom: 20px; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px;"><div class="card-title" style="font-size: 1.2rem; font-weight: 800; color: var(--accent); margin-bottom: 4px;">বিনিয়োগ প্রস্তাব যাচাইকারক (Investment Plan Diagnostic)</div><p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 16px;">৪-ধাপের দ্রুত যাচাই পরীক্ষা। কোনো অ্যাকাউন্ট প্রয়োজন নেই।</p><div style="width: 100%; background: var(--bg); border-radius: 10px; height: 8px; overflow: hidden; margin-bottom: 12px; border: 1px solid var(--border);"><div id="wiz-progress" style="width: 25%; background: var(--accent); height: 100%; transition: width 0.3s ease;"></div></div><div id="wiz-slogan" style="font-size: 0.82rem; font-style: italic; color: #fcd34d; background: rgba(245, 158, 11, 0.1); padding: 8px 12px; border-radius: 6px; border-left: 3px solid var(--accent); margin-bottom: 20px;">"In investing, knowing risk always comes before calculating return."</div><div id="wiz-step-1" class="wiz-step" style="display: block;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">ধাপ ১ / ৪: মৌলিক তথ্য (Basic Details)</div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">১. প্রজেক্ট বা প্রস্তাবের নাম কী? (Investment Name)</label><input type="text" id="inv-name" value="Agri Project" placeholder="e.g. Agri Project / Rental Property" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;" required></div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">২. ব্যবসা বা সম্পদের ধরন কী? (Asset Type)</label><input type="text" id="inv-business" list="business-suggestions" value="Franchise / Small Business" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"><datalist id="business-suggestions"><option value="Franchise / Small Business"><option value="Real Estate"><option value="Public Stocks"><option value="Crypto & Digital Assets"><option value="Bonds / Fixed Income"><option value="Venture / Startup"></datalist></div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">৩. বিনিয়োগের পরিমাণ কত টাকা? (Amount in ৳)</label><input type="number" id="inv-amount" value="10000" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"></div></div><div id="wiz-step-2" class="wiz-step" style="display: none;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">ধাপ ২ / ৪: নির্ভরযোগ্যতা (Business Credibility)</div><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">১. প্রস্তাবটি কোথা থেকে পেয়েছেন? (Proposal Source)</label><div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="source-pills"><button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-source-val', 'Personal')">Personal Contact</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'SocialMedia')">Facebook / Social Media</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'Website')">Website</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'Broker')">Broker / Agent</button></div><input type="hidden" id="inv-source-val" value="Personal"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">২. প্রতিষ্ঠানের ধরন কী? (Legal Entity)</label><div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="entity-pills"><button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-entity-val', 'Individual')">একক ব্যক্তি (Individual)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Company')">কোম্পানি (LLC/Ltd)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Partnership')">অংশীদারি (Partnership)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Unknown')">অজানা / অস্পষ্ট</button></div><input type="hidden" id="inv-entity-val" value="Individual"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">৩. প্রতিষ্ঠানটির সত্যতা পরীক্ষা (সত্য হলে ট্যাপ করুন):</label><div style="display: flex; flex-direction: column; gap: 8px;"><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_unregistered')">⚠️ ট্রেড লাইসেন্স / TIN / BIN নেই</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_personal_banking')">⚠️ ব্যাংক অ্যাকাউন্টের বদলে বিকাশ/নগদ/ব্যক্তিগত অ্যাকাউন্টে টাকা চাওয়া হচ্ছে</button></div></div><div id="wiz-step-3" class="wiz-step" style="display: none;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">ধাপ ৩ / ৪: ঝুঁকি পর্যবেক্ষণ (Behavioral Risk Checks)</div><p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 12px;">প্রস্তাবটির ক্ষেত্রে সত্য হলে নিচের অপশনগুলোতে ট্যাপ করুন:</p><div style="display: flex; flex-direction: column; gap: 10px;"><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_chasing')">🚨 কেউ আপনাকে বিনিয়োগের জন্য ক্রমাগত চাপ দিচ্ছে</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_urgency')">⏱️ জরুরি বা সীমিত সময়ের অফার বলে তাড়াহুড়ো করা হচ্ছে</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_mlm_members')">👥 নতুন সদস্য বা টিম তৈরি করার বাধ্যবাধকতা আছে</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_mlm_bonus')">💰 নতুন সদস্য আনলে কমিশন বা আর্থিক সুবিধা পাওয়া যায়</button><button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_secret_model')">🔒 আয়ের পদ্ধতিটি অত্যন্ত গোপন, জটিল বা অস্পষ্ট</button></div></div><div id="wiz-step-4" class="wiz-step" style="display: none;"><div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">ধাপ ৪ / ৪: লভ্যাংশ ও লোকসানের হিসাব (Return & Loss Terms)</div><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">১. কত শতাংশ মুনাফা বা লভ্যাংশের অফার করা হয়েছে? (%)</label><input type="number" id="inv-return" value="12" placeholder="e.g. 15" step="0.1" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"></div><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">২. মুনাফা কত দিন পর পর দেওয়া হবে? (Payment Frequency)</label><div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="freq-pills"><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-freq-val', 'Daily')">দৈনিক (Daily)</button><button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-freq-val', 'Monthly')">মাসিক (Monthly)</button><button type="button" class="pill-btn" onclick="selectPill(this, 'inv-freq-val', 'Yearly')">বার্ষিক (Yearly)</button></div><input type="hidden" id="inv-freq-val" value="Monthly"><div class="input-group" style="margin-bottom: 14px;"><label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">৩. ব্যবসায়ে লোকসান হলে কী হবে? (Loss Scenario)</label><select id="inv-loss-policy" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;"><option value="unclear">অস্পষ্ট / আলোচনা করা হয়নি (Unclear)</option><option value="investor_all">সম্পূর্ণ লোকসান মূলধন থেকে কাটা যাবে (Investor Risk)</option><option value="guaranteed_back">১০০% গ্যারান্টি দেওয়া হয়েছে (Guaranteed - High Risk Flag)</option><option value="shared">সমানভাবে শেয়ার করা হবে (Shared Risk)</option></select></div></div><div id="wiz-step-results" style="display: none;"><div id="inv-badge-container" style="text-align: center; margin-bottom: 16px;"></div><div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.85rem; margin-bottom: 16px;"><div id="inv-score-breakdown"></div></div><div style="font-size: 0.75rem; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 10px; margin-bottom: 16px;"><strong>মূল্যায়ন স্কেল (Disclosure Scale):</strong><br>• <b>০ - ২৫:</b> স্বাভাবিক ঝুঁকি / বাস্তবসম্মত প্ল্যান<br>• <b>২৬ - ৫৫:</b> মাঝারি ঝুঁকি / সতর্ক থাকা প্রয়োজন<br>• <b>৫৬ - ১০০:</b> অত্যন্ত বিপজ্জনক / রেড ফ্ল্যাগ চিহ্নিত</div><button type="button" class="btn" style="width: 100%; padding: 10px; background: var(--border); color: var(--text); border: none; border-radius: 6px; cursor: pointer;" onclick="resetWizard()">পুনরায় পরীক্ষা করুন (Reset)</button></div><div id="wiz-nav" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 16px; margin-top: 16px;"><button type="button" id="wiz-prev-btn" style="padding: 8px 16px; background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; display: none;" onclick="navigateWizard(-1)">← পূর্বে</button><div></div><button type="button" id="wiz-next-btn" style="padding: 10px 20px; background: var(--accent); color: #000; font-weight: 700; border: none; border-radius: 6px; cursor: pointer;" onclick="navigateWizard(1)">পরবর্তী ধাপ →</button></div></div><style>.pill-btn {background: var(--bg); color: var(--muted); border: 1px solid var(--border);padding: 8px 14px; font-size: 0.8rem; border-radius: 20px; cursor: pointer; transition: all 0.2s;}.pill-btn.active {background: var(--accent); color: #000; font-weight: 700; border-color: var(--accent);}.toggle-pill {background: var(--bg); color: var(--text); border: 1px solid var(--border);padding: 10px 14px; font-size: 0.82rem; border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.2s;}.toggle-pill.selected {background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; font-weight: 600;}</style><script>var currentStep = 1;var totalSteps = 4;var activeFlags = {};var SLOGANS = ["In investing, knowing risk always comes before calculating return.","If the structure is opaque, your capital is vulnerable.","High pressure and secrecy are the twin pillars of financial scams.","Never test the depth of the river with both feet."];function selectPill(btn, hiddenInputId, val) {  var parent = btn.parentElement;  var pills = parent.querySelectorAll(".pill-btn");  for (var i = 0; i < pills.length; i++) { pills[i].classList.remove("active"); }  btn.classList.add("active");  document.getElementById(hiddenInputId).value = val;}function toggleFlagPill(btn, flagKey) {  btn.classList.toggle("selected");  activeFlags[flagKey] = btn.classList.contains("selected");}function navigateWizard(dir) {  if (dir === 1 && currentStep === 1) {    var name = document.getElementById("inv-name").value.trim();    if (!name) { alert("অনুগ্রহ করে বিনিয়োগের নাম লিখুন।"); return; }  }  document.getElementById("wiz-step-" + currentStep).style.display = "none";  currentStep += dir;  if (currentStep > totalSteps) {    calculateFinalRisk();    return;  }  document.getElementById("wiz-step-" + currentStep).style.display = "block";  document.getElementById("wiz-progress").style.width = (currentStep / totalSteps * 100) + "%";  document.getElementById("wiz-slogan").innerText = "\"" + SLOGANS[currentStep - 1] + "\"";  document.getElementById("wiz-prev-btn").style.display = currentStep > 1 ? "block" : "none";  if (currentStep === totalSteps) {    document.getElementById("wiz-next-btn").innerText = "ফলাফল দেখুন (Calculate Risk) ✓";  } else {    document.getElementById("wiz-next-btn").innerText = "পরবর্তী ধাপ →";  }}function calculateFinalRisk() {  document.getElementById("wiz-slogan").style.display = "none";  document.getElementById("wiz-nav").style.display = "none";  document.getElementById("wiz-step-results").style.display = "block";  document.getElementById("wiz-progress").style.width = "100%";  var score = 0;  var flagCount = 0;  var keys = Object.keys(activeFlags);  for (var i = 0; i < keys.length; i++) {    if (activeFlags[keys[i]]) {      flagCount++;      score += 12;    }  }  var expReturn = parseFloat(document.getElementById("inv-return").value) || 0;  if (expReturn > 30) { score += 30; }  else if (expReturn > 18) { score += 15; }  var freq = document.getElementById("inv-freq-val").value;  if (freq === "Daily") { score += 20; }  var lossPolicy = document.getElementById("inv-loss-policy").value;  if (lossPolicy === "guaranteed_back") { score += 20; }  if (lossPolicy === "unclear") { score += 10; }  score = Math.min(score, 100);  var badgeClass = "v-good";  var verdict = "বাস্তবসম্মত প্রস্তাব (Realistic / Low Risk)";  if (score >= 55) {    badgeClass = "v-bad"; verdict = "উচ্চ ঝুঁকিপূর্ণ / বিপজ্জনক (Critical Risk)";  } else if (score >= 25) {    badgeClass = "v-caution"; verdict = "মাঝারি ঝুঁকি (Moderate Risk / Proceed Carefully)";  }  var badgeHTML = "<span class=\"verdict-badge " + badgeClass + "\" style=\"font-size:1rem; padding: 10px 16px;\">" + verdict + "</span>";  document.getElementById("inv-badge-container").innerHTML = badgeHTML;  var breakdownHTML = "";  breakdownHTML += "<div class=\"res-item\"><span class=\"res-label\">মোট রিস্ক স্কোর (Risk Score):</span><span class=\"res-val\">" + score + " / 100</span></div>";  breakdownHTML += "<div class=\"res-item\"><span class=\"res-label\">চিহ্নিত রেড ফ্ল্যাগ (Red Flags):</span><span class=\"res-val\">" + flagCount + " টি</span></div>";  breakdownHTML += "<div class=\"res-item\"><span class=\"res-label\">প্রত্যাশিত লভ্যাংশ:</span><span class=\"res-val\">" + expReturn + "% (" + freq + ")</span></div>";  document.getElementById("inv-score-breakdown").innerHTML = breakdownHTML;}function resetWizard() {  currentStep = 1;  var keys = Object.keys(activeFlags);  for (var i = 0; i < keys.length; i++) { activeFlags[keys[i]] = false; }  var toggles = document.querySelectorAll(".toggle-pill");  for (var i = 0; i < toggles.length; i++) { toggles[i].classList.remove("selected"); }  document.getElementById("wiz-step-results").style.display = "none";  document.getElementById("wiz-step-1").style.display = "block";  document.getElementById("wiz-slogan").style.display = "block";  document.getElementById("wiz-nav").style.display = "flex";  document.getElementById("wiz-progress").style.width = "25%";  document.getElementById("wiz-slogan").innerText = "\"" + SLOGANS[0] + "\"";  document.getElementById("wiz-prev-btn").style.display = "none";  document.getElementById("wiz-next-btn").innerText = "পরবর্তী ধাপ →";}</script></div><div class="card" id="section-asset_cards"><div class="card-title">📊 Check What Investments Are Offering</div><p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">See what returns different asset classes typically generate in Bangladesh. Click any card to explore deeper.</p><div class="asset-cards-grid"><a href="stocks.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Stocks (DSE)</span><span class="tag tag-green">🟢 Shariah</span></div><p class="asset-card-desc">Public listed companies</p><div class="asset-card-stat"><span class="stat-label">Avg Annual Return</span><span class="stat-value up">10-14% ▲</span></div><span class="asset-card-link">Explore →</span></a><a href="govt-securities.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Govt Securities</span><span class="tag tag-gray">⚪ Standard</span></div><p class="asset-card-desc">Treasury bills &amp; bonds</p><div class="asset-card-stat"><span class="stat-label">Risk-Free Yield</span><span class="stat-value stable">6-8% →</span></div><span class="asset-card-link">Explore →</span></a><a href="private-listings.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Private Fundraising</span><span class="tag tag-yellow">🟡 Self-Certified</span></div><p class="asset-card-desc">SME &amp; startup equity</p><div class="asset-card-stat"><span class="stat-label">Projected Return</span><span class="stat-value up">15-25% ▲</span></div><span class="asset-card-link">Explore →</span></a><a href="fixed-deposits.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Fixed Deposits</span><span class="tag tag-gray">⚪ Standard</span></div><p class="asset-card-desc">Bank FDR schemes</p><div class="asset-card-stat"><span class="stat-label">Guaranteed Rate</span><span class="stat-value stable">6-8% →</span></div><span class="asset-card-link">Explore →</span></a><a href="shariah.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Shariah Compliant</span><span class="tag tag-green">🟢 Shariah</span></div><p class="asset-card-desc">Halal-screened only</p><div class="asset-card-stat"><span class="stat-label">Filtered Universe</span><span class="stat-value up">140+ stocks ▲</span></div><span class="asset-card-link">Explore →</span></a></div><p style="font-size:0.7rem;color:var(--muted);margin-top:12px;text-align:center">Returns shown are historical averages or current market rates. Past performance does not guarantee future results.</p></div><div class="card" id="section-private_opps"><div class="card-title">✅ Check Verified Private Opportunities</div><p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Each listing below has passed our basic verification check. These are businesses and projects actively seeking investment in Bangladesh.</p><div class="empty-state"><p>No verified opportunities yet.</p><p style="font-size:0.85rem;color:var(--muted)">Are you raising capital? <a href="sanity-check.html">Submit your project for verification →</a></p></div><p style="font-size:0.7rem;color:var(--muted);margin-top:12px">Onucrom connects parties but does not intermediate funds or guarantee outcomes. Conduct your own due diligence.</p></div><div class="card" id="section-env_stats"><div class="card-title">🌍 Get a View on Investing Environment</div><p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Key indicators that shape the investment landscape in Bangladesh right now.</p><div class="env-stats-grid"><div class="env-stat-card"><span class="env-stat-title">Inflation</span><span class="env-stat-value down">0.098 ▼</span><span class="env-stat-context">Bangladesh, May 2025</span></div><div class="env-stat-card"><span class="env-stat-title">Policy Rate</span><span class="env-stat-value stable">0.08 →</span><span class="env-stat-context">Bangladesh Bank</span></div><div class="env-stat-card"><span class="env-stat-title">USD/BDT</span><span class="env-stat-value up">117.5 ▲</span><span class="env-stat-context">Exchange Rate</span></div><div class="env-stat-card"><span class="env-stat-title">DSE Market Cap</span><span class="env-stat-value down">৳6.8L Cr ▼</span><span class="env-stat-context">Sun Jun 01 2025 00:00:00 GMT+0600 (Bangladesh Standard Time)</span></div><div class="env-stat-card"><span class="env-stat-title">Exports</span><span class="env-stat-value up">$5.2B ▲</span><span class="env-stat-context">Monthly, May 2025</span></div><div class="env-stat-card"><span class="env-stat-title">Forex Reserves</span><span class="env-stat-value stable">$25.4B →</span><span class="env-stat-context">Bangladesh Bank</span></div></div><p style="font-size:0.7rem;color:var(--muted);margin-top:12px;text-align:center">Data sourced from Bangladesh Bank, BBS, and DSE. Updated periodically.</p></div><div class="card"><div class="card-title">Today's Pulse</div><div style="font-size:1.05rem;line-height:1.7"><p>About:</p>
 <p>ONUCROM makes responsible investment opportunities easier to find. It gives people a common place to discover Shariah-aligned investment products and business funding needs, while giving credible providers and enterprises a structured way to reach a broader market.</p>
-</div><div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px;text-align:center"><a href="https://whatsapp.com/channel/xxxx" style="font-weight:600">Get this in your pocket ? WhatsApp</a></div></div><div class="card"><div class="card-title">Market Snapshot</div><table class="data-table">
+</div><div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px;text-align:center"><a href="https://whatsapp.com/channel/xxxx" style="font-weight:600">Get this in your pocket → WhatsApp</a></div></div><div class="card"><div class="card-title">Market Snapshot</div><table class="data-table">
 <thead>
 <tr>
 <th></th>
@@ -51,7 +51,7 @@
 </tr>
 <tr>
 <td>Macro</td>
-<td>Bangladesh?s headline inflation fell to 8.32% in July 2026 from 9.16% in June, mainly driven by a significant decline in food inflation, according to data released by the Bangladesh Bureau of Statistics (BBS).</td>
+<td>Bangladesh’s headline inflation fell to 8.32% in July 2026 from 9.16% in June, mainly driven by a significant decline in food inflation, according to data released by the Bangladesh Bureau of Statistics (BBS).</td>
 </tr>
 <tr>
 <td>Macro</td>
@@ -71,11 +71,11 @@
 </tr>
 <tr>
 <td>Macro</td>
-<td>Bangladesh?s energy crisis deepened as imported liquefied natural gas supply to the national grid plummeted by 250 million cubic feet per day from Monday evening due to adverse weather conditions in the Bay of Bengal.</td>
+<td>Bangladesh’s energy crisis deepened as imported liquefied natural gas supply to the national grid plummeted by 250 million cubic feet per day from Monday evening due to adverse weather conditions in the Bay of Bengal.</td>
 </tr>
 <tr>
 <td>Macro</td>
-<td>Near-record inventories, technological advances and the rise of key exporters such as Brazil and Russia have made the global food system more resilient to this year?s ?super? El Nino than similar past events. The changes have been driven by higher-yielding crop varieties, greater use of fertiliser and ?improved irrigation and crop protection, lifting yields of staples such as rice, wheat, corn and soybeans.</td>
+<td>Near-record inventories, technological advances and the rise of key exporters such as Brazil and Russia have made the global food system more resilient to this year’s “super” El Nino than similar past events. The changes have been driven by higher-yielding crop varieties, greater use of fertiliser and ‌improved irrigation and crop protection, lifting yields of staples such as rice, wheat, corn and soybeans.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
@@ -95,11 +95,11 @@
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>The government has decided to use solar power for official work as much as possible. The Cabinet Division issued notification saying the Bangabhaban, the Cabinet Division, the Prime Minister?s Office, the Planning Commission and the Finance Division would use the lion?s share of solar power for their official work. Other government offices will gradually ensure the maximum use of solar power.</td>
+<td>The government has decided to use solar power for official work as much as possible. The Cabinet Division issued notification saying the Bangabhaban, the Cabinet Division, the Prime Minister’s Office, the Planning Commission and the Finance Division would use the lion’s share of solar power for their official work. Other government offices will gradually ensure the maximum use of solar power.</td>
 </tr>
 <tr>
 <td>Sector &amp; Industries</td>
-<td>Bangladesh?s cigarette tax revenue has surged more than 11-fold over the past two decades, yet repeated tax and price hikes have failed to significantly reduce consumption - raising questions about whether the country?s cigarette tax structure is delivering the intended public health gains.</td>
+<td>Bangladesh’s cigarette tax revenue has surged more than 11-fold over the past two decades, yet repeated tax and price hikes have failed to significantly reduce consumption - raising questions about whether the country’s cigarette tax structure is delivering the intended public health gains.</td>
 </tr>
 <tr>
 <td>Stocks</td>
@@ -153,257 +153,257 @@
 <p>[ ] Set up one-click sheet approval (Pending \rightarrow Approved) to update the site automatically.</p>
 <p>[ ] Auto-email project owners their live link once approved.</p>
 <p>The Free Investment Proposal Checker:</p>
-<p>?   ? Investment Sanity Check                ?</p>
-<p>?                                             ?</p>
-<p>?   Free. Anonymous. Instant.                 ?</p>
-<p>?                                             ?</p>
-<p>?   Paste any investment proposal details     ?</p>
-<p>?   below. We'll check our database first,    ?</p>
-<p>?   then evaluate what you share.             ?</p>
-<p>?                                             ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?   ? Enter the investment name or        ?   ?</p>
-<p>?   ? organization claiming to offer it   ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ? [                           ]       ?   ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?                                             ?</p>
-<p>?   [Start Check]                             ?</p>
-<p>?                                             ?</p>
-<p>?   ? Nothing you enter is stored or shared.  ?</p>
-<p>?                                             ?</p>
+<p>│   🔍 Investment Sanity Check                │</p>
+<p>│                                             │</p>
+<p>│   Free. Anonymous. Instant.                 │</p>
+<p>│                                             │</p>
+<p>│   Paste any investment proposal details     │</p>
+<p>│   below. We'll check our database first,    │</p>
+<p>│   then evaluate what you share.             │</p>
+<p>│                                             │</p>
+<p>│   ┌─────────────────────────────────────┐   │</p>
+<p>│   │ Enter the investment name or        │   │</p>
+<p>│   │ organization claiming to offer it   │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │ [                           ]       │   │</p>
+<p>│   └─────────────────────────────────────┘   │</p>
+<p>│                                             │</p>
+<p>│   [Start Check]                             │</p>
+<p>│                                             │</p>
+<p>│   ⓘ Nothing you enter is stored or shared.  │</p>
+<p>│                                             │</p>
 <p>What happens on &quot;Start Check&quot;:</p>
-<p>User's input is cross-checked against the Onucrom database (loaded as JSON on page load ? all private listings plus any flagged/scam database you maintain).</p>
+<p>User's input is cross-checked against the Onucrom database (loaded as JSON on page load — all private listings plus any flagged/scam database you maintain).</p>
 <p>Cross-check is NOT just name matching. It uses:</p>
 <p>Organization name (fuzzy match, handles spelling variations)</p>
 <p>Key person names (if database has directors/promoters)</p>
 <p>Phone number patterns (if user enters later)</p>
 <p>Sector + amount similarity (if a construction company asking ~50 lakh exists, and user enters a construction company asking ~45 lakh with a similar name, flag as possible duplicate)</p>
 <p>Outcome A: Exact Match Found in Database</p>
-<p>?? THIS INVESTMENT IS IN OUR DATABASE      ?</p>
-<p>?                                             ?</p>
-<p>?   &quot;XYZ Agro Processing&quot; is already listed   ?</p>
-<p>?   on Onucrom.                               ?</p>
-<p>?                                             ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?   ? Listing Status: Verified Basic ?    ?   ?</p>
-<p>?   ? Listed Since: March 2025            ?   ?</p>
-<p>?   ? Shariah Status: Self-Certified      ?   ?</p>
-<p>?   ? Verification Tier: Basic            ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ? [View Full Listing ?]               ?   ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?                                             ?</p>
-<p>?   If you believe this is a different        ?</p>
-<p>?   investment with a similar name, continue  ?</p>
-<p>?   below and we'll flag it for review.       ?</p>
-<p>?                                             ?</p>
-<p>?   [Continue Evaluation Anyway ?]</p>
+<p>⚠️ THIS INVESTMENT IS IN OUR DATABASE      │</p>
+<p>│                                             │</p>
+<p>│   &quot;XYZ Agro Processing&quot; is already listed   │</p>
+<p>│   on Onucrom.                               │</p>
+<p>│                                             │</p>
+<p>│   ┌─────────────────────────────────────┐   │</p>
+<p>│   │ Listing Status: Verified Basic ✅    │   │</p>
+<p>│   │ Listed Since: March 2025            │   │</p>
+<p>│   │ Shariah Status: Self-Certified      │   │</p>
+<p>│   │ Verification Tier: Basic            │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │ [View Full Listing →]               │   │</p>
+<p>│   └─────────────────────────────────────┘   │</p>
+<p>│                                             │</p>
+<p>│   If you believe this is a different        │</p>
+<p>│   investment with a similar name, continue  │</p>
+<p>│   below and we'll flag it for review.       │</p>
+<p>│                                             │</p>
+<p>│   [Continue Evaluation Anyway →]</p>
 <p>Outcome B: Possible Duplicate Detected</p>
-<p>? POSSIBLE DUPLICATE DETECTED             ?</p>
-<p>?                                             ?</p>
-<p>?   Your entry &quot;Rahman Agro Industries&quot;       ?</p>
-<p>?   closely matches an existing listing:      ?</p>
-<p>?                                             ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?   ? &quot;Rahman Agro Processing Ltd&quot;        ?   ?</p>
-<p>?   ? Same sector: Agriculture            ?   ?</p>
-<p>?   ? Similar amount: 45L vs 50L          ?   ?</p>
-<p>?   ? Similar location: Bogra             ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ? [View Existing Listing ?]           ?   ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?                                             ?</p>
-<p>?   Is this the same investment?              ?</p>
-<p>?   [Yes, this is the same one]               ?</p>
-<p>?   [No, this is different ? continue]</p>
+<p>🔶 POSSIBLE DUPLICATE DETECTED             │</p>
+<p>│                                             │</p>
+<p>│   Your entry &quot;Rahman Agro Industries&quot;       │</p>
+<p>│   closely matches an existing listing:      │</p>
+<p>│                                             │</p>
+<p>│   ┌─────────────────────────────────────┐   │</p>
+<p>│   │ &quot;Rahman Agro Processing Ltd&quot;        │   │</p>
+<p>│   │ Same sector: Agriculture            │   │</p>
+<p>│   │ Similar amount: 45L vs 50L          │   │</p>
+<p>│   │ Similar location: Bogra             │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │ [View Existing Listing →]           │   │</p>
+<p>│   └─────────────────────────────────────┘   │</p>
+<p>│                                             │</p>
+<p>│   Is this the same investment?              │</p>
+<p>│   [Yes, this is the same one]               │</p>
+<p>│   [No, this is different — continue]</p>
 <p>Outcome C: No Match Found</p>
-<p>? Not in our database.                    ?</p>
-<p>?                                             ?</p>
-<p>?   This investment is not currently listed   ?</p>
-<p>?   on Onucrom. We'll evaluate what you share  ?</p>
-<p>?   and give you our assessment.              ?</p>
-<p>?                                             ?</p>
-<p>?   At the end, you can add it to our         ?</p>
-<p>?   database if you're the investee or have   ?</p>
-<p>?   verified details.                         ?</p>
-<p>?                                             ?</p>
-<p>?   [Continue to Evaluation ?]</p>
-<p>User now sees the evaluation form. This is a single scrolling page, not multiple steps. Mobile-optimized ? each section is a card.</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ? INVESTMENT SANITY CHECK                ?</p>
-<p>?                                             ?</p>
-<p>?   Fill what you know. Empty fields are      ?</p>
-<p>?   skipped. The more you share, the better   ?</p>
-<p>?   the assessment.                           ?</p>
-<p>?                                             ?</p>
-<p>?   ??????????????????????????????????????? ?</p>
-<p>?                                             ?</p>
-<p>?   BASIC INFORMATION                         ?</p>
-<p>?                                             ?</p>
-<p>?   Investment / Company Name                 ?</p>
-<p>?   [                               ]         ?</p>
-<p>?                                             ?</p>
-<p>?   What do they do? (one line)               ?</p>
-<p>?   [                               ]         ?</p>
-<p>?                                             ?</p>
-<p>?   Sector                                    ?</p>
-<p>?   [Select ?]                                ?</p>
-<p>?   Agriculture | Construction | Education |  ?</p>
-<p>?   Energy | Financial Services | Healthcare  ?</p>
-<p>?   | Manufacturing | Real Estate |           ?</p>
-<p>?   Technology | Textile &amp; RMG | Trading     ?</p>
-<p>?   | Transportation | Other                  ?</p>
-<p>?                                             ?</p>
-<p>?   Firm Structure                            ?</p>
-<p>?   ? Registered Private Limited Company      ?</p>
-<p>?   ? Registered Public Limited Company       ?</p>
-<p>?   ? Partnership Firm                        ?</p>
-<p>?   ? Sole Proprietorship                     ?</p>
-<p>?   ? Cooperative Society                     ?</p>
-<p>?   ? NGO / Trust / Foundation                ?</p>
-<p>?   ? Unclear / Not Sure                      ?</p>
-<p>?   ? Individual (person, not entity)         ?</p>
-<p>?                                             ?</p>
-<p>?   Location (District)                       ?</p>
-<p>?   [Select ?]                                ?</p>
-<p>?                                             ?</p>
-<p>?   How did you hear about this?              ?</p>
-<p>?   ? WhatsApp / Social Media forward         ?</p>
-<p>?   ? Friend or family referred               ?</p>
-<p>?   ? Advertisement (online/print)            ?</p>
-<p>?   ? Approached by their agent               ?</p>
-<p>?   ? Seminar / Event / Meeting               ?</p>
-<p>?   ? Other                                   ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   FINANCIAL DETAILS                         ?</p>
-<p>?                                             ?</p>
-<p>?   Investment Type                           ?</p>
-<p>?   ? Equity (share in the business)          ?</p>
-<p>?   ? Debt / Loan (fixed repayment)           ?</p>
-<p>?   ? Revenue / Profit Share (Mudaraba-like)  ?</p>
-<p>?   ? Asset-Backed (you own the asset)        ?</p>
-<p>?   ? Deposit Scheme (promised returns)       ?</p>
-<p>?   ? Convertible (starts as loan, can become ?</p>
-<p>?     equity later)                           ?</p>
-<p>?   ? Unclear / Hybrid                        ?</p>
-<p>?                                             ?</p>
-<p>?   Minimum Investment Amount                 ?</p>
-<p>?   [          ] BDT                          ?</p>
-<p>?                                             ?</p>
-<p>?   Promised or Projected Return              ?</p>
-<p>?   [          ] % per [Select ?]            ?</p>
-<p>?   (Select: per month | per year | over full ?</p>
-<p>?    period | not specified)                  ?</p>
-<p>?                                             ?</p>
-<p>?   Is the return:                            ?</p>
-<p>?   ? Guaranteed / Promised                   ?</p>
-<p>?   ? Projected / Expected (not guaranteed)   ?</p>
-<p>?   ? Not clearly stated                      ?</p>
-<p>?                                             ?</p>
-<p>?   Investment Period / Tenor                 ?</p>
-<p>?   [          ] [Select ?]                  ?</p>
-<p>?   (Months / Years / No fixed period)        ?</p>
-<p>?                                             ?</p>
-<p>?   How soon do returns start?                ?</p>
-<p>?   ? Immediately / Within 30 days            ?</p>
-<p>?   ? After 1-6 months                        ?</p>
-<p>?   ? After 6-12 months                       ?</p>
-<p>?   ? After 1+ year                           ?</p>
-<p>?   ? At end of period only                   ?</p>
-<p>?   ? Not specified                           ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ? RED FLAG CHECK                         ?</p>
-<p>?                                             ?</p>
-<p>?   Answer honestly. &quot;Yes&quot; to any of these    ?</p>
-<p>?   doesn't mean fraud ? but it means you     ?</p>
-<p>?   should ask harder questions.              ?</p>
-<p>?                                             ?</p>
-<p>?   ??????????????????????????????????????? ?</p>
-<p>?                                             ?</p>
-<p>?   1. Are they promising returns that seem   ?</p>
-<p>?      much higher than bank FDR (6-8%)?      ?</p>
-<p>?      ? Yes, significantly higher            ?</p>
-<p>?      ? No, similar or lower                 ?</p>
-<p>?      ? Not sure what bank rates are         ?</p>
-<p>?                                             ?</p>
-<p>?   2. Are they pressuring you to decide      ?</p>
-<p>?      quickly? (&quot;Offer closes soon&quot;,         ?</p>
-<p>?      &quot;Only 5 slots left&quot;)                   ?</p>
-<p>?      ? Yes, urgent pressure                 ?</p>
-<p>?      ? Some urgency, but reasonable         ?</p>
-<p>?      ? No pressure at all                   ?</p>
-<p>?                                             ?</p>
-<p>?   3. Is the business model clearly          ?</p>
-<p>?      explained, or does it rely on vague    ?</p>
-<p>?      terms? (&quot;import-export&quot;, &quot;trading&quot;,    ?</p>
-<p>?      &quot;consultancy&quot; without specifics)       ?</p>
-<p>?      ? Vague / Cannot explain clearly       ?</p>
-<p>?      ? Somewhat clear but gaps remain       ?</p>
-<p>?      ? Clearly explained, specific          ?</p>
-<p>?                                             ?</p>
-<p>?   4. Have you seen any documentation?       ?</p>
-<p>?      (Trade license, RJSC registration,     ?</p>
-<p>?       audited accounts, contracts)           ?</p>
-<p>?      ? No documents shown at all            ?</p>
-<p>?      ? Some documents, but incomplete       ?</p>
-<p>?      ? Yes, proper documentation            ?</p>
-<p>?                                             ?</p>
-<p>?   5. Do they have a physical office or      ?</p>
-<p>?      verifiable business address?           ?</p>
-<p>?      ? No physical presence shown           ?</p>
-<p>?      ? Address given but not verified       ?</p>
-<p>?      ? Yes, verified physical office        ?</p>
-<p>?                                             ?</p>
-<p>?   6. Are they registered with any           ?</p>
-<p>?      regulatory body? (RJSC, Bangladesh     ?</p>
-<p>?      Bank, BSEC, NGO Bureau, etc.)          ?</p>
-<p>?      ? No regulatory registration           ?</p>
-<p>?      ? Claim registration but not verified  ?</p>
-<p>?      ? Yes, registration confirmed          ?</p>
-<p>?                                             ?</p>
-<p>?   7. Does the return structure make sense   ?</p>
-<p>?      for the business? (e.g., a shop        ?</p>
-<p>?      promising 3% monthly return ? how?)    ?</p>
-<p>?      ? Returns seem disconnected from the   ?</p>
-<p>?        business reality                     ?</p>
-<p>?      ? Unclear connection                   ?</p>
-<p>?      ? Returns logically tie to business    ?</p>
-<p>?                                             ?</p>
-<p>?   8. If this business is so profitable,     ?</p>
-<p>?      why are they raising from you instead  ?</p>
-<p>?      of taking a bank loan at 9-12%?        ?</p>
-<p>?      ? No good explanation given            ?</p>
-<p>?      ? Some explanation, raises questions   ?</p>
-<p>?      ? Reasonable explanation (collateral   ?</p>
-<p>?        gap, bank won't lend to this sector, ?</p>
-<p>?        too early for bank, etc.)            ?</p>
-<p>?                                             ?</p>
-<p>?   9. Can you independently verify their     ?</p>
-<p>?      claims? (Existing customers, suppliers, ?</p>
-<p>?      publicly available records)            ?</p>
-<p>?      ? No way to verify independently       ?</p>
-<p>?      ? Partial verification possible        ?</p>
-<p>?      ? Easily verifiable                    ?</p>
-<p>?                                             ?</p>
-<p>?   10. Is the person offering this willing   ?</p>
-<p>?       to put everything in a written,        ?</p>
-<p>?       stamped agreement?                    ?</p>
-<p>?       ? No written agreement offered        ?</p>
-<p>?       ? Verbal promises, vague documents    ?</p>
-<p>?       ? Yes, proper stamped agreement       ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
-<p>The Virtual Assessor ? Critique Questions</p>
-<p>This section is the differentiator. It's not just scoring ? it's the platform thinking out loud with the user. These appear as dynamic warnings that populate based on earlier inputs.</p>
-<p>The user clicks [Run Assessment]. The system doesn't just give a score ? it generates specific critique observations.</p>
+<p>✅ Not in our database.                    │</p>
+<p>│                                             │</p>
+<p>│   This investment is not currently listed   │</p>
+<p>│   on Onucrom. We'll evaluate what you share  │</p>
+<p>│   and give you our assessment.              │</p>
+<p>│                                             │</p>
+<p>│   At the end, you can add it to our         │</p>
+<p>│   database if you're the investee or have   │</p>
+<p>│   verified details.                         │</p>
+<p>│                                             │</p>
+<p>│   [Continue to Evaluation →]</p>
+<p>User now sees the evaluation form. This is a single scrolling page, not multiple steps. Mobile-optimized — each section is a card.</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   📋 INVESTMENT SANITY CHECK                │</p>
+<p>│                                             │</p>
+<p>│   Fill what you know. Empty fields are      │</p>
+<p>│   skipped. The more you share, the better   │</p>
+<p>│   the assessment.                           │</p>
+<p>│                                             │</p>
+<p>│   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │</p>
+<p>│                                             │</p>
+<p>│   BASIC INFORMATION                         │</p>
+<p>│                                             │</p>
+<p>│   Investment / Company Name                 │</p>
+<p>│   [                               ]         │</p>
+<p>│                                             │</p>
+<p>│   What do they do? (one line)               │</p>
+<p>│   [                               ]         │</p>
+<p>│                                             │</p>
+<p>│   Sector                                    │</p>
+<p>│   [Select ▼]                                │</p>
+<p>│   Agriculture | Construction | Education |  │</p>
+<p>│   Energy | Financial Services | Healthcare  │</p>
+<p>│   | Manufacturing | Real Estate |           │</p>
+<p>│   Technology | Textile &amp; RMG | Trading     │</p>
+<p>│   | Transportation | Other                  │</p>
+<p>│                                             │</p>
+<p>│   Firm Structure                            │</p>
+<p>│   ○ Registered Private Limited Company      │</p>
+<p>│   ○ Registered Public Limited Company       │</p>
+<p>│   ○ Partnership Firm                        │</p>
+<p>│   ○ Sole Proprietorship                     │</p>
+<p>│   ○ Cooperative Society                     │</p>
+<p>│   ○ NGO / Trust / Foundation                │</p>
+<p>│   ○ Unclear / Not Sure                      │</p>
+<p>│   ○ Individual (person, not entity)         │</p>
+<p>│                                             │</p>
+<p>│   Location (District)                       │</p>
+<p>│   [Select ▼]                                │</p>
+<p>│                                             │</p>
+<p>│   How did you hear about this?              │</p>
+<p>│   ○ WhatsApp / Social Media forward         │</p>
+<p>│   ○ Friend or family referred               │</p>
+<p>│   ○ Advertisement (online/print)            │</p>
+<p>│   ○ Approached by their agent               │</p>
+<p>│   ○ Seminar / Event / Meeting               │</p>
+<p>│   ○ Other                                   │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   FINANCIAL DETAILS                         │</p>
+<p>│                                             │</p>
+<p>│   Investment Type                           │</p>
+<p>│   ○ Equity (share in the business)          │</p>
+<p>│   ○ Debt / Loan (fixed repayment)           │</p>
+<p>│   ○ Revenue / Profit Share (Mudaraba-like)  │</p>
+<p>│   ○ Asset-Backed (you own the asset)        │</p>
+<p>│   ○ Deposit Scheme (promised returns)       │</p>
+<p>│   ○ Convertible (starts as loan, can become │</p>
+<p>│     equity later)                           │</p>
+<p>│   ○ Unclear / Hybrid                        │</p>
+<p>│                                             │</p>
+<p>│   Minimum Investment Amount                 │</p>
+<p>│   [          ] BDT                          │</p>
+<p>│                                             │</p>
+<p>│   Promised or Projected Return              │</p>
+<p>│   [          ] % per [Select ▼]            │</p>
+<p>│   (Select: per month | per year | over full │</p>
+<p>│    period | not specified)                  │</p>
+<p>│                                             │</p>
+<p>│   Is the return:                            │</p>
+<p>│   ○ Guaranteed / Promised                   │</p>
+<p>│   ○ Projected / Expected (not guaranteed)   │</p>
+<p>│   ○ Not clearly stated                      │</p>
+<p>│                                             │</p>
+<p>│   Investment Period / Tenor                 │</p>
+<p>│   [          ] [Select ▼]                  │</p>
+<p>│   (Months / Years / No fixed period)        │</p>
+<p>│                                             │</p>
+<p>│   How soon do returns start?                │</p>
+<p>│   ○ Immediately / Within 30 days            │</p>
+<p>│   ○ After 1-6 months                        │</p>
+<p>│   ○ After 6-12 months                       │</p>
+<p>│   ○ After 1+ year                           │</p>
+<p>│   ○ At end of period only                   │</p>
+<p>│   ○ Not specified                           │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   🔴 RED FLAG CHECK                         │</p>
+<p>│                                             │</p>
+<p>│   Answer honestly. &quot;Yes&quot; to any of these    │</p>
+<p>│   doesn't mean fraud — but it means you     │</p>
+<p>│   should ask harder questions.              │</p>
+<p>│                                             │</p>
+<p>│   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │</p>
+<p>│                                             │</p>
+<p>│   1. Are they promising returns that seem   │</p>
+<p>│      much higher than bank FDR (6-8%)?      │</p>
+<p>│      ○ Yes, significantly higher            │</p>
+<p>│      ○ No, similar or lower                 │</p>
+<p>│      ○ Not sure what bank rates are         │</p>
+<p>│                                             │</p>
+<p>│   2. Are they pressuring you to decide      │</p>
+<p>│      quickly? (&quot;Offer closes soon&quot;,         │</p>
+<p>│      &quot;Only 5 slots left&quot;)                   │</p>
+<p>│      ○ Yes, urgent pressure                 │</p>
+<p>│      ○ Some urgency, but reasonable         │</p>
+<p>│      ○ No pressure at all                   │</p>
+<p>│                                             │</p>
+<p>│   3. Is the business model clearly          │</p>
+<p>│      explained, or does it rely on vague    │</p>
+<p>│      terms? (&quot;import-export&quot;, &quot;trading&quot;,    │</p>
+<p>│      &quot;consultancy&quot; without specifics)       │</p>
+<p>│      ○ Vague / Cannot explain clearly       │</p>
+<p>│      ○ Somewhat clear but gaps remain       │</p>
+<p>│      ○ Clearly explained, specific          │</p>
+<p>│                                             │</p>
+<p>│   4. Have you seen any documentation?       │</p>
+<p>│      (Trade license, RJSC registration,     │</p>
+<p>│       audited accounts, contracts)           │</p>
+<p>│      ○ No documents shown at all            │</p>
+<p>│      ○ Some documents, but incomplete       │</p>
+<p>│      ○ Yes, proper documentation            │</p>
+<p>│                                             │</p>
+<p>│   5. Do they have a physical office or      │</p>
+<p>│      verifiable business address?           │</p>
+<p>│      ○ No physical presence shown           │</p>
+<p>│      ○ Address given but not verified       │</p>
+<p>│      ○ Yes, verified physical office        │</p>
+<p>│                                             │</p>
+<p>│   6. Are they registered with any           │</p>
+<p>│      regulatory body? (RJSC, Bangladesh     │</p>
+<p>│      Bank, BSEC, NGO Bureau, etc.)          │</p>
+<p>│      ○ No regulatory registration           │</p>
+<p>│      ○ Claim registration but not verified  │</p>
+<p>│      ○ Yes, registration confirmed          │</p>
+<p>│                                             │</p>
+<p>│   7. Does the return structure make sense   │</p>
+<p>│      for the business? (e.g., a shop        │</p>
+<p>│      promising 3% monthly return — how?)    │</p>
+<p>│      ○ Returns seem disconnected from the   │</p>
+<p>│        business reality                     │</p>
+<p>│      ○ Unclear connection                   │</p>
+<p>│      ○ Returns logically tie to business    │</p>
+<p>│                                             │</p>
+<p>│   8. If this business is so profitable,     │</p>
+<p>│      why are they raising from you instead  │</p>
+<p>│      of taking a bank loan at 9-12%?        │</p>
+<p>│      ○ No good explanation given            │</p>
+<p>│      ○ Some explanation, raises questions   │</p>
+<p>│      ○ Reasonable explanation (collateral   │</p>
+<p>│        gap, bank won't lend to this sector, │</p>
+<p>│        too early for bank, etc.)            │</p>
+<p>│                                             │</p>
+<p>│   9. Can you independently verify their     │</p>
+<p>│      claims? (Existing customers, suppliers, │</p>
+<p>│      publicly available records)            │</p>
+<p>│      ○ No way to verify independently       │</p>
+<p>│      ○ Partial verification possible        │</p>
+<p>│      ○ Easily verifiable                    │</p>
+<p>│                                             │</p>
+<p>│   10. Is the person offering this willing   │</p>
+<p>│       to put everything in a written,        │</p>
+<p>│       stamped agreement?                    │</p>
+<p>│       ○ No written agreement offered        │</p>
+<p>│       ○ Verbal promises, vague documents    │</p>
+<p>│       ○ Yes, proper stamped agreement       │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
+<p>The Virtual Assessor — Critique Questions</p>
+<p>This section is the differentiator. It's not just scoring — it's the platform thinking out loud with the user. These appear as dynamic warnings that populate based on earlier inputs.</p>
+<p>The user clicks [Run Assessment]. The system doesn't just give a score — it generates specific critique observations.</p>
 <p>Critique Logic Matrix</p>
 <p>User Input</p>
 <p>Critique Generated</p>
@@ -418,51 +418,51 @@
 <p>Source = &quot;WhatsApp / Social Media forward&quot;</p>
 <p>&quot;Investment opportunities that circulate primarily via forwarded messages rather than formal channels have a higher incidence of fraud. Legitimate businesses seeking investment typically have a verifiable presence beyond social media. Ask: can you find their office, their registration, their tax filings?&quot;</p>
 <p>Return starts &quot;Immediately / Within 30 days&quot;</p>
-<p>&quot;Immediate returns from a business investment are structurally unusual. Real businesses take time to deploy capital and generate revenue. Promises of quick payouts are characteristic of schemes that use new investor money to pay earlier investors ? the classic hallmark of a Ponzi structure.&quot;</p>
+<p>&quot;Immediate returns from a business investment are structurally unusual. Real businesses take time to deploy capital and generate revenue. Promises of quick payouts are characteristic of schemes that use new investor money to pay earlier investors — the classic hallmark of a Ponzi structure.&quot;</p>
 <p>Documentation = &quot;None&quot;</p>
-<p>&quot;No legitimate investment should proceed without documentation. At minimum: trade license, RJSC incorporation certificate (for companies), audited or reviewed financial statements, and a formal investment agreement. If none of these exist, the investment exists only in conversation ? and conversation doesn't hold up in court.&quot;</p>
+<p>&quot;No legitimate investment should proceed without documentation. At minimum: trade license, RJSC incorporation certificate (for companies), audited or reviewed financial statements, and a formal investment agreement. If none of these exist, the investment exists only in conversation — and conversation doesn't hold up in court.&quot;</p>
 <p>Pressure = &quot;Yes, urgent&quot;</p>
 <p>&quot;Urgency is a manipulation tactic, not an investment feature. Real investment opportunities are evaluated over days or weeks, with legal review, site visits, and reference checks. Anyone pushing you to decide quickly is trying to prevent exactly the kind of scrutiny this tool provides.&quot;</p>
 <p>Question 8 (bank loan logic) = &quot;No good explanation&quot;</p>
 <p>&quot;This is the question that unravels most bad investments. If a business can genuinely generate returns high enough to pay you 18-24%, they could borrow from a bank at 9-12% and keep the difference. The only reasons to seek expensive retail capital are: (a) banks have rejected them after due diligence, or (b) they don't intend to repay. Either way, you should understand why before proceeding.&quot;</p>
 <p>Return type = &quot;Guaranteed&quot; AND Investment type = &quot;Equity&quot;</p>
-<p>&quot;There is a fundamental contradiction here. Equity means you own part of the business and share in its profits and losses. 'Guaranteed return' means you are promised a fixed outcome regardless of business performance. You cannot have both. If someone is offering 'equity with guaranteed returns,' they either don't understand what they're selling, or they're structuring something that is legally debt but calling it equity ? usually to avoid regulatory scrutiny.&quot;</p>
+<p>&quot;There is a fundamental contradiction here. Equity means you own part of the business and share in its profits and losses. 'Guaranteed return' means you are promised a fixed outcome regardless of business performance. You cannot have both. If someone is offering 'equity with guaranteed returns,' they either don't understand what they're selling, or they're structuring something that is legally debt but calling it equity — usually to avoid regulatory scrutiny.&quot;</p>
 <p>Sector = &quot;Trading&quot; AND Description is vague</p>
-<p>&quot;'Trading' and 'import-export' are the most commonly abused categories in investment fraud because they are difficult to verify. Goods move, prices fluctuate, inventory is hard to audit. If the business cannot show: specific products, specific suppliers, specific buyers, warehousing, and shipping documentation ? treat the vagueness as a warning.&quot;</p>
+<p>&quot;'Trading' and 'import-export' are the most commonly abused categories in investment fraud because they are difficult to verify. Goods move, prices fluctuate, inventory is hard to audit. If the business cannot show: specific products, specific suppliers, specific buyers, warehousing, and shipping documentation — treat the vagueness as a warning.&quot;</p>
 <p>Results Display</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ? SANITY CHECK REPORT                    ?</p>
-<p>?                                             ?</p>
-<p>?   For: [Investment Name entered]            ?</p>
-<p>?   Date: [Today]                             ?</p>
-<p>?   Onucrom Database: Not Listed (New)        ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   OVERALL ASSESSMENT                        ?</p>
-<p>?                                             ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ?   ? HIGH CONCERN                   ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ?   This investment shows multiple    ?   ?</p>
-<p>?   ?   characteristics commonly          ?   ?</p>
-<p>?   ?   associated with fraudulent or     ?   ?</p>
-<p>?   ?   unsustainable schemes.            ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ?   Proceed only with professional    ?   ?</p>
-<p>?   ?   due diligence.                    ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?                                             ?</p>
-<p>?   Score: 28/100                             ?</p>
-<p>?   (Higher = Lower Concern)                   ?</p>
-<p>?                                             ?</p>
-<p>?   [See Detailed Breakdown ?]                ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   📊 SANITY CHECK REPORT                    │</p>
+<p>│                                             │</p>
+<p>│   For: [Investment Name entered]            │</p>
+<p>│   Date: [Today]                             │</p>
+<p>│   Onucrom Database: Not Listed (New)        │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   OVERALL ASSESSMENT                        │</p>
+<p>│                                             │</p>
+<p>│   ┌─────────────────────────────────────┐   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │   🔴 HIGH CONCERN                   │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │   This investment shows multiple    │   │</p>
+<p>│   │   characteristics commonly          │   │</p>
+<p>│   │   associated with fraudulent or     │   │</p>
+<p>│   │   unsustainable schemes.            │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │   Proceed only with professional    │   │</p>
+<p>│   │   due diligence.                    │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   └─────────────────────────────────────┘   │</p>
+<p>│                                             │</p>
+<p>│   Score: 28/100                             │</p>
+<p>│   (Higher = Lower Concern)                   │</p>
+<p>│                                             │</p>
+<p>│   [See Detailed Breakdown ↓]                │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
 <p>Score ranges and their labels:</p>
 <p>Score</p>
 <p>Label</p>
@@ -470,137 +470,137 @@
 <p>Meaning</p>
 <p>80-100</p>
 <p>LOW CONCERN</p>
-<p>? Green</p>
+<p>🟢 Green</p>
 <p>Passes basic sanity. Standard due diligence still needed.</p>
 <p>55-79</p>
 <p>MODERATE CONCERN</p>
-<p>? Amber</p>
+<p>🟡 Amber</p>
 <p>Several points need clarification before proceeding.</p>
 <p>30-54</p>
 <p>HIGH CONCERN</p>
-<p>? Orange</p>
+<p>🟠 Orange</p>
 <p>Significant warning signs. Professional investigation advised.</p>
 <p>0-29</p>
 <p>CRITICAL CONCERN</p>
-<p>? Red</p>
+<p>🔴 Red</p>
 <p>Multiple fraud indicators. Strongly advise against proceeding.</p>
 <p>The Virtual Assessor's Verdict</p>
 <p>This is a generated summary paragraph. It reads like a professional assessor speaking directly to the user.</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ???? ASSESSOR'S NOTE                       ?</p>
-<p>?                                             ?</p>
-<p>?   &quot;Based on what you've shared, this        ?</p>
-<p>?   investment shows several patterns we see  ?</p>
-<p>?   in schemes that eventually fail or turn   ?</p>
-<p>?   out to be fraudulent. The combination of  ?</p>
-<p>?   guaranteed high returns, no regulatory    ?</p>
-<p>?   registration, and pressure to act quickly  ?</p>
-<p>?   is the most common profile of investment   ?</p>
-<p>?   fraud in Bangladesh over the last decade.  ?</p>
-<p>?                                             ?</p>
-<p>?   The specific contradiction ? equity with   ?</p>
-<p>?   guaranteed returns ? suggests either the   ?</p>
-<p>?   promoter doesn't understand the structure  ?</p>
-<p>?   they're offering, or they're deliberately  ?</p>
-<p>?   misrepresenting it. Neither is acceptable  ?</p>
-<p>?   for your money.                            ?</p>
-<p>?                                             ?</p>
-<p>?   If you still want to explore this, insist  ?</p>
-<p>?   on: RJSC registration documents, audited   ?</p>
-<p>?   financials, a physical office visit, and   ?</p>
-<p>?   a proper stamped investment agreement      ?</p>
-<p>?   reviewed by a lawyer. If any of these are  ?</p>
-<p>?   refused, walk away.                        ?</p>
-<p>?                                             ?</p>
-<p>?   This is not a certification that the       ?</p>
-<p>?   investment is fraudulent. It is an         ?</p>
-<p>?   assessment that the risk indicators are    ?</p>
-<p>?   severe enough to require professional due  ?</p>
-<p>?   diligence before any commitment.&quot;          ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   🧑‍⚖️ ASSESSOR'S NOTE                       │</p>
+<p>│                                             │</p>
+<p>│   &quot;Based on what you've shared, this        │</p>
+<p>│   investment shows several patterns we see  │</p>
+<p>│   in schemes that eventually fail or turn   │</p>
+<p>│   out to be fraudulent. The combination of  │</p>
+<p>│   guaranteed high returns, no regulatory    │</p>
+<p>│   registration, and pressure to act quickly  │</p>
+<p>│   is the most common profile of investment   │</p>
+<p>│   fraud in Bangladesh over the last decade.  │</p>
+<p>│                                             │</p>
+<p>│   The specific contradiction — equity with   │</p>
+<p>│   guaranteed returns — suggests either the   │</p>
+<p>│   promoter doesn't understand the structure  │</p>
+<p>│   they're offering, or they're deliberately  │</p>
+<p>│   misrepresenting it. Neither is acceptable  │</p>
+<p>│   for your money.                            │</p>
+<p>│                                             │</p>
+<p>│   If you still want to explore this, insist  │</p>
+<p>│   on: RJSC registration documents, audited   │</p>
+<p>│   financials, a physical office visit, and   │</p>
+<p>│   a proper stamped investment agreement      │</p>
+<p>│   reviewed by a lawyer. If any of these are  │</p>
+<p>│   refused, walk away.                        │</p>
+<p>│                                             │</p>
+<p>│   This is not a certification that the       │</p>
+<p>│   investment is fraudulent. It is an         │</p>
+<p>│   assessment that the risk indicators are    │</p>
+<p>│   severe enough to require professional due  │</p>
+<p>│   diligence before any commitment.&quot;          │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
 <p>The verdict text is dynamically assembled from template blocks based on which triggers fired. You write ~30 sentence blocks covering all combinations. The JS selects and concatenates. This makes the output feel personalized while being entirely rule-based.</p>
 <p>SUBMISSION TO DATABASE</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ? ADD TO ONUCROM DATABASE?               ?</p>
-<p>?                                             ?</p>
-<p>?   This investment is not currently in our   ?</p>
-<p>?   system. Adding it helps other investors   ?</p>
-<p>?   discover and evaluate it ? and helps      ?</p>
-<p>?   build Bangladesh's investment             ?</p>
-<p>?   transparency.                             ?</p>
-<p>?                                             ?</p>
-<p>?   Who are you?                              ?</p>
-<p>?   ? I am the investee / promoter            ?</p>
-<p>?   ? I am an investor evaluating this        ?</p>
-<p>?   ? I am reporting a suspected scam         ?</p>
-<p>?   ? I just want to add public information   ?</p>
-<p>?                                             ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?   ? ?? IMPORTANT                         ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ? By submitting, you confirm that the  ?   ?</p>
-<p>?   ? information is accurate to the best  ?   ?</p>
-<p>?   ? of your knowledge. Onucrom will      ?   ?</p>
-<p>?   ? review before publishing.           ?   ?</p>
-<p>?   ?                                     ?   ?</p>
-<p>?   ? False or malicious submissions will  ?   ?</p>
-<p>?   ? be rejected.                         ?   ?</p>
-<p>?   ???????????????????????????????????????   ?</p>
-<p>?                                             ?</p>
-<p>?   [Submit to Onucrom Database]              ?</p>
-<p>?   [No, just show me the report]             ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   📌 ADD TO ONUCROM DATABASE?               │</p>
+<p>│                                             │</p>
+<p>│   This investment is not currently in our   │</p>
+<p>│   system. Adding it helps other investors   │</p>
+<p>│   discover and evaluate it — and helps      │</p>
+<p>│   build Bangladesh's investment             │</p>
+<p>│   transparency.                             │</p>
+<p>│                                             │</p>
+<p>│   Who are you?                              │</p>
+<p>│   ○ I am the investee / promoter            │</p>
+<p>│   ○ I am an investor evaluating this        │</p>
+<p>│   ○ I am reporting a suspected scam         │</p>
+<p>│   ○ I just want to add public information   │</p>
+<p>│                                             │</p>
+<p>│   ┌─────────────────────────────────────┐   │</p>
+<p>│   │ ⚠️ IMPORTANT                         │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │ By submitting, you confirm that the  │   │</p>
+<p>│   │ information is accurate to the best  │   │</p>
+<p>│   │ of your knowledge. Onucrom will      │   │</p>
+<p>│   │ review before publishing.           │   │</p>
+<p>│   │                                     │   │</p>
+<p>│   │ False or malicious submissions will  │   │</p>
+<p>│   │ be rejected.                         │   │</p>
+<p>│   └─────────────────────────────────────┘   │</p>
+<p>│                                             │</p>
+<p>│   [Submit to Onucrom Database]              │</p>
+<p>│   [No, just show me the report]             │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
 <p>If Assessment Cannot Be Completed</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ?? INSUFFICIENT INFORMATION               ?</p>
-<p>?                                             ?</p>
-<p>?   We need at least the following to         ?</p>
-<p>?   provide a meaningful assessment:          ?</p>
-<p>?                                             ?</p>
-<p>?   ? Investment type (equity/debt/etc.)      ?</p>
-<p>?   ? Promised return or at least a range    ?</p>
-<p>?   ? Firm structure                          ?</p>
-<p>?                                             ?</p>
-<p>?   Please fill these and try again.          ?</p>
-<p>?   Currently filled: 4 of 7 minimum fields.  ?</p>
-<p>?                                             ?</p>
-<p>?   [Go Back to Form]                         ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   ⚠️ INSUFFICIENT INFORMATION               │</p>
+<p>│                                             │</p>
+<p>│   We need at least the following to         │</p>
+<p>│   provide a meaningful assessment:          │</p>
+<p>│                                             │</p>
+<p>│   • Investment type (equity/debt/etc.)      │</p>
+<p>│   • Promised return or at least a range    │</p>
+<p>│   • Firm structure                          │</p>
+<p>│                                             │</p>
+<p>│   Please fill these and try again.          │</p>
+<p>│   Currently filled: 4 of 7 minimum fields.  │</p>
+<p>│                                             │</p>
+<p>│   [Go Back to Form]                         │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
 <p>If Something Goes Wrong with Database Check</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   ?? DATABASE CHECK UNAVAILABLE              ?</p>
-<p>?                                             ?</p>
-<p>?   We couldn't check our database right now. ?</p>
-<p>?   You can still run the evaluation ? we     ?</p>
-<p>?   just won't be able to tell you if this    ?</p>
-<p>?   investment is already listed.             ?</p>
-<p>?                                             ?</p>
-<p>?   [Continue without database check]         ?</p>
-<p>?   [Try Again]                               ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   ⚠️ DATABASE CHECK UNAVAILABLE              │</p>
+<p>│                                             │</p>
+<p>│   We couldn't check our database right now. │</p>
+<p>│   You can still run the evaluation — we     │</p>
+<p>│   just won't be able to tell you if this    │</p>
+<p>│   investment is already listed.             │</p>
+<p>│                                             │</p>
+<p>│   [Continue without database check]         │</p>
+<p>│   [Try Again]                               │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
 <p>Post-Assessment Action Buttons</p>
 <p>At the bottom of every report:</p>
-<p>???????????????????????????????????????????????</p>
-<p>?                                             ?</p>
-<p>?   What would you like to do?                ?</p>
-<p>?                                             ?</p>
-<p>?   [? Download Report as PDF]               ?</p>
-<p>?   [? Share This Assessment]                ?</p>
-<p>?   [? Browse Verified Investments]          ?</p>
-<p>?   [? Compare with Another Investment]      ?</p>
-<p>?   [? Report This as a Suspected Scam]      ?</p>
-<p>?   [? Get a Verified Lawyer to Review This] ?</p>
-<p>?       (Coming Soon)                         ?</p>
-<p>?                                             ?</p>
-<p>???????????????????????????????????????????????</p>
+<p>┌─────────────────────────────────────────────┐</p>
+<p>│                                             │</p>
+<p>│   What would you like to do?                │</p>
+<p>│                                             │</p>
+<p>│   [📥 Download Report as PDF]               │</p>
+<p>│   [📤 Share This Assessment]                │</p>
+<p>│   [🔍 Browse Verified Investments]          │</p>
+<p>│   [📋 Compare with Another Investment]      │</p>
+<p>│   [🚩 Report This as a Suspected Scam]      │</p>
+<p>│   [📧 Get a Verified Lawyer to Review This] │</p>
+<p>│       (Coming Soon)                         │</p>
+<p>│                                             │</p>
+<p>└─────────────────────────────────────────────┘</p>
 <p>Database Structure (Google Sheets Tabs)</p>
 <p>For your backend, you'll need these tabs:</p>
 <p>Tab Name</p>
@@ -619,21 +619,21 @@
 <p>FDR rates, sector averages, regulatory thresholds (updated quarterly)</p>
 <p>The Architecture</p>
 <p>Google Drive Folder: onucrom-site/</p>
-<p>??? index.html           (built by GAS ? stays as is)</p>
-<p>??? tools.html           (built by GAS ? stays as is)</p>
-<p>??? sanity-check.html    (static, you edit in Drive)</p>
-<p>??? css/</p>
-<p>?   ??? sanity-check.css (static)</p>
-<p>??? js/</p>
-<p>?   ??? sanity-check-db.js   (database lookup logic)</p>
-<p>?   ??? sanity-check-score.js (scoring engine)</p>
-<p>?   ??? sanity-check-ui.js   (form display, results rendering)</p>
-<p>??? content/</p>
-<p>?   ??? about.html       (static page fragment)</p>
-<p>?   ??? disclaimer.html  (static page fragment)</p>
-<p>?   ??? privacy.html     (static page fragment)</p>
-<p>?   ??? questions.json   (the red flag question set)</p>
-<p>??? pages/</p>
-<p>??? about.html       (full page, includes nav/footer)</p>
-<p>??? disclaimer.html</p>
-<p>??? privacy.html</p></div></div><footer><p><strong>Salim Afzal</strong> ? Ordered sequences of market insight</p><p style="margin-top:8px"><a href="https://whatsapp.com/channel/xxxx">WhatsApp</a> ? <a href="mailto:salim@onucrom.com">Email</a></p><p style="margin-top:12px;font-size:0.75rem;color:#64748b">Updated 8/12/2026, 5:23:09 PM BST</p></footer></body></html>
+<p>├── index.html           (built by GAS — stays as is)</p>
+<p>├── tools.html           (built by GAS — stays as is)</p>
+<p>├── sanity-check.html    (static, you edit in Drive)</p>
+<p>├── css/</p>
+<p>│   └── sanity-check.css (static)</p>
+<p>├── js/</p>
+<p>│   ├── sanity-check-db.js   (database lookup logic)</p>
+<p>│   ├── sanity-check-score.js (scoring engine)</p>
+<p>│   └── sanity-check-ui.js   (form display, results rendering)</p>
+<p>├── content/</p>
+<p>│   ├── about.html       (static page fragment)</p>
+<p>│   ├── disclaimer.html  (static page fragment)</p>
+<p>│   ├── privacy.html     (static page fragment)</p>
+<p>│   └── questions.json   (the red flag question set)</p>
+<p>└── pages/</p>
+<p>├── about.html       (full page, includes nav/footer)</p>
+<p>├── disclaimer.html</p>
+<p>└── privacy.html</p></div></div><footer><p><strong>Salim Afzal</strong> — Ordered sequences of market insight</p><p style="margin-top:8px"><a href="https://whatsapp.com/channel/xxxx">WhatsApp</a> · <a href="mailto:salim@onucrom.com">Email</a></p><p style="margin-top:12px;font-size:0.75rem;color:#64748b">Updated 8/12/2026, 6:10:58 PM BST</p></footer></body></html>
