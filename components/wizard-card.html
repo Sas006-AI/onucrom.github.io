@@ -1,0 +1,127 @@
+<div class="card" style="margin-bottom: 20px; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px;">
+  <div class="card-title" style="font-size: 1.2rem; font-weight: 800; color: var(--accent); margin-bottom: 4px;">
+    Investment Plan Diagnostic
+  </div>
+  <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 16px;">4-step rapid diagnostic. Free, no account needed.</p>
+
+  <div style="width: 100%; background: var(--bg); border-radius: 10px; height: 8px; overflow: hidden; margin-bottom: 12px; border: 1px solid var(--border);">
+    <div id="wiz-progress" style="width: 25%; background: var(--accent); height: 100%; transition: width 0.3s ease;"></div>
+  </div>
+
+  <div id="wiz-slogan" style="font-size: 0.82rem; font-style: italic; color: #fcd34d; background: rgba(245, 158, 11, 0.1); padding: 8px 12px; border-radius: 6px; border-left: 3px solid var(--accent); margin-bottom: 20px;">
+    "In investing, knowing risk always comes before calculating return."
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="wiz-step-1" class="wiz-step" style="display: block;">
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">Step 1 / 4: Basic Details</div>
+    <div class="input-group" style="margin-bottom: 14px;">
+      <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">1. What is the investment or project name?</label>
+      <input type="text" id="inv-name" value="Agri Project" placeholder="e.g. Agri Project / Rental Property" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;" required>
+    </div>
+    <div class="input-group" style="margin-bottom: 14px;">
+      <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">2. What is the business or asset type?</label>
+      <input type="text" id="inv-business" list="business-suggestions" value="Franchise / Small Business" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;">
+      <datalist id="business-suggestions">
+        <option value="Franchise / Small Business">
+        <option value="Real Estate">
+        <option value="Public Stocks">
+        <option value="Crypto & Digital Assets">
+        <option value="Bonds / Fixed Income">
+        <option value="Venture / Startup">
+      </datalist>
+    </div>
+    <div class="input-group" style="margin-bottom: 14px;">
+      <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">3. What is the investment amount? (BDT)</label>
+      <input type="number" id="inv-amount" value="10000" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;">
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="wiz-step-2" class="wiz-step" style="display: none;">
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">Step 2 / 4: Business Credibility</div>
+    <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">1. Where did you find this proposal?</label>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="source-pills">
+      <button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-source-val', 'Personal')">Personal Contact</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'SocialMedia')">Facebook / Social Media</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'Website')">Website</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-source-val', 'Broker')">Broker / Agent</button>
+    </div>
+    <input type="hidden" id="inv-source-val" value="Personal">
+
+    <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">2. What is the legal entity type?</label>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="entity-pills">
+      <button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-entity-val', 'Individual')">Individual</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Company')">Company (LLC/Ltd)</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Partnership')">Partnership</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-entity-val', 'Unknown')">Unclear / Unknown</button>
+    </div>
+    <input type="hidden" id="inv-entity-val" value="Individual">
+
+    <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">3. Verify business legitimacy (tap if true):</label>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_unregistered')">No Trade License / TIN / BIN</button>
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_personal_banking')">Payment via personal MFS (bKash/Nagad) or cash</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="wiz-step-3" class="wiz-step" style="display: none;">
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">Step 3 / 4: Behavioral Risk Checks</div>
+    <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 12px;">Select all warning signals that apply to this proposal:</p>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_chasing')">High pressure to invest quickly or repeatedly</button>
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_urgency')">Limited-time window or artificial urgency</button>
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_mlm_members')">Requires member recruitment or team building</button>
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_mlm_bonus')">Commissions offered for bringing in other investors</button>
+      <button type="button" class="toggle-pill" onclick="toggleFlagPill(this, 'flag_secret_model')">Business model is secret, complex, or unexplained</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div id="wiz-step-4" class="wiz-step" style="display: none;">
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 14px;">Step 4 / 4: Return & Loss Terms</div>
+    <div class="input-group" style="margin-bottom: 14px;">
+      <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">1. What return percentage is being offered? (%)</label>
+      <input type="number" id="inv-return" value="12" placeholder="e.g. 15" step="0.1" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;">
+    </div>
+    <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 8px;">2. How often are returns paid?</label>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;" id="freq-pills">
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-freq-val', 'Daily')">Daily</button>
+      <button type="button" class="pill-btn active" onclick="selectPill(this, 'inv-freq-val', 'Monthly')">Monthly</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this, 'inv-freq-val', 'Yearly')">Yearly</button>
+    </div>
+    <input type="hidden" id="inv-freq-val" value="Monthly">
+    <div class="input-group" style="margin-bottom: 14px;">
+      <label style="font-size: 0.8rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px;">3. What happens if the business loses money?</label>
+      <select id="inv-loss-policy" style="width: 100%; padding: 10px; background: var(--input-bg); color: var(--input-text); border: 1px solid #fcd34d; border-radius: 6px;">
+        <option value="unclear">Unclear / Not Discussed</option>
+        <option value="investor_all">Investor Absorbs Loss (Standard Capital Risk)</option>
+        <option value="guaranteed_back">100% Capital Guaranteed (High Risk Red Flag)</option>
+        <option value="shared">Shared Loss Structure</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="wiz-step-results" style="display: none;">
+    <div id="inv-badge-container" style="text-align: center; margin-bottom: 16px;"></div>
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.85rem; margin-bottom: 16px;">
+      <div id="inv-score-breakdown"></div>
+    </div>
+    <div style="font-size: 0.75rem; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 10px; margin-bottom: 16px;">
+      <strong>Risk Disclosure Scale:</strong><br>
+      &bull; <b>0 - 25:</b> Normal Risk / Standard Parameters<br>
+      &bull; <b>26 - 55:</b> Moderate Risk / Proceed with Caution<br>
+      &bull; <b>56 - 100:</b> Critical Risk / Severe Red Flags Present
+    </div>
+    <button type="button" class="btn" style="width: 100%; padding: 10px; background: var(--border); color: var(--text); border: none; border-radius: 6px; cursor: pointer;" onclick="resetWizard()">Run New Assessment (Reset)</button>
+  </div>
+
+  <!-- NAV CONTROLS -->
+  <div id="wiz-nav" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border); padding-top: 16px; margin-top: 16px;">
+    <button type="button" id="wiz-prev-btn" style="padding: 8px 16px; background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; display: none;" onclick="navigateWizard(-1)">← Back</button>
+    <div></div>
+    <button type="button" id="wiz-next-btn" style="padding: 10px 20px; background: var(--accent); color: #000; font-weight: 700; border: none; border-radius: 6px; cursor: pointer;" onclick="navigateWizard(1)">Next Step →</button>
+  </div>
+</div>
