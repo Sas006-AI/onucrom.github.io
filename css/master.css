@@ -437,3 +437,139 @@ footer {
   color: #f87171;
   font-weight: 600;
 }
+
+/* ============================================
+   HERO ANCHOR, STATS & TRUST COMPONENTS
+   ============================================ */
+
+/* Hero Container Overrides */
+.hero-card {
+  text-align: center;
+  padding: 32px 24px;
+}
+.hero-slogan {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.hero-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+/* 4 Choice Blocks */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+.choice-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-decoration: none;
+  color: var(--text);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.choice-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.choice-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.choice-icon { font-size: 1.2rem; }
+.choice-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.choice-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* 2-Line Explanation Footer */
+.hero-trust-text {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 680px;
+  margin: 0 auto;
+  border-top: 1px dashed var(--border);
+  padding-top: 16px;
+}
+
+/* Stats Bar Card */
+.stats-card {
+  padding: 16px 24px;
+  margin-bottom: 24px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.stat-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Trust Section Grid */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.trust-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.trust-item h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.trust-item p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .choice-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
