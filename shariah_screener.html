@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shariah Sanity Check — onucrom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/screener.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">onucrom</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="screener.html">Sanity Check</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="header-card card">
+    <h1>Shariah Sanity Check</h1>
+    <p>A transparent, 2-minute screening tool to evaluate the Shariah compliance alignment of an investment based on established financial ratios and business activities.</p>
+    <p class="small-link"><a href="shariah-methodology.html" target="_blank">Read our full screening methodology →</a></p>
+  </div>
+
+  <form id="screener-form">
+    
+    <!-- SECTION 0: ROUTING -->
+    <div class="card form-section" id="sec-0">
+      <label class="q-title">What are you assessing?</label>
+      <select id="q0" name="asset_type" required>
+        <option value="" disabled selected>Select an option...</option>
+        <option value="lane_a">Equity / a business (stock, private company, fundraising deal)</option>
+        <option value="lane_b">A bond, sukuk, or other fixed-income instrument</option>
+        <option value="lane_c">A deposit or savings product (FDR, savings account, etc.)</option>
+        <option value="lane_a_default">I don't know / not sure how to categorize this</option>
+      </select>
+    </div>
+
+    <!-- SECTION 1: CERTIFICATION GATE -->
+    <div class="card form-section hidden" id="sec-1">
+      <label class="q-title">1. Has this already been reviewed and certified Shariah-compliant by a recognized Shariah board or committee?</label>
+      <select id="q1" name="is_certified">
+        <option value="" disabled selected>Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="unknown">I don't know</option>
+      </select>
+
+      <div id="q1-followups" class="hidden followup-group">
+        <label>Name of certifying authority / Shariah board:</label>
+        <input type="text" id="q1a" name="cert_authority" placeholder="e.g., AAOIFI, DSE Shariah Index">
+        
+        <label>Name of committee's head/chair (optional):</label>
+        <input type="text" id="q1b" name="cert_chair" placeholder="If publicly known">
+        
+        <label>Is this certification publicly verifiable?</label>
+        <select id="q1c" name="is_verifiable">
+          <option value="" disabled selected>Select...</option>
+          <option value="verified">Yes, and I have a link/reference</option>
+          <option value="unverified_known">Yes, but I don't have the reference handy</option>
+          <option value="no">No / I'm not sure</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SECTION 2: PROHIBITED EXPOSURE (LANE A) -->
+    <div class="card form-section hidden" id="sec-2">
+      <label class="q-title">2. What is the primary business activity?</label>
+      <select id="q2" name="primary_activity">
+        <option value="" disabled selected>Select...</option>
+        <option value="haram">Conventional banking, lending, or insurance</option>
+        <option value="haram">Alcohol production or trade</option>
+        <option value="haram">Gambling or gaming</option>
+        <option value="haram">Adult entertainment</option>
+        <option value="haram">Conventional weapons / defense manufacturing</option>
+        <option value="haram">Pork-related products</option>
+        <option value="halal">None of the above</option>
+        <option value="unknown">I don't know</option>
+      </select>
+
+      <div id="q3-group" class="hidden followup-group">
+        <label>Does the business have any secondary or incidental exposure to the categories above?</label>
+        <select id="q3" name="secondary_exposure">
+          <option value="" disabled selected>Select...</option>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+          <option value="unknown">I don't know</option>
+        </select>
+        
+        <div id="q3a-group" class="hidden">
+          <label>Roughly how significant is that exposure to overall revenue?</label>
+          <select id="q3a" name="exposure_extent">
+            <option value="" disabled selected>Select...</option>
+            <option value="negligible">Negligible (under 5%)</option>
+            <option value="minor">Minor (5% - 15%)</option>
+            <option value="significant">Significant (above 15%)</option>
+            <option value="unknown">I don't know</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: FINANCIAL FILTER (LANE A) -->
+    <div class="card form-section hidden" id="sec-3">
+      <label class="q-title">3. Are audited or otherwise disclosed financials available for this business?</label>
+      <select id="q4" name="financials_exist">
+        <option value="" disabled selected>Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="unknown">I don't know</option>
+      </select>
+
+      <div id="financial-ratios" class="hidden followup-group">
+        <p class="small-text"><em>Based on standard thresholds (e.g. AAOIFI: <30% limits)</em></p>
+        
+        <label>Interest-bearing debt as a share of market cap (or total assets):</label>
+        <select id="q5" name="debt_ratio">
+          <option value="" disabled selected>Select...</option>
+          <option value="pass">Below 30%</option>
+          <option value="borderline">30% - 33%</option>
+          <option value="fail">Above 33%</option>
+          <option value="unknown">I don't know</option>
+        </select>
+
+        <label>Cash + interest-bearing securities as a share of market cap:</label>
+        <select id="q6" name="cash_ratio">
+          <option value="" disabled selected>Select...</option>
+          <option value="pass">Below 30%</option>
+          <option value="borderline">30% - 33%</option>
+          <option value="fail">Above 33%</option>
+          <option value="unknown">I don't know</option>
+        </select>
+
+        <label>Accounts receivable as a share of market cap / assets:</label>
+        <select id="q7" name="receivables_ratio">
+          <option value="" disabled selected>Select...</option>
+          <option value="pass">Below 33%</option>
+          <option value="borderline">33% - 50%</option>
+          <option value="fail">Above 50%</option>
+          <option value="unknown">I don't know</option>
+        </select>
+
+        <label>Non-permissible income (e.g. interest) as a share of total revenue:</label>
+        <select id="q8" name="haram_income">
+          <option value="" disabled selected>Select...</option>
+          <option value="pass">Below 5%</option>
+          <option value="borderline">5% - 10%</option>
+          <option value="fail">Above 10%</option>
+          <option value="unknown">I don't know</option>
+        </select>
+
+        <label>Are the business's primary banking relationships with Islamic banks?</label>
+        <select id="q9" name="islamic_banking">
+          <option value="" disabled selected>Select...</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="mixed">Mixed</option>
+          <option value="unknown">I don't know</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SECTION 4: INSTRUMENT FILTER -->
+    <div class="card form-section hidden" id="sec-4">
+      <label class="q-title">4. What type of instrument is this, specifically?</label>
+      <select id="q10" name="instrument_type">
+        <option value="" disabled selected>Select...</option>
+        <option value="equity">Direct equity share</option>
+        <option value="sukuk">Sukuk</option>
+        <option value="haram_bond">Conventional bond / debenture</option>
+        <option value="haram_fdr">Conventional fixed deposit (FDR)</option>
+        <option value="islamic_deposit">Islamic deposit (Mudaraba / Wakala)</option>
+        <option value="pe_pls">Private equity / profit-and-loss-sharing agreement</option>
+        <option value="other">Other / not sure</option>
+      </select>
+
+      <div id="q11-group" class="hidden followup-group">
+        <label>Has this specific sukuk's structure been described as asset-backed/participatory?</label>
+        <select id="q11" name="sukuk_structure">
+          <option value="" disabled selected>Select...</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="unknown">I don't know</option>
+        </select>
+      </div>
+
+      <div id="q12-group" class="hidden followup-group">
+        <label>Is the return structure genuinely profit-and-loss sharing?</label>
+        <select id="q12" name="pe_structure">
+          <option value="" disabled selected>Select...</option>
+          <option value="genuine">Genuine profit-and-loss sharing</option>
+          <option value="guaranteed">Guaranteed / fixed minimum return</option>
+          <option value="mixed">Mixed or unclear</option>
+          <option value="unknown">I don't know</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SECTION 5: NIYAT (INTENTION) -->
+    <div class="card form-section hidden" id="sec-5">
+      <label class="q-title">5. What's your primary intention with this investment?</label>
+      <select id="q13" name="niyat">
+        <option value="" disabled selected>Select...</option>
+        <option value="long_term">Long-term holding / ownership participation</option>
+        <option value="short_term">Short-to-medium-term trading for price gains</option>
+        <option value="mixed">A mix of both</option>
+        <option value="unspecified">Prefer not to say</option>
+      </select>
+    </div>
+
+    <div class="card form-section hidden" id="sec-submit">
+      <button type="submit" class="btn-primary" id="run-check-btn">Generate Risk Scorecard</button>
+    </div>
+  </form>
+
+  <!-- RESULTS DASHBOARD -->
+  <div id="results-dashboard" class="hidden">
+    <div class="card result-card">
+      <h2>Sanity Check Result</h2>
+      
+      <div id="rating-badge" class="badge"></div>
+      
+      <div id="flagged-issues" class="issues-box hidden">
+        <h3>Flagged Concerns:</h3>
+        <ul id="issues-list"></ul>
+      </div>
+
+      <div id="niyat-comment" class="important hidden"></div>
+
+      <p class="validity-note"><strong>Validity Note:</strong> This assessment is based on inputs provided on <span id="current-date"></span>. Ratings expire as financial ratios or business activities shift over time[cite: 2].</p>
+    </div>
+
+    <!-- DB Submission & Sharing -->
+    <div class="card action-card">
+      <h3>Help Build the Discovery Layer</h3>
+      <p>Submit this checked investment to our public queue for potential listing on Onucrom's public board.</p>
+      
+      <input type="text" id="investment-name" placeholder="Name of Asset/Company (e.g., Grameenphone, Biniyog SME)" style="margin-bottom: 15px; width: 100%;">
+      
+      <div class="action-buttons">
+        <button id="submit-db-btn" class="btn-secondary">Submit to Onucrom Database</button>
+        <button id="share-wa-btn" class="btn-social wa">Share via WhatsApp</button>
+        <button id="share-fb-btn" class="btn-social fb">Share via Facebook</button>
+      </div>
+      <p id="db-status-msg" class="success-msg hidden"></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="small-text"><strong>⚠️ Disclaimer:</strong> Onucrom is an information aggregation and discovery platform[cite: 1]. We are <strong>not</strong> a stock broker, investment advisor, or Shariah certification body[cite: 1]. The Sanity Check tool provides an automated heuristic assessment based on user-provided information and is not a substitute for professional financial or religious advice[cite: 1].</p>
+  </div>
+
+  <footer>
+    <p><strong>Salim Afzal</strong> — Discover Verified Bangladeshi Investments</p>
+    <p class="footer-links">
+      <a href="about.html">About</a> ·
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="js/screener.js"></script>
+</body>
+</html>
