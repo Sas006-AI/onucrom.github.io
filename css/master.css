@@ -104,8 +104,74 @@ a:hover { text-decoration: underline; opacity: 0.9; }
   border-bottom: 1px solid var(--border);
 }
 .nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--text); }
-.nav-links a { margin-left: 24px; font-size: 0.9rem; color: var(--muted); font-weight: 500; }
-.nav-links a.active { color: var(--accent); font-weight: 600; }
+
+/*.nav-links a { margin-left: 24px; font-size: 0.9rem; color: var(--muted); font-weight: 500; }*/
+/*.nav-links a.active { color: var(--accent); font-weight: 600; }*/
+
+/* NEW (Replaces Lines 106-107) */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Top-level links & toggle buttons */
+.nav-links > a,
+.dropdown-toggle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav-links > a.active,
+.dropdown.active .dropdown-toggle,
+.dropdown-toggle.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Submenu Overlay */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  min-width: 190px;
+  padding: 6px 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* Reveal Menu on Hover */
+.dropdown:hover .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu a {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent);
+  text-decoration: none;
+}
 
 /* 6. FORMS & INPUTS */
 input[type="number"], input[type="text"], input[type="date"], select {
@@ -244,7 +310,10 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
 @media (max-width: 600px) {
   .input-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .input-row label { min-width: auto; }
-  .nav-links a { margin-left: 14px; font-size: 0.8rem; }
+  /*.nav-links a { margin-left: 14px; font-size: 0.8rem; }*/
+  /* NEW */
+  .nav-links { gap: 14px; }
+  .nav-links > a, .dropdown-toggle { font-size: 0.8rem; }
 }
 
 @media (max-width: 500px) {
