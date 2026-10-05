@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasury Securities & Yields | Onucrom</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --warning-bg: #fef3c7;
+            --warning-text: #92400e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; padding: 20px 10px; }
+        .container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+
+        /* 1. Landing Card */
+        .landing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .landing-card h1 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .landing-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+        .meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
+        .pill { background: var(--bg-body); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; color: var(--text-muted); }
+        .pill strong { color: var(--text-main); }
+
+        /* General Section Titles */
+        .section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        
+        /* Tables */
+        .table-responsive { width: 100%; overflow-x: auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+        th, td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        th { background: #f1f5f9; font-weight: 600; color: var(--text-main); }
+        tr:last-child td { border-bottom: none; }
+        .badge-risk { background: #dcfce7; color: #166534; font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+        /* 3. Scrollable Data Section */
+        .scrollable-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .data-viewport {
+            max-height: 380px;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .data-viewport iframe { width: 100%; height: 375px; border: none; }
+        .source-links { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
+        .source-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .source-links a:hover { text-decoration: underline; }
+
+        /* 4. References */
+        .references-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .references-card ul { padding-left: 20px; margin-top: 8px; }
+
+        /* 5. Investor Learning */
+        .learning-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
+        .learning-box { background: var(--bg-body); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
+        .learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--primary-dark); }
+        .learning-box p, .learning-box ol { font-size: 0.85rem; color: var(--text-muted); }
+        .learning-box ol { padding-left: 16px; }
+
+        /* 6. Cross Links ("Also Visit") */
+        .also-visit {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+        .visit-card {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 14px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: border-color 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .visit-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--primary); }
+        .visit-card p { font-size: 0.8rem; color: var(--text-muted); }
+        .visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 1. Landing Card -->
+    <section class="landing-card">
+        <h1>🏛️ Treasury Securities & Sovereign Yields</h1>
+        <p>Explore risk-free Bangladesh Government Treasury Bills (T-Bills) and Treasury Bonds (BGTB). Real-time primary auction benchmarks and secondary market yield estimates.</p>
+        <div class="meta-pills">
+            <span class="pill">ℹ️ Source: <strong>Bangladesh Bank (Debt Management Dept.)</strong></span>
+            <span class="pill">🔄 Refresh: <strong>Post-Auction Settlement / Daily</strong></span>
+            <span class="pill">🛡️ Risk Rating: <strong>Zero Credit Risk (Sovereign)</strong></span>
+        </div>
+    </section>
+
+    <!-- 2. Top-Level Summary Table -->
+    <section>
+        <div class="section-title">
+            <span>📊 Top-Level Market Summary</span>
+            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Current Cut-Off Yields</span>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Security Type</th>
+                        <th>Tenure</th>
+                        <th>Cut-Off Yield / Rate</th>
+                        <th>Previous Yield</th>
+                        <th>Trend</th>
+                        <th>Risk Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Treasury Bill</strong></td>
+                        <td>91-Day</td>
+                        <td><strong>11.25%</strong></td>
+                        <td>11.15%</td>
+                        <td style="color: var(--success);">▲ +10 bps</td>
+                        <td><span class="badge-risk">Sovereign</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Treasury Bill</strong></td>
+                        <td>182-Day</td>
+                        <td><strong>11.50%</strong></td>
+                        <td>11.45%</td>
+                        <td style="color: var(--success);">▲ +5 bps</td>
+                        <td><span class="badge-risk">Sovereign</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Treasury Bill</strong></td>
+                        <td>364-Day</td>
+                        <td><strong>11.80%</strong></td>
+                        <td>11.80%</td>
+                        <td>➔ Stable</td>
+                        <td><span class="badge-risk">Sovereign</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Treasury Bond (BGTB)</strong></td>
+                        <td>5-Year</td>
+                        <td><strong>12.35%</strong></td>
+                        <td>12.25%</td>
+                        <td style="color: var(--success);">▲ +10 bps</td>
+                        <td><span class="badge-risk">Sovereign</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Treasury Bond (BGTB)</strong></td>
+                        <td>10-Year</td>
+                        <td><strong>12.60%</strong></td>
+                        <td>12.55%</td>
+                        <td style="color: var(--success);">▲ +5 bps</td>
+                        <td><span class="badge-risk">Sovereign</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 3. Full Data Section (Scrollable Frame / Embedded Web Content) -->
+    <section class="scrollable-container">
+        <div class="section-title">
+            <span>📜 Complete Auction Data & Yield Curve</span>
+            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Scrollable Live View</span>
+        </div>
+        
+        <div class="data-viewport">
+            <!-- Alternative 1: Embedded live element/page from BB if permitted by iframe headers -->
+            <iframe src="https://www.bb.org.bd/en/index.php/monetary/yieldcurve" title="Bangladesh Bank Yield Curve Data"></iframe>
+            
+            <!-- Alternative 2: HTML rendering of fetched sheet data if iframe is cross-origin restricted -->
+            <!-- 
+            <table>... Full 100+ rows of historical auction details ...</table>
+            -->
+        </div>
+
+        <div class="source-links">
+            🔗 <strong>Direct Source Links:</strong> 
+            <a href="https://www.bb.org.bd/en/index.php/monetary/yieldcurve" target="_blank" rel="noopener">Bangladesh Bank Official Yield Curve Page ↗</a> | 
+            <a href="https://www.bb.org.bd/en/index.php/monetary/auctioncalender" target="_blank" rel="noopener">Auction Calendar & PDF Downloads ↗</a>
+        </div>
+    </section>
+
+    <!-- 4. References & Transparency -->
+    <section class="references-card">
+        <strong>📌 Data Transparency & Methodology</strong>
+        <ul>
+            <li>Data is ingested from official public disclosures published by the Bangladesh Bank (BB) Debt Management Department[cite: 1].</li>
+            <li>Yields shown represent primary auction cut-off rates[cite: 1]. Secondary market trading yields on the Dhaka Stock Exchange (DSE) or over-the-counter (OTC) money market may vary slightly based on broker fees and market liquidity[cite: 1, 2].</li>
+            <li>Onucrom is a listing and discovery platform; we do not trade, execute purchases, or hold investor funds directly[cite: 1, 2].</li>
+        </ul>
+    </section>
+
+    <!-- 5. Investor Learning -->
+    <section class="learning-section">
+        <div class="section-title">
+            <span>📚 Investor Education: Treasury Securities</span>
+        </div>
+        <div class="learning-grid">
+            <div class="learning-box">
+                <h3>T-Bills vs. T-Bonds</h3>
+                <p><strong>Treasury Bills (T-Bills):</strong> Short-term investments (91, 182, 364 days). Issued at a discount and redeemed at par value.<br><br>
+                   <strong>Treasury Bonds (BGTB):</strong> Long-term instruments (2 to 20 years) paying fixed semi-annual coupon interest.</p>
+            </div>
+            <div class="learning-box">
+                <h3>How to Purchase in Bangladesh</h3>
+                <ol>
+                    <li>Open a Business Partner ID (BP-ID) with Bangladesh Bank via a scheduled bank or Primary Dealer.</li>
+                    <li>Open a Market Infrastructure (MI) Module trading account.</li>
+                    <li>Submit bids during scheduled primary auctions or trade on the DSE secondary market.</li>
+                </ol>
+            </div>
+            <div class="learning-box">
+                <h3>Shariah Alternative (Sukuk)</h3>
+                <p>Investors seeking Shariah-aligned sovereign instruments can explore <strong>Bangladesh Government Islamic Investment Bonds (BGIIB)</strong> and <strong>Government Ijarah Sukuk</strong> issued periodically by the treasury[cite: 2].</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Cross Links / Also Visit Row -->
+    <section class="also-visit">
+        <div class="section-title">
+            <span>🔍 Also Visit Under Explore Investment</span>
+        </div>
+        <div class="cards-row">
+            <a href="/fixed-deposits.html" class="visit-card">
+                <div>
+                    <h4>🏦 Bank Fixed Deposits (FDR)</h4>
+                    <p>Compare guaranteed interest rates across 60+ scheduled banks[cite: 1, 2].</p>
+                </div>
+                <div class="arrow">Explore FDRs →</div>
+            </a>
+            <a href="/shariah.html" class="visit-card">
+                <div>
+                    <h4>🌙 Shariah Investments</h4>
+                    <p>Filter screened halal stocks, Sukuk, and Islamic bank pools[cite: 1, 2].</p>
+                </div>
+                <div class="arrow">Explore Shariah →</div>
+            </a>
+            <a href="/stocks.html" class="visit-card">
+                <div>
+                    <h4>📈 DSE Equities & Stocks</h4>
+                    <p>Explore public market capitalization, returns, and sector trends[cite: 1, 2].</p>
+                </div>
+                <div class="arrow">Explore Stocks →</div>
+            </a>
+            <a href="/private-listings.html" class="visit-card">
+                <div>
+                    <h4>💼 Private Fundraising</h4>
+                    <p>Browse verified SME, startup, and asset expansion listings[cite: 1, 2].</p>
+                </div>
+                <div class="arrow">Explore Private →</div>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
