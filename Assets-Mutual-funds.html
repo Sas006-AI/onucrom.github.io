@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Funds | Onucrom</title>
+    <!-- Same CSS as Stocks/G-Sec -->
+    <style>
+        :root { --primary: #0284c7; --primary-dark: #0369a1; --bg-body: #f8fafc; --card-bg: #ffffff; --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0; --success: #16a34a; --warning-bg: #fef3c7; --warning-text: #92400e; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; padding: 20px 10px; }
+        .container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+        .landing-card { background: var(--card-bg); border: 1px solid var(--border); border-left: 5px solid var(--primary); border-radius: 8px; padding: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .landing-card h1 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .landing-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+        .meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
+        .pill { background: var(--bg-body); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; color: var(--text-muted); }
+        .pill strong { color: var(--text-main); }
+        .section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .table-responsive { width: 100%; overflow-x: auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+        th, td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        th { background: #f1f5f9; font-weight: 600; color: var(--text-main); }
+        tr:last-child td { border-bottom: none; }
+        .badge-risk { background: #fef3c7; color: #92400e; font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+        .scrollable-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+        .data-viewport { max-height: 380px; overflow-y: auto; border: 1px solid var(--border); border-radius: 6px; }
+        .data-viewport iframe { width: 100%; height: 375px; border: none; }
+        .source-links { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
+        .source-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .source-links a:hover { text-decoration: underline; }
+        .references-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 0.85rem; color: var(--text-muted); }
+        .references-card ul { padding-left: 20px; margin-top: 8px; }
+        .learning-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+        .learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
+        .learning-box { background: var(--bg-body); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
+        .learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--primary-dark); }
+        .learning-box p, .learning-box ol { font-size: 0.85rem; color: var(--text-muted); }
+        .learning-box ol { padding-left: 16px; }
+        .also-visit { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+        .cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+        .visit-card { border: 1px solid var(--border); border-radius: 6px; padding: 14px; text-decoration: none; color: var(--text-main); transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .visit-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--primary); }
+        .visit-card p { font-size: 0.8rem; color: var(--text-muted); }
+        .visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--primary); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <section class="landing-card">
+        <h1>📊 Mutual Funds & Unit Funds</h1>
+        <p>Explore professionally managed open-end and closed-end mutual funds. Track Net Asset Values (NAV) and fund performance aggregated from AMCs.</p>
+        <div class="meta-pills">
+            <span class="pill">ℹ️ Source: <strong>IDLC AMC / DSE Publications</strong></span>
+            <span class="pill">🔄 Refresh: <strong>Weekly (NAV Declaration)</strong></span>
+            <span class="pill">🛡️ Risk Rating: <strong>Moderate to High</strong></span>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">
+            <span>📈 Top-Level Fund Categories</span>
+            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Sample Weekly NAVs</span>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fund Category</th>
+                        <th>Type</th>
+                        <th>Average NAV Yield (YTD)</th>
+                        <th>Liquidity</th>
+                        <th>Risk Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Growth Equity Funds</strong></td>
+                        <td>Open-End</td>
+                        <td><strong>8.50%</strong></td>
+                        <td>High (AMC Redemption)</td>
+                        <td><span class="badge-risk">Moderate-High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fixed Income / Debt Funds</strong></td>
+                        <td>Open-End</td>
+                        <td><strong>10.20%</strong></td>
+                        <td>High</td>
+                        <td><span class="badge-risk" style="background:#dcfce7; color:#166534;">Low-Moderate</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Listed Mutual Funds</strong></td>
+                        <td>Closed-End</td>
+                        <td><strong>Discount to NAV</strong></td>
+                        <td>DSE Trading Volume</td>
+                        <td><span class="badge-risk">Moderate-High</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="scrollable-container">
+        <div class="section-title">
+            <span>📜 AMC Weekly Fund Data</span>
+        </div>
+        <div class="data-viewport">
+            <iframe src="https://idlcamc.com/" title="IDLC AMC Mutual Funds"></iframe>
+        </div>
+        <div class="source-links">
+            🔗 <strong>Direct Source Links:</strong> 
+            <a href="https://idlcamc.com/" target="_blank" rel="noopener">IDLC Asset Management ↗</a> | 
+            <a href="https://www.dsebd.org/latest_NAV.php" target="_blank" rel="noopener">DSE Weekly NAV Updates ↗</a>
+        </div>
+    </section>
+
+    <section class="references-card">
+        <strong>📌 Data Transparency & Methodology</strong>
+        <ul>
+            <li>NAV (Net Asset Value) figures are declared weekly by Asset Management Companies (AMCs).</li>
+            <li>Closed-end funds are traded on the DSE and often trade at a premium or discount to their actual NAV.</li>
+            <li>Onucrom is a listing and discovery platform; we do not trade, execute purchases, or hold investor funds directly.</li>
+        </ul>
+    </section>
+
+    <section class="learning-section">
+        <div class="section-title">
+            <span>📚 Investor Education: Mutual Funds</span>
+        </div>
+        <div class="learning-grid">
+            <div class="learning-box">
+                <h3>Open-End vs. Closed-End</h3>
+                <p><strong>Open-End:</strong> Bought and sold directly through the AMC at the current NAV. No maturity date.<br><br>
+                   <strong>Closed-End:</strong> Fixed number of shares, traded on the stock exchange like regular stocks. Subject to market supply/demand.</p>
+            </div>
+            <div class="learning-box">
+                <h3>Understanding NAV</h3>
+                <p><strong>Net Asset Value (NAV)</strong> represents a fund's per-share market value. It is calculated by dividing the total value of all the cash and securities in a fund's portfolio, minus any liabilities, by the number of outstanding shares.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="also-visit">
+        <div class="section-title">
+            <span>🔍 Also Visit Under Explore Investment</span>
+        </div>
+        <div class="cards-row">
+            <a href="/stocks.html" class="visit-card">
+                <div>
+                    <h4>📈 DSE Equities</h4>
+                    <p>Explore direct stock market investments and trends.</p>
+                </div>
+                <div class="arrow">Explore Stocks →</div>
+            </a>
+            <a href="/shariah.html" class="visit-card">
+                <div>
+                    <h4>🌙 Shariah Investments</h4>
+                    <p>Filter screened halal stocks and Islamic Unit Funds.</p>
+                </div>
+                <div class="arrow">Explore Shariah →</div>
+            </a>
+        </div>
+    </section>
+</div>
+</body>
+</html>
