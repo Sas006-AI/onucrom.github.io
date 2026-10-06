@@ -1,4 +1,462 @@
-<!DOCTYPE html><html><head>...</head><body>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>/* ============================================
+   ONUCROM DESIGN SYSTEM — MASTER STYLESHEET
+   File: css/master.css
+   ============================================ */
+
+/* 1. DESIGN TOKENS & RESET */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #f59e0b;
+  --up: #22c55e;
+  --down: #ef4444;
+  --caution: #f59e0b;
+  --input-bg: #fef3c7;
+  --input-text: #1e293b;
+  --radius: 10px;
+  --radius-sm: 8px;
+  --font-mono: "JetBrains Mono", monospace;
+  --transition: all 0.2s ease;
+
+  /* Asset Class Design Tokens */
+  --ac-primary: var(--accent);
+  --ac-primary-dark: #d97706;
+  --ac-bg-body: var(--bg);
+  --ac-card-bg: var(--card);
+  --ac-text-main: var(--text);
+  --ac-text-muted: var(--muted);
+  --ac-border: var(--border);
+  --ac-success: var(--up);
+  --ac-badge-risk-bg: rgba(34, 197, 94, 0.15);
+  --ac-badge-risk-text: var(--up);
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+a { 
+  color: var(--accent); 
+  text-decoration: none; 
+  transition: var(--transition); 
+}
+a:hover { 
+  text-decoration: underline; 
+  opacity: 0.9; 
+}
+
+/* 2. TYPOGRAPHY & LABEL ABSTRACTIONS */
+.font-mono, 
+.col-results, 
+.score-number, 
+.stat-num, 
+.stat-value, 
+.env-stat-value {
+  font-family: var(--font-mono);
+}
+
+/* Micro Labels (Uppercase Section Headers) */
+.section-label, 
+.input-group label, 
+.stat-label, 
+.env-stat-title, 
+.hero-slogan, 
+.data-table th, 
+.res-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+/* 3. SURFACE & PANEL ABSTRACTIONS */
+/* Primary Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Nested Inset Panels */
+.panel, 
+.col-results, 
+.question-block, 
+.radio-option, 
+.assessor-note, 
+.choice-card, 
+.trust-item, 
+.env-stat-card, 
+.asset-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+/* Hoverable Cards & Panels */
+.choice-card:hover, 
+.asset-card:hover, 
+.radio-option:hover { 
+  border-color: var(--accent); 
+}
+.choice-card:hover, 
+.asset-card:hover { 
+  transform: translateY(-2px); 
+  text-decoration: none; 
+}
+
+/* 4. UNIFIED STATUS & COLOR SYSTEM */
+/* Text Color Indicators */
+.v-good, .tag-green, .stat-value.up, .env-stat-value.up, .score-low { color: var(--up); }
+.v-caution, .tag-yellow, .score-moderate, .score-high { color: var(--caution); }
+.v-bad, .tag-red, .score-critical, .stat-value.down, .env-stat-value.down { color: var(--down); }
+.v-neutral, .tag-gray, .stat-value.stable, .env-stat-value.stable { color: var(--muted); }
+
+/* Background & Border Badges/Alerts */
+.v-good, .tag-green, .alert-pass { background: rgba(34, 197, 94, 0.12); }
+.v-caution, .tag-yellow, .alert-caution { background: rgba(245, 158, 11, 0.12); }
+.v-bad, .tag-red, .alert-warning { background: rgba(239, 68, 68, 0.12); }
+.v-neutral, .tag-gray { background: rgba(148, 163, 184, 0.12); }
+
+.v-good { border: 1px solid var(--up); }
+.v-caution { border: 1px solid var(--caution); }
+.v-bad { border: 1px solid var(--down); }
+.v-neutral { border: 1px solid var(--muted); }
+
+/* 5. NAVIGATION & DROPDOWNS */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--text); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links > a,
+.dropdown-toggle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav-links > a.active,
+.dropdown.active .dropdown-toggle,
+.dropdown-toggle.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Invisible hover bridge to prevent cursor gap dropouts */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+/* Dropdown Submenu Overlay */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  min-width: 190px;
+  padding: 6px 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* Reveal Menu on Hover OR via JS Class toggling (.open) */
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu a {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 6. FORMS & INPUTS */
+input[type="number"], input[type="text"], input[type="date"], select {
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-weight: 600;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
+  transition: var(--transition);
+}
+input:focus, select:focus { 
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3); 
+  border-color: var(--accent); 
+}
+
+.input-group, .form-section { margin-bottom: 20px; }
+.input-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.input-row label { font-size: 0.85rem; color: var(--text); min-width: 180px; }
+
+.radio-group { display: flex; flex-direction: column; gap: 8px; }
+.radio-option { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; padding: 6px 10px; cursor: pointer; }
+.radio-option input[type="radio"] { accent-color: var(--accent); transform: scale(1.1); }
+
+/* Buttons & Pills */
+.btn {
+  display: inline-block; 
+  background: var(--accent); 
+  color: #0f172a; 
+  font-weight: 700;
+  padding: 12px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  font-size: 0.95rem; 
+  cursor: pointer;
+  transition: var(--transition); 
+  text-align: center;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-full { width: 100%; margin-top: 12px; }
+.btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+
+.pill-btn, .toggle-pill {
+  background: var(--bg); 
+  border: 1px solid var(--border); 
+  font-size: 0.8rem; 
+  cursor: pointer; 
+  transition: var(--transition);
+}
+.pill-btn { color: var(--muted); padding: 8px 14px; border-radius: 20px; }
+.pill-btn.active { background: var(--accent); color: #0f172a; font-weight: 700; border-color: var(--accent); }
+
+.toggle-pill { color: var(--text); padding: 10px 14px; border-radius: 8px; text-align: left; }
+.toggle-pill.selected { background: rgba(239, 68, 68, 0.15); border-color: var(--down); color: #f87171; font-weight: 600; }
+
+/* 7. TOOL CALCULATOR GRID (4 Columns Desktop) */
+.tool-grid { display: grid; grid-template-columns: 240px 200px 160px 1fr; gap: 20px; align-items: start; }
+.col-inputs { display: flex; flex-direction: column; gap: 12px; }
+.col-results { padding: 14px; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px; justify-content: center; height: 100%; }
+.res-item { display: flex; justify-content: space-between; gap: 8px; }
+.res-val { font-weight: 700; color: var(--text); }
+
+.col-verdict { display: flex; align-items: center; justify-content: center; height: 100%; }
+.verdict-badge { width: 100%; text-align: center; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+
+.col-explanation { font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; border-left: 2px solid var(--border); padding-left: 16px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.col-explanation ul { padding-left: 16px; margin-top: 4px; }
+
+/* 8. SANITY CHECK & EVALUATION COMPONENTS */
+.question-block { margin-bottom: 16px; padding: 16px; }
+.question-text { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+
+.score-display { text-align: center; padding: 24px; }
+.score-number { font-size: 3.5rem; font-weight: 800; }
+.score-label { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
+
+.alert { padding: 14px 18px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 0.85rem; line-height: 1.5; }
+.alert-warning { border-left: 3px solid var(--down); }
+.alert-caution { border-left: 3px solid var(--caution); }
+.alert-pass { border-left: 3px solid var(--up); }
+
+.assessor-note { padding: 16px; margin-top: 16px; font-style: italic; color: #cbd5e1; border-color: var(--accent); }
+
+/* Tag Badges */
+.tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.68rem; font-weight: 600; white-space: nowrap; }
+
+/* 9. HOMEPAGE COMPONENTS */
+.hero-card { text-align: center; padding: 32px 24px; }
+.hero-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; }
+.hero-trust-text { font-size: 0.82rem; color: var(--muted); max-width: 680px; margin: 0 auto; border-top: 1px dashed var(--border); padding-top: 16px; }
+
+.choice-grid, .trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 24px; }
+.choice-card { padding: 18px; display: flex; flex-direction: column; color: var(--text); }
+.choice-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.choice-icon { font-size: 1.2rem; }
+.choice-title { font-size: 0.95rem; font-weight: 700; }
+.choice-desc { font-size: 0.8rem; color: var(--muted); }
+
+.trust-item { padding: 16px; }
+.trust-item h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+.trust-item p { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+.stats-card { padding: 16px 24px; margin-bottom: 24px; }
+.stats-grid, .env-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-num { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+
+.asset-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.asset-card { padding: 20px; display: flex; flex-direction: column; gap: 10px; color: var(--text); }
+.asset-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.asset-card-title { font-weight: 700; font-size: 1rem; color: var(--accent); line-height: 1.3; }
+.asset-card-desc { font-size: 0.82rem; color: var(--muted); margin: 0; }
+.asset-card-stat { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); margin-top: auto; }
+.asset-card-link { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-align: right; }
+
+.env-stat-card { padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.env-stat-value { font-size: 1.2rem; font-weight: 700; }
+.env-stat-context { font-size: 0.65rem; color: var(--muted); }
+
+/* 10. DATA TABLES */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.data-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: #cbd5e1; }
+.data-table td a { color: var(--accent); }
+.data-table tr:hover td { background: rgba(245, 158, 11, 0.03); }
+
+/* 11. ASSET CLASS PAGES MODULE */
+.ac-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Landing Header Card */
+.ac-card-landing {
+  background: var(--ac-card-bg);
+  border: 1px solid var(--ac-border);
+  border-left: 5px solid var(--ac-primary);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.ac-card-landing h1 { font-size: 1.5rem; color: var(--ac-text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.ac-card-landing p { color: var(--ac-text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+.ac-meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
+.ac-pill { background: var(--ac-bg-body); border: 1px solid var(--ac-border); padding: 4px 10px; border-radius: 4px; color: var(--ac-text-muted); }
+.ac-pill strong { color: var(--ac-text-main); }
+
+.ac-section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+
+/* Table Components */
+.ac-table-responsive { width: 100%; overflow-x: auto; background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius-sm); }
+.ac-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+.ac-table th, .ac-table td { padding: 12px 16px; border-bottom: 1px solid var(--ac-border); white-space: nowrap; }
+.ac-table th { background: #1e293b; font-weight: 600; color: var(--ac-text-main); border-bottom: 2px solid var(--ac-border); }
+.ac-table td { color: #cbd5e1; }
+.ac-table td a { color: var(--ac-primary); }
+.ac-table tr:hover td { background: rgba(245, 158, 11, 0.03); }
+.ac-table tr:last-child td { border-bottom: none; }
+.ac-badge-risk { background: var(--ac-badge-risk-bg); color: var(--ac-badge-risk-text); font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+/* Live Viewport Card */
+.ac-card-viewport { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 16px; }
+.ac-viewport-container { max-height: 380px; overflow-y: auto; border: 1px solid var(--ac-border); border-radius: var(--radius-sm); background: var(--bg); }
+.ac-viewport-container iframe { width: 100%; height: 375px; border: 0; display: block; }
+.ac-extracted-content { padding: 16px; font-size: 0.85rem; max-height: 360px; overflow-y: auto; }
+.ac-source-links { margin-top: 12px; font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-source-links a { color: var(--ac-primary); text-decoration: none; font-weight: 500; }
+.ac-source-links a:hover { text-decoration: underline; }
+
+/* Transparency & Methodology */
+.ac-card-references { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 16px; font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-card-references ul { padding-left: 20px; margin-top: 8px; }
+
+/* Educational Modules */
+.ac-card-learning { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 20px; }
+.ac-learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
+.ac-learning-box { background: var(--ac-bg-body); border: 1px solid var(--ac-border); border-radius: var(--radius-sm); padding: 16px; }
+.ac-learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--ac-primary); }
+.ac-learning-box p, .ac-learning-box ol { font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-learning-box ol { padding-left: 16px; }
+
+/* Cross-Navigation Cards */
+.ac-card-also-visit { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 20px; }
+.ac-cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.ac-visit-card { border: 1px solid var(--ac-border); border-radius: var(--radius-sm); padding: 14px; text-decoration: none; color: var(--ac-text-main); transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; background: var(--bg); }
+.ac-visit-card:hover { border-color: var(--ac-primary); transform: translateY(-2px); text-decoration: none; }
+.ac-visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--ac-primary); }
+.ac-visit-card p { font-size: 0.8rem; color: var(--ac-text-muted); }
+.ac-visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--ac-primary); }
+
+/* 12. UTILITIES & FOOTER */
+.hidden { display: none !important; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.empty-state { text-align: center; padding: 32px 16px; color: var(--muted); }
+
+footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+.footer-links a { margin: 0 8px; }
+.footer-updated { display: block; margin-top: 8px; font-size: 0.75rem; color: #64748b; }
+
+/* 13. RESPONSIVE BREAKPOINTS */
+@media (max-width: 900px) {
+  .tool-grid { grid-template-columns: 1fr; gap: 16px; }
+  .col-explanation { border-left: none; border-top: 1px dashed var(--border); padding-left: 0; padding-top: 16px; }
+  .asset-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .choice-grid, .trust-grid { grid-template-columns: 1fr; }
+  .stats-grid, .env-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 600px) {
+  .input-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .input-row label { min-width: auto; }
+  .nav-links { gap: 14px; }
+  .nav-links > a, .dropdown-toggle { font-size: 0.8rem; }
+}
+
+@media (max-width: 500px) {
+  .asset-cards-grid { grid-template-columns: 1fr; }
+  .env-stat-card { padding: 12px; }
+  .env-stat-value { font-size: 1rem; }
+}</style></head><body>
 <nav class="nav">
   <div class="nav-brand">
     <a href="index.html">onucrom</a>
@@ -15,7 +473,7 @@
     <div class="dropdown ">
       <a href="#" class="dropdown-toggle ">Explore Investments</a>
       <div class="dropdown-menu">
-        <a href="Assets-G-sec.html" class="">Treasury Securities</a>
+        <a href="Assets-Stocks-dse.html" class="">Stocks</a><a href="Assets-G-sec.html" class="">Treasury Securities</a><a href="Assets-Bank-deposits.html" class="">Bank Deposits</a><a href="Assets-Shanchaypatra.html" class="">Shanchaypatra</a><a href="Assets-Prize-bond.html" class="">Prize Bond</a>
       </div>
     </div>
     <div class="dropdown ">
@@ -329,4 +787,4 @@
 
 </div>
 
-<script src="js/tools-calculators.js"></script><footer><p style="font-size:0.8rem;color:var(--muted);margin-top:6px">Promoting sensible investments — Verify first, invest informed.</p><p style="margin-top:10px;font-size:0.8rem"><a href="index.html">Home</a> · <a href="tools.html">Tools</a> · <a href="sanity-check.html">Sanity Check</a> · <a href="about.html">About</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="privacy.html">Privacy</a> · <a href="methodology.html">Sanity Methodology</a> · <a href="shariah_method.html">Shariah Method</a> · <a href="shariah_screener.html">Shariah Screener</a> · <a href="terms.html">Terms</a> · <a href="sitemap.html">Sitemap</a> . <a href="mailto:salim@onucrom.com">Contact</a></p><p style="margin-top:8px;font-size:0.8rem">· Built by Salim Afzal</p><p style="font-size:0.75rem;color:#64748b">© 2026 Onucrom. Updated 10/6/2026, 10:37:54 AM BST</p></footer></body></html>
+<script src="js/tools-calculators.js"></script><footer><p style="font-size:0.8rem;color:var(--muted);margin-top:6px">Promoting sensible investments — Verify first, invest informed.</p><p style="margin-top:10px;font-size:0.8rem"><a href="index.html">Home</a> · <a href="tools.html">Tools</a> · <a href="sanity-check.html">Sanity Check</a> · <a href="about.html">About</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="privacy.html">Privacy</a> · <a href="methodology.html">Sanity Methodology</a> · <a href="shariah_method.html">Shariah Method</a> · <a href="shariah_screener.html">Shariah Screener</a> · <a href="terms.html">Terms</a> · <a href="sitemap.html">Sitemap</a> . <a href="mailto:salim@onucrom.com">Contact</a></p><p style="margin-top:8px;font-size:0.8rem">· Built by Salim Afzal</p><p style="font-size:0.75rem;color:#64748b">© 2026 Onucrom. Updated 10/6/2026, 1:14:57 PM BST</p></footer></body></html>
