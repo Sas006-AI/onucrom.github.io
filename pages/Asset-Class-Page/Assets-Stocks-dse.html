@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Equities & Stocks | Onucrom</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --warning-bg: #fef3c7;
+            --warning-text: #92400e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; padding: 20px 10px; }
+        .container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+
+        .landing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .landing-card h1 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .landing-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+        .meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
+        .pill { background: var(--bg-body); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; color: var(--text-muted); }
+        .pill strong { color: var(--text-main); }
+
+        .section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        
+        .table-responsive { width: 100%; overflow-x: auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+        th, td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        th { background: #f1f5f9; font-weight: 600; color: var(--text-main); }
+        tr:last-child td { border-bottom: none; }
+        .badge-risk { background: #fee2e2; color: #991b1b; font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+        .scrollable-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+        .data-viewport { max-height: 380px; overflow-y: auto; border: 1px solid var(--border); border-radius: 6px; }
+        .data-viewport iframe { width: 100%; height: 375px; border: none; }
+        .source-links { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
+        .source-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .source-links a:hover { text-decoration: underline; }
+
+        .references-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 0.85rem; color: var(--text-muted); }
+        .references-card ul { padding-left: 20px; margin-top: 8px; }
+
+        .learning-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+        .learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
+        .learning-box { background: var(--bg-body); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
+        .learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--primary-dark); }
+        .learning-box p, .learning-box ol { font-size: 0.85rem; color: var(--text-muted); }
+        .learning-box ol { padding-left: 16px; }
+
+        .also-visit { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+        .cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+        .visit-card { border: 1px solid var(--border); border-radius: 6px; padding: 14px; text-decoration: none; color: var(--text-main); transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .visit-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--primary); }
+        .visit-card p { font-size: 0.8rem; color: var(--text-muted); }
+        .visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <section class="landing-card">
+        <h1>📈 DSE Equities & Stocks</h1>
+        <p>Monitor public market capitalization, index returns, and sector trends on the Dhaka Stock Exchange (DSE). High growth potential coupled with market volatility.</p>
+        <div class="meta-pills">
+            <span class="pill">ℹ️ Source: <strong>Dhaka Stock Exchange (DSE)</strong></span>
+            <span class="pill">🔄 Refresh: <strong>End of Trading Day</strong></span>
+            <span class="pill">🛡️ Risk Rating: <strong>High (Market Risk)</strong></span>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">
+            <span>📊 Broad Market Summary</span>
+            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Key Market Indices</span>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index Name</th>
+                        <th>Description</th>
+                        <th>Current Value</th>
+                        <th>Daily Change</th>
+                        <th>Trend</th>
+                        <th>Risk Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>DSEX</strong></td>
+                        <td>Broad Market Index</td>
+                        <td><strong>5,800.50</strong></td>
+                        <td>+25.30</td>
+                        <td style="color: var(--success);">▲ Up</td>
+                        <td><span class="badge-risk">High Risk</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DS30</strong></td>
+                        <td>Blue-Chip Companies</td>
+                        <td><strong>2,120.15</strong></td>
+                        <td>+12.45</td>
+                        <td style="color: var(--success);">▲ Up</td>
+                        <td><span class="badge-risk">Moderate-High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DSES</strong></td>
+                        <td>Shariah Compliant Index</td>
+                        <td><strong>1,250.80</strong></td>
+                        <td>-5.20</td>
+                        <td style="color: #ef4444;">▼ Down</td>
+                        <td><span class="badge-risk">High Risk</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="scrollable-container">
+        <div class="section-title">
+            <span>📜 DSE Live Market Board</span>
+            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Scrollable Live View</span>
+        </div>
+        
+        <div class="data-viewport">
+            <iframe src="https://www.dsebd.org/" title="DSE Live Market Data"></iframe>
+        </div>
+
+        <div class="source-links">
+            🔗 <strong>Direct Source Links:</strong> 
+            <a href="https://www.dsebd.org/" target="_blank" rel="noopener">DSE Official Website ↗</a> | 
+            <a href="https://www.dsebd.org/mkt_summary.php" target="_blank" rel="noopener">Market Summary ↗</a>
+        </div>
+    </section>
+
+    <section class="references-card">
+        <strong>📌 Data Transparency & Methodology</strong>
+        <ul>
+            <li>Market data reflects closing/live prices from the Dhaka Stock Exchange (DSE)[cite: 1, 2].</li>
+            <li>Equity investments carry significant risk of principal loss. Valuations are subject to macroeconomic conditions and corporate performance.</li>
+            <li>Onucrom is a listing and discovery platform; we do not trade, execute purchases, or hold investor funds directly[cite: 1, 2].</li>
+        </ul>
+    </section>
+
+    <section class="learning-section">
+        <div class="section-title">
+            <span>📚 Investor Education: Equities</span>
+        </div>
+        <div class="learning-grid">
+            <div class="learning-box">
+                <h3>Dividends vs. Capital Gains</h3>
+                <p><strong>Dividends:</strong> Periodic cash or stock payouts distributed to shareholders from company profits.<br><br>
+                   <strong>Capital Gains:</strong> Profit earned when selling a stock at a higher price than the purchase price.</p>
+            </div>
+            <div class="learning-box">
+                <h3>How to Trade in Bangladesh</h3>
+                <ol>
+                    <li>Select a registered stockbroker (Brokerage House).</li>
+                    <li>Open a Beneficiary Owner (BO) Account via CDBL.</li>
+                    <li>Fund your account and trade via the broker's DSE Mobile App or trading portal.</li>
+                </ol>
+            </div>
+            <div class="learning-box">
+                <h3>Shariah Alternative (DSES)</h3>
+                <p>Investors seeking halal equities can track the <strong>DSES (DSE Shariah Index)</strong>, which filters out companies dealing in conventional banking, alcohol, tobacco, and highly leveraged debt.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="also-visit">
+        <div class="section-title">
+            <span>🔍 Also Visit Under Explore Investment</span>
+        </div>
+        <div class="cards-row">
+            <a href="/Assets-G-sec.html" class="visit-card">
+                <div>
+                    <h4>🏛️ Treasury Securities</h4>
+                    <p>Explore risk-free Government T-Bills and T-Bonds[cite: 1, 2].</p>
+                </div>
+                <div class="arrow">Explore G-Secs →</div>
+            </a>
+            <a href="/mutual-funds.html" class="visit-card">
+                <div>
+                    <h4>📊 Mutual Funds</h4>
+                    <p>Browse professionally managed open and closed-end funds.</p>
+                </div>
+                <div class="arrow">Explore Funds →</div>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
