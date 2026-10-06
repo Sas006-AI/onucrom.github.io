@@ -4,7 +4,11 @@
    ============================================ */
 
 /* 1. DESIGN TOKENS & RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
 
 :root {
   --bg: #0f172a;
@@ -22,6 +26,18 @@
   --radius-sm: 8px;
   --font-mono: "JetBrains Mono", monospace;
   --transition: all 0.2s ease;
+
+  /* Asset Class Design Tokens */
+  --ac-primary: var(--accent);
+  --ac-primary-dark: #d97706;
+  --ac-bg-body: var(--bg);
+  --ac-card-bg: var(--card);
+  --ac-text-main: var(--text);
+  --ac-text-muted: var(--muted);
+  --ac-border: var(--border);
+  --ac-success: var(--up);
+  --ac-badge-risk-bg: rgba(34, 197, 94, 0.15);
+  --ac-badge-risk-text: var(--up);
 }
 
 body {
@@ -34,17 +50,34 @@ body {
   padding: 20px 16px;
 }
 
-a { color: var(--accent); text-decoration: none; transition: var(--transition); }
-a:hover { text-decoration: underline; opacity: 0.9; }
+a { 
+  color: var(--accent); 
+  text-decoration: none; 
+  transition: var(--transition); 
+}
+a:hover { 
+  text-decoration: underline; 
+  opacity: 0.9; 
+}
 
 /* 2. TYPOGRAPHY & LABEL ABSTRACTIONS */
-.font-mono, .col-results, .score-number, .stat-num, .stat-value, .env-stat-value {
+.font-mono, 
+.col-results, 
+.score-number, 
+.stat-num, 
+.stat-value, 
+.env-stat-value {
   font-family: var(--font-mono);
 }
 
 /* Micro Labels (Uppercase Section Headers) */
-.section-label, .input-group label, .stat-label, .env-stat-title, 
-.hero-slogan, .data-table th, .res-label {
+.section-label, 
+.input-group label, 
+.stat-label, 
+.env-stat-title, 
+.hero-slogan, 
+.data-table th, 
+.res-label {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--muted);
@@ -65,16 +98,31 @@ a:hover { text-decoration: underline; opacity: 0.9; }
 }
 
 /* Nested Inset Panels */
-.panel, .col-results, .question-block, .radio-option, .assessor-note, 
-.choice-card, .trust-item, .env-stat-card, .asset-card {
+.panel, 
+.col-results, 
+.question-block, 
+.radio-option, 
+.assessor-note, 
+.choice-card, 
+.trust-item, 
+.env-stat-card, 
+.asset-card {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
 
 /* Hoverable Cards & Panels */
-.choice-card:hover, .asset-card:hover, .radio-option:hover { border-color: var(--accent); }
-.choice-card:hover, .asset-card:hover { transform: translateY(-2px); text-decoration: none; }
+.choice-card:hover, 
+.asset-card:hover, 
+.radio-option:hover { 
+  border-color: var(--accent); 
+}
+.choice-card:hover, 
+.asset-card:hover { 
+  transform: translateY(-2px); 
+  text-decoration: none; 
+}
 
 /* 4. UNIFIED STATUS & COLOR SYSTEM */
 /* Text Color Indicators */
@@ -94,7 +142,7 @@ a:hover { text-decoration: underline; opacity: 0.9; }
 .v-bad { border: 1px solid var(--down); }
 .v-neutral { border: 1px solid var(--muted); }
 
-/* 5. NAVIGATION */
+/* 5. NAVIGATION & DROPDOWNS */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -105,17 +153,12 @@ a:hover { text-decoration: underline; opacity: 0.9; }
 }
 .nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--text); }
 
-/*.nav-links a { margin-left: 24px; font-size: 0.9rem; color: var(--muted); font-weight: 500; }*/
-/*.nav-links a.active { color: var(--accent); font-weight: 600; }*/
-
-/* NEW (Replaces Lines 106-107) */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-/* Top-level links & toggle buttons */
 .nav-links > a,
 .dropdown-toggle {
   font-size: 0.9rem;
@@ -137,6 +180,16 @@ a:hover { text-decoration: underline; opacity: 0.9; }
   display: inline-block;
 }
 
+/* Invisible hover bridge to prevent cursor gap dropouts */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
 /* Dropdown Submenu Overlay */
 .dropdown-menu {
   display: none;
@@ -152,8 +205,9 @@ a:hover { text-decoration: underline; opacity: 0.9; }
   z-index: 1000;
 }
 
-/* Reveal Menu on Hover */
-.dropdown:hover .dropdown-menu {
+/* Reveal Menu on Hover OR via JS Class toggling (.open) */
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
   display: flex;
   flex-direction: column;
 }
@@ -186,7 +240,11 @@ input[type="number"], input[type="text"], input[type="date"], select {
   width: 100%;
   transition: var(--transition);
 }
-input:focus, select:focus { outline: none; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3); border-color: var(--accent); }
+input:focus, select:focus { 
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3); 
+  border-color: var(--accent); 
+}
 
 .input-group, .form-section { margin-bottom: 20px; }
 .input-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
@@ -198,16 +256,28 @@ input:focus, select:focus { outline: none; box-shadow: 0 0 0 3px rgba(245, 158, 
 
 /* Buttons & Pills */
 .btn {
-  display: inline-block; background: var(--accent); color: #0f172a; font-weight: 700;
-  padding: 12px 24px; border: none; border-radius: 8px; font-size: 0.95rem; cursor: pointer;
-  transition: var(--transition); text-align: center;
+  display: inline-block; 
+  background: var(--accent); 
+  color: #0f172a; 
+  font-weight: 700;
+  padding: 12px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  font-size: 0.95rem; 
+  cursor: pointer;
+  transition: var(--transition); 
+  text-align: center;
 }
 .btn:hover { opacity: 0.9; transform: translateY(-1px); }
 .btn-full { width: 100%; margin-top: 12px; }
 .btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
 
 .pill-btn, .toggle-pill {
-  background: var(--bg); border: 1px solid var(--border); font-size: 0.8rem; cursor: pointer; transition: var(--transition);
+  background: var(--bg); 
+  border: 1px solid var(--border); 
+  font-size: 0.8rem; 
+  cursor: pointer; 
+  transition: var(--transition);
 }
 .pill-btn { color: var(--muted); padding: 8px 14px; border-radius: 20px; }
 .pill-btn.active { background: var(--accent); color: #0f172a; font-weight: 700; border-color: var(--accent); }
@@ -246,7 +316,7 @@ input:focus, select:focus { outline: none; box-shadow: 0 0 0 3px rgba(245, 158, 
 /* Tag Badges */
 .tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.68rem; font-weight: 600; white-space: nowrap; }
 
-/* 9. HOMEPAGE COMPONENTS (Hero, Asset Cards, Grid Layouts) */
+/* 9. HOMEPAGE COMPONENTS */
 .hero-card { text-align: center; padding: 32px 24px; }
 .hero-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; }
 .hero-trust-text { font-size: 0.82rem; color: var(--muted); max-width: 680px; margin: 0 auto; border-top: 1px dashed var(--border); padding-top: 16px; }
@@ -283,9 +353,77 @@ input:focus, select:focus { outline: none; box-shadow: 0 0 0 3px rgba(245, 158, 
 .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
 .data-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); }
 .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: #cbd5e1; }
+.data-table td a { color: var(--accent); }
 .data-table tr:hover td { background: rgba(245, 158, 11, 0.03); }
 
-/* 11. UTILITIES & FOOTER */
+/* 11. ASSET CLASS PAGES MODULE */
+.ac-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Landing Header Card */
+.ac-card-landing {
+  background: var(--ac-card-bg);
+  border: 1px solid var(--ac-border);
+  border-left: 5px solid var(--ac-primary);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.ac-card-landing h1 { font-size: 1.5rem; color: var(--ac-text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.ac-card-landing p { color: var(--ac-text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+.ac-meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
+.ac-pill { background: var(--ac-bg-body); border: 1px solid var(--ac-border); padding: 4px 10px; border-radius: 4px; color: var(--ac-text-muted); }
+.ac-pill strong { color: var(--ac-text-main); }
+
+.ac-section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+
+/* Table Components */
+.ac-table-responsive { width: 100%; overflow-x: auto; background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius-sm); }
+.ac-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+.ac-table th, .ac-table td { padding: 12px 16px; border-bottom: 1px solid var(--ac-border); white-space: nowrap; }
+.ac-table th { background: #1e293b; font-weight: 600; color: var(--ac-text-main); border-bottom: 2px solid var(--ac-border); }
+.ac-table td { color: #cbd5e1; }
+.ac-table td a { color: var(--ac-primary); }
+.ac-table tr:hover td { background: rgba(245, 158, 11, 0.03); }
+.ac-table tr:last-child td { border-bottom: none; }
+.ac-badge-risk { background: var(--ac-badge-risk-bg); color: var(--ac-badge-risk-text); font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+/* Live Viewport Card */
+.ac-card-viewport { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 16px; }
+.ac-viewport-container { max-height: 380px; overflow-y: auto; border: 1px solid var(--ac-border); border-radius: var(--radius-sm); background: var(--bg); }
+.ac-viewport-container iframe { width: 100%; height: 375px; border: 0; display: block; }
+.ac-extracted-content { padding: 16px; font-size: 0.85rem; max-height: 360px; overflow-y: auto; }
+.ac-source-links { margin-top: 12px; font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-source-links a { color: var(--ac-primary); text-decoration: none; font-weight: 500; }
+.ac-source-links a:hover { text-decoration: underline; }
+
+/* Transparency & Methodology */
+.ac-card-references { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 16px; font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-card-references ul { padding-left: 20px; margin-top: 8px; }
+
+/* Educational Modules */
+.ac-card-learning { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 20px; }
+.ac-learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
+.ac-learning-box { background: var(--ac-bg-body); border: 1px solid var(--ac-border); border-radius: var(--radius-sm); padding: 16px; }
+.ac-learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--ac-primary); }
+.ac-learning-box p, .ac-learning-box ol { font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-learning-box ol { padding-left: 16px; }
+
+/* Cross-Navigation Cards */
+.ac-card-also-visit { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 20px; }
+.ac-cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.ac-visit-card { border: 1px solid var(--ac-border); border-radius: var(--radius-sm); padding: 14px; text-decoration: none; color: var(--ac-text-main); transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; background: var(--bg); }
+.ac-visit-card:hover { border-color: var(--ac-primary); transform: translateY(-2px); text-decoration: none; }
+.ac-visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--ac-primary); }
+.ac-visit-card p { font-size: 0.8rem; color: var(--ac-text-muted); }
+.ac-visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--ac-primary); }
+
+/* 12. UTILITIES & FOOTER */
 .hidden { display: none !important; }
 .mt-12 { margin-top: 12px; }
 .mt-16 { margin-top: 16px; }
@@ -295,7 +433,7 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
 .footer-links a { margin: 0 8px; }
 .footer-updated { display: block; margin-top: 8px; font-size: 0.75rem; color: #64748b; }
 
-/* 12. RESPONSIVE BREAKPOINTS */
+/* 13. RESPONSIVE BREAKPOINTS */
 @media (max-width: 900px) {
   .tool-grid { grid-template-columns: 1fr; gap: 16px; }
   .col-explanation { border-left: none; border-top: 1px dashed var(--border); padding-left: 0; padding-top: 16px; }
@@ -310,8 +448,6 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
 @media (max-width: 600px) {
   .input-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .input-row label { min-width: auto; }
-  /*.nav-links a { margin-left: 14px; font-size: 0.8rem; }*/
-  /* NEW */
   .nav-links { gap: 14px; }
   .nav-links > a, .dropdown-toggle { font-size: 0.8rem; }
 }
