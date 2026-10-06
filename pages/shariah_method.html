@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shariah Methodology — onucrom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/master.css">
+  <style>
+    /* PAGE-SPECIFIC METHODOLOGY STYLES */
+    .hero-disclaimer { font-size: 0.85rem; color: var(--muted); max-width: 800px; margin: 16px auto 0; line-height: 1.6; border-top: 1px dashed var(--border); padding-top: 16px; text-align: left; }
+    
+    /* Principles Grid */
+    .principle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .principle-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; border-left: 3px solid var(--accent); }
+    .principle-card.red-border { border-left-color: var(--down); }
+    .principle-title { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 0.95rem; }
+    .principle-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* Flowchart / Stepper */
+    .flowchart { display: flex; flex-direction: column; gap: 0; margin-top: 20px; position: relative; }
+    .flow-step { display: flex; gap: 16px; align-items: flex-start; position: relative; padding-bottom: 24px; }
+    .flow-step:not(:last-child)::before { content: ''; position: absolute; left: 15px; top: 32px; bottom: 0; width: 2px; background: var(--border); }
+    .step-indicator { flex-shrink: 0; width: 32px; height: 32px; background: var(--card); border: 2px solid var(--accent); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: "JetBrains Mono", monospace; z-index: 2; }
+    .step-content { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; flex-grow: 1; }
+    .step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+    .step-title { font-weight: 700; color: var(--text); font-size: 1rem; }
+    .step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* Badges Grid */
+    .badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+    .result-badge-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    
+    @media (max-width: 768px) {
+      .flow-step:not(:last-child)::before { left: 15px; }
+      .step-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">onucrom</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="sanity-check.html">Sanity Check</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- HEADER & DISCLAIMER -->
+  <div class="card hero-card">
+    <div class="hero-slogan">Methodology & Framework</div>
+    <div class="hero-title">Shariah Screening Process</div>
+    <p class="subtitle" style="margin-bottom: 0;">Transparent, consistent, and logically routed.</p>
+    
+    <div class="hero-disclaimer">
+      <strong>⚠️ A Note Before Anything Else:</strong> 
+<p>Shariah compliance is not private property, and there is no single, universally agreed global standard for it. Different scholars, boards, and jurisdictions apply different — sometimes differing — thresholds and interpretations, each working in good faith from the same core sources. Onucrom is not a Shariah board. We do not issue fatwas, and we do not claim final authority over what is or isn't compliant for anyone's personal religious reliance.</p>
+
+    <p>What we do offer is a transparent, consistently-applied screening process, so you can see at a glance where something is likely to stand — and, just as importantly, see exactly why. Our rating is a directional signal, not a guarantee, and not a replacement for your own scholar's guidance on a matter of personal religious obligation.</p>
+    </div>
+  </div>
+
+  <!-- THE CORE PRINCIPLES -->
+  <div class="card">
+    <div class="card-title">1. The Core Principles (What we screen against)</div>
+    <p class="subtitle">Our screening methodology is rooted in identifying and isolating exposures to activities broadly recognized as non-compliant under Islamic commercial jurisprudence.</p>
+    
+    <div class="principle-grid">
+      <div class="principle-card red-border">
+        <div class="principle-title">Riba (Interest / Usury)</div>
+        <div class="principle-desc">Any guaranteed, fixed return on money lent. We screen out conventional debt instruments, fixed deposit schemes, and interest-bearing leverage structures.</div>
+      </div>
+      <div class="principle-card red-border">
+        <div class="principle-title">Gharar (Excessive Uncertainty)</div>
+        <div class="principle-desc">Contracts containing deception, unacceptable ambiguity, or undefined outcomes. We flag instruments lacking clear terms or relying on unknown future events.</div>
+      </div>
+      <div class="principle-card red-border">
+        <div class="principle-title">Maysir (Gambling / Speculation)</div>
+        <div class="principle-desc">Acquisition of wealth by chance rather than productive effort. We flag zero-sum derivative trading, betting structures, and pure speculative plays.</div>
+      </div>
+      <div class="principle-card red-border">
+        <div class="principle-title">Prohibited Sectors (Haram)</div>
+        <div class="principle-desc">Business activities explicitly forbidden, including: conventional banking/insurance, alcohol, pork, adult entertainment, and weapons manufacturing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO PATHS TO A RATING -->
+  <div class="card">
+    <div class="card-title">2. Our Assessment Approach</div>
+    <p class="subtitle">How an instrument receives its Shariah Alignment status on Onucrom.</p>
+    
+    <div class="choice-grid">
+      <div class="choice-card" style="border-left: 3px solid var(--up);">
+        <div class="choice-header">
+          <span class="choice-icon">📜</span>
+          <div class="choice-title">Path 1: Recognized Certification</div>
+        </div>
+        <div class="choice-desc">
+          If an asset is already confirmed by a recognized Shariah supervisory board, we do not second-guess it. To carry certified status, the asset must publicly disclose the certifying authority (and the committee chair, where available).
+        </div>
+      </div>
+      
+      <div class="choice-card" style="border-left: 3px solid var(--accent);">
+        <div class="choice-header">
+          <span class="choice-icon">⚙️</span>
+          <div class="choice-title">Path 2: Screened via Onucrom </div>
+        </div>
+        <div class="choice-desc">
+          Where no recognized certification exists, you can apply our own 4-step open framework. This produces an independent estimate (clearly labeled as such), not a formal fatwa or certification.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASSET LANES (TABLE) -->
+  <div class="card">
+    <div class="card-title">3. Enter Onucrom Evaluation: Routing by Asset Type</div>
+    <p class="subtitle">We respect your time. Our system routes the asset into one of three lanes, skipping questions that mathematically or structurally do not apply to the instrument type.</p>
+    
+    <div style="overflow-x: auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset Lane</th>
+            <th>Examples</th>
+            <th>Screening Path Applied</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lane A: Equity / Business</strong></td>
+            <td>Listed Stocks, Private Equity, Startups</td>
+            <td>Full Path: Certification → Prohibited Exposure → Financials → Instrument → Niyat</td>
+          </tr>
+          <tr>
+            <td><strong>Lane B: Debt / Fixed-Income</strong></td>
+            <td>Bonds, Sukuk, Treasuries</td>
+            <td>Instrument Core → Niyat (Skips business activity & financial ratios)</td>
+          </tr>
+          <tr>
+            <td><strong>Lane C: Deposit / Savings</strong></td>
+            <td>FDR, Savings Accounts, Mudaraba</td>
+            <td>Instrument Binary Check → Niyat (Fastest lane)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- THE 4-STEP SCREEN FLOWCHART -->
+  <div class="card">
+    <div class="card-title">4. The Four-Step Independent Screening process (Path 2)</div>
+    <p class="subtitle">Our systematic approach to evaluating uncertified Lane A assets, drawing upon AAOIFI financial ratio standards.</p>
+    
+    <div class="flowchart">
+      <!-- Step 1 -->
+      <div class="flow-step">
+        <div class="step-indicator">1</div>
+        <div class="step-content">
+          <div class="step-header">
+            <div class="step-title">Prohibited Exposure Filter</div>
+            <span class="tag tag-yellow">Equity/Business Only</span>
+          </div>
+          <div class="step-desc">
+            We analyze the core business activity. Does the company operate in areas treated as impermissible (e.g., conventional banking, alcohol)? If exposure is minor/incidental rather than central, we record the percentage extent rather than applying an automatic failure, looking at both presence and materiality.
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step">
+        <div class="step-indicator">2</div>
+        <div class="step-content">
+          <div class="step-header">
+            <div class="step-title">Financial Ratio Filter</div>
+            <span class="tag tag-yellow">Equity/Business Only</span>
+          </div>
+          <div class="step-desc">
+            We apply AAOIFI-aligned ratio thresholds to the company's balance sheet (e.g., debt-to-assets, illiquid-to-total assets). Alongside the standard ratios, we ask one additional question: <strong>are the business's primary banking relationships with Islamic banks?</strong> This isn't a hard ratio threshold — it's a signal of the business's own orientation, treated as a useful supporting input, not a standalone pass/fail.
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step">
+        <div class="step-indicator">3</div>
+        <div class="step-content">
+          <div class="step-header">
+            <div class="step-title">Instrument Filter</div>
+            <span class="tag tag-gray">All Investable Assets</span>
+          </div>
+          <div class="step-desc">
+            Separately from the business, we examine the investment vehicle itself. If a Halal business raises capital using a haram instrument (e.g., issuing an interest-bearing bond or guaranteeing a fixed return on equity), it is disqualified here.
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step">
+        <div class="step-indicator">4</div>
+        <div class="step-content">
+          <div class="step-header">
+            <div class="step-title">Niyat (Intention) Filter</div>
+            <span class="tag tag-gray">All Investable Assets</span>
+          </div>
+          <div class="step-desc">
+            This step is about you, not the instrument. We ask a short question about your intention going in: are you approaching this as genuine holding/participation, or primarily chasing short-term trading gains? Your answer never changes the instrument's rating. What it does is generate a separate comment if your stated approach leans toward a pattern Shariah scholarship generally discourages — excessive short-term speculation — as a gentle flag, not a judgment, and entirely independent of whether the instrument itself passes or fails.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE RESULTS -->
+  <div class="card">
+    <div class="card-title">5. Understanding Our Assessment</div>
+    <p class="subtitle">Every completed assessment returns a clear visual rating, specific flagged concerns (identifying exact sources of Riba, Gharar, etc.), and a validity timestamp.</p>
+    
+    <div class="badge-grid">
+      <div class="result-badge-card">
+        <span class="verdict-badge v-good">🟢 Green</span>
+        <span class="step-desc">Shariah Compliant / Certified</span>
+      </div>
+      <div class="result-badge-card">
+        <span class="verdict-badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6;">🔵 Blue</span>
+        <span class="step-desc">Appears Aligned (Not officially certified)</span>
+      </div>
+      <div class="result-badge-card">
+        <span class="verdict-badge v-neutral">⚪ Grey</span>
+        <span class="step-desc">Unclear / Insufficient Data</span>
+      </div>
+      <div class="result-badge-card">
+        <span class="verdict-badge v-caution">🟠 Orange</span>
+        <span class="step-desc">Appears Not Aligned (Minor flags)</span>
+      </div>
+      <div class="result-badge-card">
+        <span class="verdict-badge v-bad">🔴 Red</span>
+        <span class="step-desc">Non-Compliant (Major flags)</span>
+      </div>
+    </div>
+    
+    <div class="assessor-note mt-16">
+      <strong>Validity Note:</strong> Our assessment reflects data available at the time it was generated. Financial ratios shift and certifications expire. Every rating carries a review window; if an asset passes this window, it will display a "Needs Re-Review" flag.
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>Salim Afzal</strong> — Discover Verified Bangladeshi Investments With Market Insight</p>
+    <p class="footer-links">
+      <a href="about.html">About</a> ·
+      <a href="disclaimer.html">Disclaimer</a> ·
+      <a href="privacy.html">Privacy</a> ·
+      <a href="terms.html">Terms</a>
+    </p>
+    <span class="footer-updated">Methodology structurally aligned with prevailing shariah standards, pracitces and Islamic index frameworks. Last updated: June 2025.</span>
+  </footer>
+</body>
+</html>
