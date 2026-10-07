@@ -1,297 +1,485 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasury Securities & Yields | Onucrom</title>
-    <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --bg-body: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --success: #16a34a;
-            --warning-bg: #fef3c7;
-            --warning-text: #92400e;
-        }
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Assets G-Sec — Onucrom</title><style>/* ============================================
+   ONUCROM DESIGN SYSTEM — MASTER STYLESHEET
+   File: css/master.css
+   ============================================ */
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; padding: 20px 10px; }
-        .container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+/* 1. DESIGN TOKENS & RESET */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
 
-        /* 1. Landing Card */
-        .landing-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-left: 5px solid var(--primary);
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .landing-card h1 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .landing-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
-        .meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
-        .pill { background: var(--bg-body); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; color: var(--text-muted); }
-        .pill strong { color: var(--text-main); }
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #f59e0b;
+  --up: #22c55e;
+  --down: #ef4444;
+  --caution: #f59e0b;
+  --input-bg: #fef3c7;
+  --input-text: #1e293b;
+  --radius: 10px;
+  --radius-sm: 8px;
+  --font-mono: "JetBrains Mono", monospace;
+  --transition: all 0.2s ease;
 
-        /* General Section Titles */
-        .section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-        
-        /* Tables */
-        .table-responsive { width: 100%; overflow-x: auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
-        th, td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
-        th { background: #f1f5f9; font-weight: 600; color: var(--text-main); }
-        tr:last-child td { border-bottom: none; }
-        .badge-risk { background: #dcfce7; color: #166534; font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+  /* Asset Class Design Tokens */
+  --ac-primary: var(--accent);
+  --ac-primary-dark: #d97706;
+  --ac-bg-body: var(--bg);
+  --ac-card-bg: var(--card);
+  --ac-text-main: var(--text);
+  --ac-text-muted: var(--muted);
+  --ac-border: var(--border);
+  --ac-success: var(--up);
+  --ac-badge-risk-bg: rgba(34, 197, 94, 0.15);
+  --ac-badge-risk-text: var(--up);
+}
 
-        /* 3. Scrollable Data Section */
-        .scrollable-container {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-        }
-        .data-viewport {
-            max-height: 380px;
-            overflow-y: auto;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-        }
-        .data-viewport iframe { width: 100%; height: 375px; border: none; }
-        .source-links { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
-        .source-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
-        .source-links a:hover { text-decoration: underline; }
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
 
-        /* 4. References */
-        .references-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        .references-card ul { padding-left: 20px; margin-top: 8px; }
+a { 
+  color: var(--accent); 
+  text-decoration: none; 
+  transition: var(--transition); 
+}
+a:hover { 
+  text-decoration: underline; 
+  opacity: 0.9; 
+}
 
-        /* 5. Investor Learning */
-        .learning-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
-        .learning-box { background: var(--bg-body); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
-        .learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--primary-dark); }
-        .learning-box p, .learning-box ol { font-size: 0.85rem; color: var(--text-muted); }
-        .learning-box ol { padding-left: 16px; }
+/* 2. TYPOGRAPHY & LABEL ABSTRACTIONS */
+.font-mono, 
+.col-results, 
+.score-number, 
+.stat-num, 
+.stat-value, 
+.env-stat-value {
+  font-family: var(--font-mono);
+}
 
-        /* 6. Cross Links ("Also Visit") */
-        .also-visit {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
-        .visit-card {
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 14px;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: border-color 0.2s, transform 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .visit-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-        .visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--primary); }
-        .visit-card p { font-size: 0.8rem; color: var(--text-muted); }
-        .visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--primary); }
-    </style>
-</head>
-<body>
+/* Micro Labels (Uppercase Section Headers) */
+.section-label, 
+.input-group label, 
+.stat-label, 
+.env-stat-title, 
+.hero-slogan, 
+.data-table th, 
+.res-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
 
-<div class="container">
+/* 3. SURFACE & PANEL ABSTRACTIONS */
+/* Primary Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
-    <!-- 1. Landing Card -->
-    <section class="landing-card">
-        <h1>🏛️ Treasury Securities & Sovereign Yields</h1>
-        <p>Explore risk-free Bangladesh Government Treasury Bills (T-Bills) and Treasury Bonds (BGTB). Real-time primary auction benchmarks and secondary market yield estimates.</p>
-        <div class="meta-pills">
-            <span class="pill">ℹ️ Source: <strong>Bangladesh Bank (Debt Management Dept.)</strong></span>
-            <span class="pill">🔄 Refresh: <strong>Post-Auction Settlement / Daily</strong></span>
-            <span class="pill">🛡️ Risk Rating: <strong>Zero Credit Risk (Sovereign)</strong></span>
-        </div>
-    </section>
+/* Nested Inset Panels */
+.panel, 
+.col-results, 
+.question-block, 
+.radio-option, 
+.assessor-note, 
+.choice-card, 
+.trust-item, 
+.env-stat-card, 
+.asset-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
 
-    <!-- 2. Top-Level Summary Table -->
-    <section>
-        <div class="section-title">
-            <span>📊 Top-Level Market Summary</span>
-            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Current Cut-Off Yields</span>
-        </div>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Security Type</th>
-                        <th>Tenure</th>
-                        <th>Cut-Off Yield / Rate</th>
-                        <th>Previous Yield</th>
-                        <th>Trend</th>
-                        <th>Risk Profile</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Treasury Bill</strong></td>
-                        <td>91-Day</td>
-                        <td><strong>11.25%</strong></td>
-                        <td>11.15%</td>
-                        <td style="color: var(--success);">▲ +10 bps</td>
-                        <td><span class="badge-risk">Sovereign</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Treasury Bill</strong></td>
-                        <td>182-Day</td>
-                        <td><strong>11.50%</strong></td>
-                        <td>11.45%</td>
-                        <td style="color: var(--success);">▲ +5 bps</td>
-                        <td><span class="badge-risk">Sovereign</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Treasury Bill</strong></td>
-                        <td>364-Day</td>
-                        <td><strong>11.80%</strong></td>
-                        <td>11.80%</td>
-                        <td>➔ Stable</td>
-                        <td><span class="badge-risk">Sovereign</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Treasury Bond (BGTB)</strong></td>
-                        <td>5-Year</td>
-                        <td><strong>12.35%</strong></td>
-                        <td>12.25%</td>
-                        <td style="color: var(--success);">▲ +10 bps</td>
-                        <td><span class="badge-risk">Sovereign</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Treasury Bond (BGTB)</strong></td>
-                        <td>10-Year</td>
-                        <td><strong>12.60%</strong></td>
-                        <td>12.55%</td>
-                        <td style="color: var(--success);">▲ +5 bps</td>
-                        <td><span class="badge-risk">Sovereign</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+/* Hoverable Cards & Panels */
+.choice-card:hover, 
+.asset-card:hover, 
+.radio-option:hover { 
+  border-color: var(--accent); 
+}
+.choice-card:hover, 
+.asset-card:hover { 
+  transform: translateY(-2px); 
+  text-decoration: none; 
+}
 
-    <!-- 3. Full Data Section (Scrollable Frame / Embedded Web Content) -->
-    <section class="scrollable-container">
-        <div class="section-title">
-            <span>📜 Complete Auction Data & Yield Curve</span>
-            <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">Scrollable Live View</span>
-        </div>
-        
-        <div class="data-viewport">
-            <!-- Alternative 1: Embedded live element/page from BB if permitted by iframe headers -->
-            <iframe src="https://www.bb.org.bd/en/index.php/monetary/yieldcurve" title="Bangladesh Bank Yield Curve Data"></iframe>
-            
-            <!-- Alternative 2: HTML rendering of fetched sheet data if iframe is cross-origin restricted -->
-            <!-- 
-            <table>... Full 100+ rows of historical auction details ...</table>
-            -->
-        </div>
+/* 4. UNIFIED STATUS & COLOR SYSTEM */
+/* Text Color Indicators */
+.v-good, .tag-green, .stat-value.up, .env-stat-value.up, .score-low { color: var(--up); }
+.v-caution, .tag-yellow, .score-moderate, .score-high { color: var(--caution); }
+.v-bad, .tag-red, .score-critical, .stat-value.down, .env-stat-value.down { color: var(--down); }
+.v-neutral, .tag-gray, .stat-value.stable, .env-stat-value.stable { color: var(--muted); }
 
-        <div class="source-links">
-            🔗 <strong>Direct Source Links:</strong> 
-            <a href="https://www.bb.org.bd/en/index.php/monetary/yieldcurve" target="_blank" rel="noopener">Bangladesh Bank Official Yield Curve Page ↗</a> | 
-            <a href="https://www.bb.org.bd/en/index.php/monetary/auctioncalender" target="_blank" rel="noopener">Auction Calendar & PDF Downloads ↗</a>
-        </div>
-    </section>
+/* Background & Border Badges/Alerts */
+.v-good, .tag-green, .alert-pass { background: rgba(34, 197, 94, 0.12); }
+.v-caution, .tag-yellow, .alert-caution { background: rgba(245, 158, 11, 0.12); }
+.v-bad, .tag-red, .alert-warning { background: rgba(239, 68, 68, 0.12); }
+.v-neutral, .tag-gray { background: rgba(148, 163, 184, 0.12); }
 
-    <!-- 4. References & Transparency -->
-    <section class="references-card">
-        <strong>📌 Data Transparency & Methodology</strong>
-        <ul>
-            <li>Data is ingested from official public disclosures published by the Bangladesh Bank (BB) Debt Management Department[cite: 1].</li>
-            <li>Yields shown represent primary auction cut-off rates[cite: 1]. Secondary market trading yields on the Dhaka Stock Exchange (DSE) or over-the-counter (OTC) money market may vary slightly based on broker fees and market liquidity[cite: 1, 2].</li>
-            <li>Onucrom is a listing and discovery platform; we do not trade, execute purchases, or hold investor funds directly[cite: 1, 2].</li>
-        </ul>
-    </section>
+.v-good { border: 1px solid var(--up); }
+.v-caution { border: 1px solid var(--caution); }
+.v-bad { border: 1px solid var(--down); }
+.v-neutral { border: 1px solid var(--muted); }
 
-    <!-- 5. Investor Learning -->
-    <section class="learning-section">
-        <div class="section-title">
-            <span>📚 Investor Education: Treasury Securities</span>
-        </div>
-        <div class="learning-grid">
-            <div class="learning-box">
-                <h3>T-Bills vs. T-Bonds</h3>
-                <p><strong>Treasury Bills (T-Bills):</strong> Short-term investments (91, 182, 364 days). Issued at a discount and redeemed at par value.<br><br>
-                   <strong>Treasury Bonds (BGTB):</strong> Long-term instruments (2 to 20 years) paying fixed semi-annual coupon interest.</p>
-            </div>
-            <div class="learning-box">
-                <h3>How to Purchase in Bangladesh</h3>
-                <ol>
-                    <li>Open a Business Partner ID (BP-ID) with Bangladesh Bank via a scheduled bank or Primary Dealer.</li>
-                    <li>Open a Market Infrastructure (MI) Module trading account.</li>
-                    <li>Submit bids during scheduled primary auctions or trade on the DSE secondary market.</li>
-                </ol>
-            </div>
-            <div class="learning-box">
-                <h3>Shariah Alternative (Sukuk)</h3>
-                <p>Investors seeking Shariah-aligned sovereign instruments can explore <strong>Bangladesh Government Islamic Investment Bonds (BGIIB)</strong> and <strong>Government Ijarah Sukuk</strong> issued periodically by the treasury[cite: 2].</p>
-            </div>
-        </div>
-    </section>
+/* 5. NAVIGATION & DROPDOWNS */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { font-size: 1.4rem; font-weight: 800; color: var(--text); }
 
-    <!-- 6. Cross Links / Also Visit Row -->
-    <section class="also-visit">
-        <div class="section-title">
-            <span>🔍 Also Visit Under Explore Investment</span>
-        </div>
-        <div class="cards-row">
-            <a href="/fixed-deposits.html" class="visit-card">
-                <div>
-                    <h4>🏦 Bank Fixed Deposits (FDR)</h4>
-                    <p>Compare guaranteed interest rates across 60+ scheduled banks[cite: 1, 2].</p>
-                </div>
-                <div class="arrow">Explore FDRs →</div>
-            </a>
-            <a href="/shariah.html" class="visit-card">
-                <div>
-                    <h4>🌙 Shariah Investments</h4>
-                    <p>Filter screened halal stocks, Sukuk, and Islamic bank pools[cite: 1, 2].</p>
-                </div>
-                <div class="arrow">Explore Shariah →</div>
-            </a>
-            <a href="/stocks.html" class="visit-card">
-                <div>
-                    <h4>📈 DSE Equities & Stocks</h4>
-                    <p>Explore public market capitalization, returns, and sector trends[cite: 1, 2].</p>
-                </div>
-                <div class="arrow">Explore Stocks →</div>
-            </a>
-            <a href="/private-listings.html" class="visit-card">
-                <div>
-                    <h4>💼 Private Fundraising</h4>
-                    <p>Browse verified SME, startup, and asset expansion listings[cite: 1, 2].</p>
-                </div>
-                <div class="arrow">Explore Private →</div>
-            </a>
-        </div>
-    </section>
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 
-</div>
+.nav-links > a,
+.dropdown-toggle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  cursor: pointer;
+}
 
-</body>
-</html>
+.nav-links > a.active,
+.dropdown.active .dropdown-toggle,
+.dropdown-toggle.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Invisible hover bridge to prevent cursor gap dropouts */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+/* Dropdown Submenu Overlay */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  min-width: 190px;
+  padding: 6px 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* Reveal Menu on Hover OR via JS Class toggling (.open) */
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu a {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 6. FORMS & INPUTS */
+input[type="number"], input[type="text"], input[type="date"], select {
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-weight: 600;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
+  transition: var(--transition);
+}
+input:focus, select:focus { 
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3); 
+  border-color: var(--accent); 
+}
+
+.input-group, .form-section { margin-bottom: 20px; }
+.input-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.input-row label { font-size: 0.85rem; color: var(--text); min-width: 180px; }
+
+.radio-group { display: flex; flex-direction: column; gap: 8px; }
+.radio-option { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; padding: 6px 10px; cursor: pointer; }
+.radio-option input[type="radio"] { accent-color: var(--accent); transform: scale(1.1); }
+
+/* Buttons & Pills */
+.btn {
+  display: inline-block; 
+  background: var(--accent); 
+  color: #0f172a; 
+  font-weight: 700;
+  padding: 12px 24px; 
+  border: none; 
+  border-radius: 8px; 
+  font-size: 0.95rem; 
+  cursor: pointer;
+  transition: var(--transition); 
+  text-align: center;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-full { width: 100%; margin-top: 12px; }
+.btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+
+.pill-btn, .toggle-pill {
+  background: var(--bg); 
+  border: 1px solid var(--border); 
+  font-size: 0.8rem; 
+  cursor: pointer; 
+  transition: var(--transition);
+}
+.pill-btn { color: var(--muted); padding: 8px 14px; border-radius: 20px; }
+.pill-btn.active { background: var(--accent); color: #0f172a; font-weight: 700; border-color: var(--accent); }
+
+.toggle-pill { color: var(--text); padding: 10px 14px; border-radius: 8px; text-align: left; }
+.toggle-pill.selected { background: rgba(239, 68, 68, 0.15); border-color: var(--down); color: #f87171; font-weight: 600; }
+
+/* 7. TOOL CALCULATOR GRID (4 Columns Desktop) */
+.tool-grid { display: grid; grid-template-columns: 240px 200px 160px 1fr; gap: 20px; align-items: start; }
+.col-inputs { display: flex; flex-direction: column; gap: 12px; }
+.col-results { padding: 14px; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px; justify-content: center; height: 100%; }
+.res-item { display: flex; justify-content: space-between; gap: 8px; }
+.res-val { font-weight: 700; color: var(--text); }
+
+.col-verdict { display: flex; align-items: center; justify-content: center; height: 100%; }
+.verdict-badge { width: 100%; text-align: center; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+
+.col-explanation { font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; border-left: 2px solid var(--border); padding-left: 16px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.col-explanation ul { padding-left: 16px; margin-top: 4px; }
+
+/* 8. SANITY CHECK & EVALUATION COMPONENTS */
+.question-block { margin-bottom: 16px; padding: 16px; }
+.question-text { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+
+.score-display { text-align: center; padding: 24px; }
+.score-number { font-size: 3.5rem; font-weight: 800; }
+.score-label { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
+
+.alert { padding: 14px 18px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 0.85rem; line-height: 1.5; }
+.alert-warning { border-left: 3px solid var(--down); }
+.alert-caution { border-left: 3px solid var(--caution); }
+.alert-pass { border-left: 3px solid var(--up); }
+
+.assessor-note { padding: 16px; margin-top: 16px; font-style: italic; color: #cbd5e1; border-color: var(--accent); }
+
+/* Tag Badges */
+.tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.68rem; font-weight: 600; white-space: nowrap; }
+
+/* 9. HOMEPAGE COMPONENTS */
+.hero-card { text-align: center; padding: 32px 24px; }
+.hero-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; }
+.hero-trust-text { font-size: 0.82rem; color: var(--muted); max-width: 680px; margin: 0 auto; border-top: 1px dashed var(--border); padding-top: 16px; }
+
+.choice-grid, .trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 24px; }
+.choice-card { padding: 18px; display: flex; flex-direction: column; color: var(--text); }
+.choice-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.choice-icon { font-size: 1.2rem; }
+.choice-title { font-size: 0.95rem; font-weight: 700; }
+.choice-desc { font-size: 0.8rem; color: var(--muted); }
+
+.trust-item { padding: 16px; }
+.trust-item h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+.trust-item p { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+.stats-card { padding: 16px 24px; margin-bottom: 24px; }
+.stats-grid, .env-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-num { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+
+.asset-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.asset-card { padding: 20px; display: flex; flex-direction: column; gap: 10px; color: var(--text); }
+.asset-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.asset-card-title { font-weight: 700; font-size: 1rem; color: var(--accent); line-height: 1.3; }
+.asset-card-desc { font-size: 0.82rem; color: var(--muted); margin: 0; }
+.asset-card-stat { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); margin-top: auto; }
+.asset-card-link { font-size: 0.78rem; color: var(--accent); font-weight: 600; text-align: right; }
+
+.env-stat-card { padding: 16px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.env-stat-value { font-size: 1.2rem; font-weight: 700; }
+.env-stat-context { font-size: 0.65rem; color: var(--muted); }
+
+/* 10. DATA TABLES */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.data-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: #cbd5e1; }
+.data-table td a { color: var(--accent); }
+.data-table tr:hover td { background: rgba(245, 158, 11, 0.03); }
+
+/* 11. ASSET CLASS PAGES MODULE */
+.ac-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Landing Header Card */
+.ac-card-landing {
+  background: var(--ac-card-bg);
+  border: 1px solid var(--ac-border);
+  border-left: 5px solid var(--ac-primary);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.ac-card-landing h1 { font-size: 1.5rem; color: var(--ac-text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.ac-card-landing p { color: var(--ac-text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+.ac-meta-pills { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; }
+.ac-pill { background: var(--ac-bg-body); border: 1px solid var(--ac-border); padding: 4px 10px; border-radius: 4px; color: var(--ac-text-muted); }
+.ac-pill strong { color: var(--ac-text-main); }
+
+.ac-section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+
+/* Table Components */
+.ac-table-responsive { width: 100%; overflow-x: auto; background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius-sm); }
+.ac-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+.ac-table th, .ac-table td { padding: 12px 16px; border-bottom: 1px solid var(--ac-border); white-space: nowrap; }
+.ac-table th { background: #1e293b; font-weight: 600; color: var(--ac-text-main); border-bottom: 2px solid var(--ac-border); }
+.ac-table td { color: #cbd5e1; }
+.ac-table td a { color: var(--ac-primary); }
+.ac-table tr:hover td { background: rgba(245, 158, 11, 0.03); }
+.ac-table tr:last-child td { border-bottom: none; }
+.ac-badge-risk { background: var(--ac-badge-risk-bg); color: var(--ac-badge-risk-text); font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+/* Live Viewport Card */
+.ac-card-viewport { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 16px; }
+.ac-viewport-container { max-height: 380px; overflow-y: auto; border: 1px solid var(--ac-border); border-radius: var(--radius-sm); background: var(--bg); }
+.ac-viewport-container iframe { width: 100%; height: 375px; border: 0; display: block; }
+.ac-extracted-content { padding: 16px; font-size: 0.85rem; max-height: 360px; overflow-y: auto; }
+.ac-source-links { margin-top: 12px; font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-source-links a { color: var(--ac-primary); text-decoration: none; font-weight: 500; }
+.ac-source-links a:hover { text-decoration: underline; }
+
+/* Transparency & Methodology */
+.ac-card-references { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 16px; font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-card-references ul { padding-left: 20px; margin-top: 8px; }
+
+/* Educational Modules */
+.ac-card-learning { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 20px; }
+.ac-learning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px; }
+.ac-learning-box { background: var(--ac-bg-body); border: 1px solid var(--ac-border); border-radius: var(--radius-sm); padding: 16px; }
+.ac-learning-box h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--ac-primary); }
+.ac-learning-box p, .ac-learning-box ol { font-size: 0.85rem; color: var(--ac-text-muted); }
+.ac-learning-box ol { padding-left: 16px; }
+
+/* Cross-Navigation Cards */
+.ac-card-also-visit { background: var(--ac-card-bg); border: 1px solid var(--ac-border); border-radius: var(--radius); padding: 20px; }
+.ac-cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.ac-visit-card { border: 1px solid var(--ac-border); border-radius: var(--radius-sm); padding: 14px; text-decoration: none; color: var(--ac-text-main); transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; background: var(--bg); }
+.ac-visit-card:hover { border-color: var(--ac-primary); transform: translateY(-2px); text-decoration: none; }
+.ac-visit-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--ac-primary); }
+.ac-visit-card p { font-size: 0.8rem; color: var(--ac-text-muted); }
+.ac-visit-card .arrow { margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--ac-primary); }
+
+/* 12. UTILITIES & FOOTER */
+.hidden { display: none !important; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.empty-state { text-align: center; padding: 32px 16px; color: var(--muted); }
+
+footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+.footer-links a { margin: 0 8px; }
+.footer-updated { display: block; margin-top: 8px; font-size: 0.75rem; color: #64748b; }
+
+/* 13. RESPONSIVE BREAKPOINTS */
+@media (max-width: 900px) {
+  .tool-grid { grid-template-columns: 1fr; gap: 16px; }
+  .col-explanation { border-left: none; border-top: 1px dashed var(--border); padding-left: 0; padding-top: 16px; }
+  .asset-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .choice-grid, .trust-grid { grid-template-columns: 1fr; }
+  .stats-grid, .env-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 600px) {
+  .input-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .input-row label { min-width: auto; }
+  .nav-links { gap: 14px; }
+  .nav-links > a, .dropdown-toggle { font-size: 0.8rem; }
+}
+
+@media (max-width: 500px) {
+  .asset-cards-grid { grid-template-columns: 1fr; }
+  .env-stat-card { padding: 12px; }
+  .env-stat-value { font-size: 1rem; }
+}</style></head><body>
+<nav class="nav">
+  <div class="nav-brand">
+    <a href="index.html">onucrom</a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="">Home</a>
+    <div class="dropdown ">
+      <a href="#" class="dropdown-toggle ">Investments Checker</a>
+      <div class="dropdown-menu">
+        <a href="sanity-check.html" class="">Safety Checker</a><a href="shariah_screener.html" class="">Shariah Screener</a><a href="tools.html" class="">Trading Checks</a>
+      </div>
+    </div>
+    <div class="dropdown active">
+      <a href="#" class="dropdown-toggle active">Explore Investments</a>
+      <div class="dropdown-menu">
+        <a href="Assets-Stocks-dse.html" class="">Stocks</a><a href="Assets-Mutual-funds.html" class="">Mutual Funds</a><a href="Assets-G-sec.html" class="active">Treasury Securities</a><a href="Assets-Bank-deposits.html" class="">Bank Deposits</a><a href="Assets-Shanchaypatra.html" class="">Shanchaypatra</a><a href="Assets-Prize-bond.html" class="">Prize Bond</a>
+      </div>
+    </div>
+    <div class="dropdown ">
+      <a href="#" class="dropdown-toggle ">More</a>
+      <div class="dropdown-menu">
+        <a href="about.html" class="">About Onucrom</a><a href="undefined" class="">Our Methods</a><a href="pitch.html" class="">For Investors</a>
+      </div>
+    </div>
+  </div>
+</nav><main class="container" style="padding:20px;max-width:1200px;margin:0 auto;"><div class="card"><h1>Assets G-Sec Benchmark</h1><p class="subtitle">Live domestic yield benchmarks and comparative indicators.</p></div><div class="card" id="asset-data-block"><h2>Asset Market Rates</h2><div class="asset-cards-grid"><a href="stocks.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Stocks (DSE)</span><span class="tag tag-green">Shariah</span></div><p class="asset-card-desc">Public listed companies</p><div class="asset-card-stat"><span class="stat-label">Avg Annual Return</span><span class="stat-value up">10-14% ▲</span></div><span class="asset-card-link">Explore →</span></a><a href="govt-securities.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Govt Securities</span><span class="tag tag-gray">Standard</span></div><p class="asset-card-desc">Treasury bills &amp; bonds</p><div class="asset-card-stat"><span class="stat-label">Risk-Free Yield</span><span class="stat-value stable">6-8% →</span></div><span class="asset-card-link">Explore →</span></a><a href="private-listings.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Private Fundraising</span><span class="tag tag-yellow">Self-Cert</span></div><p class="asset-card-desc">SME &amp; startup equity</p><div class="asset-card-stat"><span class="stat-label">Projected Return</span><span class="stat-value up">15-25% ▲</span></div><span class="asset-card-link">Explore →</span></a><a href="fixed-deposits.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Fixed Deposits</span><span class="tag tag-gray">Standard</span></div><p class="asset-card-desc">Bank FDR schemes</p><div class="asset-card-stat"><span class="stat-label">Guaranteed Rate</span><span class="stat-value stable">6-8% →</span></div><span class="asset-card-link">Explore →</span></a><a href="shariah.html" class="asset-card"><div class="asset-card-header"><span class="asset-card-title">Shariah Compliant</span><span class="tag tag-green">Shariah</span></div><p class="asset-card-desc">Halal-screened only</p><div class="asset-card-stat"><span class="stat-label">Filtered Universe</span><span class="stat-value up">140+ stocks ▲</span></div><span class="asset-card-link">Explore →</span></a></div></div><div class="card"><h2>Macro Context</h2><div class="env-stats-grid"><div class="env-stat-card"><span class="env-stat-title">Inflation</span><span class="env-stat-value down">0.098 ▼</span><span class="env-stat-context">Bangladesh, May 2025</span></div><div class="env-stat-card"><span class="env-stat-title">Policy Rate</span><span class="env-stat-value stable">0.08 →</span><span class="env-stat-context">Bangladesh Bank</span></div><div class="env-stat-card"><span class="env-stat-title">USD/BDT</span><span class="env-stat-value up">117.5 ▲</span><span class="env-stat-context">Exchange Rate</span></div><div class="env-stat-card"><span class="env-stat-title">DSE Market Cap</span><span class="env-stat-value down">৳6.8L Cr ▼</span><span class="env-stat-context">Sun Jun 01 2025 00:00:00 GMT+0600 (Bangladesh Standard Time)</span></div><div class="env-stat-card"><span class="env-stat-title">Exports</span><span class="env-stat-value up">$5.2B ▲</span><span class="env-stat-context">Monthly, May 2025</span></div><div class="env-stat-card"><span class="env-stat-title">Forex Reserves</span><span class="env-stat-value stable">$25.4B →</span><span class="env-stat-context">Bangladesh Bank</span></div></div></div></main><footer><p style="font-size:0.8rem;color:var(--muted);margin-top:6px">Promoting sensible investments — Verify first, invest informed.</p><p style="margin-top:10px;font-size:0.8rem"><a href="index.html">Home</a> · <a href="tools.html">Tools</a> · <a href="sanity-check.html">Safety Checker</a> · || <a href="about.html">About</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="privacy.html">Privacy</a> · <a href="methodology.html">Sanity Methodology</a> · <a href="shariah_method.html">Shariah Method</a> · <a href="shariah_screener.html">Shariah Screener</a> · <a href="terms.html">Terms</a> · || <a href="sitemap.xml">Sitemap</a> · <a href="mailto:onucromcorp@gmail.com">Contact</a></p><p style="margin-top:8px;font-size:0.8rem">An Afzal Foundation Initiative</p><p style="font-size:0.75rem;color:#64748b">© 2026 Onucrom. Updated 10/7/2026, 4:06:23 PM Bangladesh Time</p></footer></body></html>
