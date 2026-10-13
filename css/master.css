@@ -260,7 +260,14 @@ a:hover {
 main { display: block; }
 
 /* 1.6 FORMS, BUTTONS & PILLS */
-input[type="number"], input[type="text"], input[type="date"], select {
+/* 1.6 FORMS, BUTTONS & PILLS */
+input[type="number"], 
+input[type="text"], 
+input[type="email"], 
+input[type="date"], 
+input[type="file"], 
+select, 
+textarea {
   background: var(--input-bg);
   color: var(--input-text);
   font-weight: 600;
@@ -272,12 +279,17 @@ input[type="number"], input[type="text"], input[type="date"], select {
   width: 100%;
   transition: var(--transition);
 }
-input:focus, select:focus { 
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input:focus, select:focus, textarea:focus { 
   outline: none; 
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3); 
   border-color: var(--accent); 
 }
-
 .input-group, .form-section { margin-bottom: 20px; }
 .input-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
 .input-row label { font-size: 0.85rem; color: var(--text); min-width: 180px; }
@@ -523,4 +535,30 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
   .asset-cards-grid { grid-template-columns: 1fr; }
   .env-stat-card { padding: 12px; }
   .env-stat-value { font-size: 1rem; }
+}
+/* CONTACT FORM & INPUT EXTENSIONS */
+input[type="email"], 
+textarea {
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-weight: 600;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
+  transition: var(--transition);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+input[type="email"]:focus, 
+textarea:focus { 
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3); 
+  border-color: var(--accent); 
 }
