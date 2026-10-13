@@ -1,289 +1,268 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Safety Checker | Onucrom</title><meta name="description" content="Four-step rapid diagnostic for investment proposals."><link rel="canonical" href="https://onucrom.com/sanity_check.html"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/master.css"></head><body><nav class="nav"><div class="nav-brand"><a href="/">onucrom</a></div><div class="nav-links"><a href="/">Home</a><div class="dropdown active"><a href="#" class="dropdown-toggle active" role="button" aria-haspopup="true">Investments Checker</a><div class="dropdown-menu"><a href="/sanity_check.html" class="active dropdown-top">Safety Checker</a><a href="/listing_inv.html" class="dropdown-top">Investment Listing</a><a href="/shariah_screener.html" class="dropdown-top">Shariah Screener</a><a href="/tools.html" class="dropdown-top">Trading Checks</a></div></div><div class="dropdown"><a href="#" class="dropdown-toggle" role="button" aria-haspopup="true">Explore Investments</a><div class="dropdown-menu"><a href="/Assets-Stocks-dse.html" class="dropdown-top">Stocks</a><a href="/Assets-Mutual-funds.html" class="dropdown-top">Mutual Funds</a><a href="/Assets-G-sec.html" class="dropdown-top">Treasury Securities</a><a href="/Assets-Bank-deposits.html" class="dropdown-top">Bank Deposits</a><a href="/Assets-Shanchaypatra.html" class="dropdown-top">Shanchaypatra</a><a href="/Assets-Prize-bond.html" class="dropdown-top">Prize Bond</a></div></div><div class="dropdown"><a href="#" class="dropdown-toggle" role="button" aria-haspopup="true">More</a><div class="dropdown-menu"><a href="/about.html" class="dropdown-top">About Onucrom</a><span class="dropdown-label">Our Methods</span><a href="/methodology.html">Safe Investing Checker</a><a href="/shariah_method.html">Shariah Methodology</a><a href="/pitch.html" class="dropdown-top">For Investors</a></div></div></div></nav><main id="main" class="page page-tool"><style>
-    .progress-bar-container { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; height: 10px; width: 100%; margin: 12px 0 20px 0; overflow: hidden; }
-    .progress-bar-fill { background: var(--accent); height: 100%; width: 0%; transition: width 0.3s ease; }
-    .milestone-badge { display: inline-block; background: rgba(245, 158, 11, 0.15); color: var(--accent); border: 1px solid var(--accent); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; margin-bottom: 12px; }
-    .micro-feedback { background: var(--bg); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 0.82rem; margin-top: 10px; color: var(--text); animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
-    .shariah-box { background: rgba(34, 197, 94, 0.05); border: 1px dashed #22c55e; border-radius: 8px; padding: 16px; margin-top: 20px; text-align: center; }
-  </style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Safety Checker | Onucrom</title><meta name="description" content="Four-step rapid diagnostic for investment proposals."><link rel="canonical" href="https://onucrom.com/sanity_check.html"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/master.css"></head><body><nav class="nav"><div class="nav-brand"><a href="/">onucrom</a></div><div class="nav-links"><a href="/">Home</a><div class="dropdown active"><a href="#" class="dropdown-toggle active" role="button" aria-haspopup="true">Investments Checker</a><div class="dropdown-menu"><a href="/sanity_check.html" class="active dropdown-top">Safety Checker</a><a href="/listing_inv.html" class="dropdown-top">Investment Listing</a><a href="/shariah_screener.html" class="dropdown-top">Shariah Screener</a><a href="/tools.html" class="dropdown-top">Trading Checks</a></div></div><div class="dropdown"><a href="#" class="dropdown-toggle" role="button" aria-haspopup="true">Explore Investments</a><div class="dropdown-menu"><a href="/Assets-Stocks-dse.html" class="dropdown-top">Stocks</a><a href="/Assets-Mutual-funds.html" class="dropdown-top">Mutual Funds</a><a href="/Assets-G-sec.html" class="dropdown-top">Treasury Securities</a><a href="/Assets-Bank-deposits.html" class="dropdown-top">Bank Deposits</a><a href="/Assets-Shanchaypatra.html" class="dropdown-top">Shanchaypatra</a><a href="/Assets-Prize-bond.html" class="dropdown-top">Prize Bond</a></div></div><div class="dropdown"><a href="#" class="dropdown-toggle" role="button" aria-haspopup="true">More</a><div class="dropdown-menu"><a href="/about.html" class="dropdown-top">About Onucrom</a><span class="dropdown-label">Our Methods</span><a href="/methodology.html">Safe Investing Checker</a><a href="/shariah_method.html">Shariah Methodology</a><a href="/pitch.html" class="dropdown-top">For Investors</a></div></div></div></nav><main id="main" class="page page-tool"><!-- HERO SECTION -->
+<div class="card hero-card">
+  <div class="hero-slogan">Free · No Account Needed · Under 5 Minutes</div>
+  <div class="hero-title">Deep Investment Sanity Check</div>
+  <p class="subtitle">An interactive due diligence assessment designed specifically for Bangladeshi private deals, SMEs, and equity offers.</p>
+</div>
 
-  <!-- HERO SECTION -->
-  <div class="card hero-card">
-    <div class="hero-slogan">Free · No Account Needed · Under 5 Minutes</div>
-    <div class="hero-title">Deep Investment Sanity Check</div>
-    <p class="subtitle">An interactive due diligence assessment designed specifically for Bangladeshi private deals, SMEs, and equity offers.</p>
+<!-- QUICK DATABASE SEARCH -->
+<div class="card">
+  <div class="card-title">🔍 Quick Database Match</div>
+  <p class="subtitle">Check if this investment is already flagged or listed in the Onucrom database.</p>
+  <div class="input-row">
+    <input type="text" id="dbSearchInput" placeholder="Enter entity or project name (e.g., ABC Agro)">
+    <button type="button" class="btn" style="white-space:nowrap" onclick="SanityEngine.checkDatabase(); return false;">Check DB</button>
+  </div>
+  <div id="dbSearchResult" class="mt-12"></div>
+</div>
+
+<!-- MILESTONE FORM CONTAINER -->
+<div class="card" id="wizardCard">
+  <div id="wizardHeader">
+    <span class="milestone-badge" id="milestoneBadge">Milestone 1 of 4: Phase 1</span>
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progressBar" style="width: 25%;"></div>
+    </div>
   </div>
 
-  <!-- QUICK DATABASE SEARCH (CHECK FIRST) -->
-  <div class="card">
-    <div class="card-title">🔍 Quick Database Match</div>
-    <p class="subtitle">Check if this investment is already flagged or listed in the Onucrom database.</p>
-    <div class="input-row">
-      <input type="text" id="dbSearchInput" placeholder="Enter entity or project name (e.g., ABC Agro)">
-      <button class="btn" style="white-space:nowrap" onclick="SanityEngine.checkDatabase()">Check DB</button>
+  <form id="sanityForm" onsubmit="return false;">
+    <!-- STEP 1: ENTITY & SOURCE -->
+    <div id="step1" class="wizard-step">
+      <div class="card-title">Phase 1: Entity & Channel Verification</div>
+      
+      <div class="question-block">
+        <div class="question-text">1. What is the name of the investment/organization?</div>
+        <input type="text" id="q_name" placeholder="Entity name">
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">2. Where did you first discover this investment opportunity?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_source" value="facebook" onchange="SanityEngine.triggerFeedback(1, 'fb')"> Facebook / Social Media Ad</label>
+          <label class="radio-option"><input type="radio" name="q_source" value="whatsapp" onchange="SanityEngine.triggerFeedback(1, 'wa')"> WhatsApp / Telegram Group Forward</label>
+          <label class="radio-option"><input type="radio" name="q_source" value="referral" onchange="SanityEngine.triggerFeedback(1, 'ref')"> Friend or Family Recommendation</label>
+          <label class="radio-option"><input type="radio" name="q_source" value="official" onchange="SanityEngine.triggerFeedback(1, 'off')"> Official Website / Registered Broker</label>
+        </div>
+        <div id="fb_feedback_1"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">3. What is the legal formation of the enterprise?</div>
+        <select id="q_firm" onchange="SanityEngine.triggerFeedback(1, 'firm')">
+          <option value="">-- Select Legal Structure --</option>
+          <option value="pvt">Private Limited Company (Pvt Ltd)</option>
+          <option value="partnership">Partnership Firm</option>
+          <option value="proprietorship">Sole Proprietorship</option>
+          <option value="individual">Individual Person (No Entity)</option>
+          <option value="unclear">Unclear / Not Stated</option>
+        </select>
+        <div id="fb_feedback_firm"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">4. Is there a verified physical office or operational site you can visit?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_physical" value="yes"> Yes, visited and verified operations</label>
+          <label class="radio-option"><input type="radio" name="q_physical" value="claimed"> Address provided, but haven't visited</label>
+          <label class="radio-option"><input type="radio" name="q_physical" value="no"> Online only / No physical address</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">5. Is the company registered with RJSC, Bangladesh Bank, or BSEC?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_reg" value="verified"> Yes, registration document verified</label>
+          <label class="radio-option"><input type="radio" name="q_reg" value="claimed"> Claimed, but no document shown</label>
+          <label class="radio-option"><input type="radio" name="q_reg" value="no"> No registration</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-full" onclick="SanityEngine.nextStep(2)">Continue to Phase 2 →</button>
     </div>
-    <div id="dbSearchResult" class="mt-12"></div>
+
+    <!-- STEP 2: FINANCIAL RETURNS -->
+    <div id="step2" class="wizard-step hidden">
+      <div class="card-title">Phase 2: Financial Terms & Return Logic</div>
+
+      <div class="question-block">
+        <div class="question-text">6. What is the stated annual return percentage (%)?</div>
+        <input type="number" id="q_return" placeholder="e.g. 24" oninput="SanityEngine.triggerFeedback(2, 'return')">
+        <div id="fb_feedback_return"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">7. How are the returns described?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_guarantee" value="guaranteed" onchange="SanityEngine.triggerFeedback(2, 'guarantee')"> Guaranteed / Fixed Monthly Return</label>
+          <label class="radio-option"><input type="radio" name="q_guarantee" value="projected"> Projected / Profit-Loss Sharing (Variable)</label>
+        </div>
+        <div id="fb_feedback_guarantee"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">8. What is the investment instrument type?</div>
+        <select id="q_type" onchange="SanityEngine.triggerFeedback(2, 'type')">
+          <option value="">-- Select Type --</option>
+          <option value="equity">Equity / Share Holding</option>
+          <option value="deposit">Deposit Scheme / Fixed Return</option>
+          <option value="murabaha">Murabaha / Cost-Plus Asset Purchase</option>
+          <option value="debt">Private Loan / Debt Security</option>
+        </select>
+        <div id="fb_feedback_type"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">9. When do payouts begin relative to capital investment?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_payout" value="immediate" onchange="SanityEngine.triggerFeedback(2, 'payout')"> Immediately (Month 1)</label>
+          <label class="radio-option"><input type="radio" name="q_payout" value="gestation"> After a clear business gestation period (e.g., 3–6 months)</label>
+          <label class="radio-option"><input type="radio" name="q_payout" value="maturity"> At project completion / maturity</label>
+        </div>
+        <div id="fb_feedback_payout"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">10. Why is the business seeking retail capital instead of a bank loan (9–14% rate)?</div>
+        <select id="q_bank_reason">
+          <option value="valid">Early stage / Equity expansion (Banks don't give equity)</option>
+          <option value="partial">Asset-light business / Unfavorable bank collateral rules</option>
+          <option value="vague">They claim "banks take too long" or give no valid reason</option>
+          <option value="rejected">Bank rejected their credit proposal</option>
+        </select>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn btn-secondary btn-full" onclick="SanityEngine.prevStep(1)">← Back</button>
+        <button type="button" class="btn btn-full" onclick="SanityEngine.nextStep(3)">Continue to Phase 3 →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: RED FLAGS -->
+    <div id="step3" class="wizard-step hidden">
+      <div class="card-title">Phase 3: Legal Protections & Pressure Tactics</div>
+
+      <div class="question-block">
+        <div class="question-text">11. What documentation will you sign BEFORE sending funds?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_docs" value="stamped"> Registered / Stamped Legal Agreement (300 BDT Stamp)</label>
+          <label class="radio-option"><input type="radio" name="q_docs" value="un-stamped"> Plain paper agreement / Cheque only</label>
+          <label class="radio-option"><input type="radio" name="q_docs" value="none"> Verbal promise / Social media chat receipt</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">12. Is there sales pressure or "limited quota" urgency applied?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_pressure" value="urgent" onchange="SanityEngine.triggerFeedback(3, 'pressure')"> Heavy pressure ("Offer expires in 24 hours / Slots filling fast")</label>
+          <label class="radio-option"><input type="radio" name="q_pressure" value="none"> Normal timeline / Encouraged due diligence</label>
+        </div>
+        <div id="fb_feedback_pressure"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">13. Does the offering team provide historical audited financial statements?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_audit" value="yes"> Yes, independently audited accounts shown</label>
+          <label class="radio-option"><input type="radio" name="q_audit" value="internal"> Internal / Management accounts only</label>
+          <label class="radio-option"><input type="radio" name="q_audit" value="none"> No financial statements provided</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">14. Is capital pooled into a personal bank account or a business corporate account?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_account" value="corporate"> Company Official Account</label>
+          <label class="radio-option"><input type="radio" name="q_account" value="personal"> Personal Bank / Mobile Financial Services (bKash/Nagad)</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">15. Are you offered commissions to recruit other investors?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_mlm" value="yes" onchange="SanityEngine.triggerFeedback(3, 'mlm')"> Yes, multi-tier / referral commission</label>
+          <label class="radio-option"><input type="radio" name="q_mlm" value="no"> No referral rewards</label>
+        </div>
+        <div id="fb_feedback_mlm"></div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">16. What is the exit / capital lock-in period?</div>
+        <select id="q_lockin">
+          <option value="clear">Clear exit terms in writing</option>
+          <option value="long">Strict lock-in without clear exit path</option>
+          <option value="vague">Vague ("You can leave whenever" without process)</option>
+        </select>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn btn-secondary btn-full" onclick="SanityEngine.prevStep(2)">← Back</button>
+        <button type="button" class="btn btn-full" onclick="SanityEngine.nextStep(4)">Continue to Final Phase →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: OPERATIONAL DUE DILIGENCE -->
+    <div id="step4" class="wizard-step hidden">
+      <div class="card-title">Phase 4: Operational Due Diligence</div>
+
+      <div class="question-block">
+        <div class="question-text">17. Have you met the founders/key managers in person?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_founder_meet" value="yes"> Yes, in-person meeting conducted</label>
+          <label class="radio-option"><input type="radio" name="q_founder_meet" value="video"> Video call only</label>
+          <label class="radio-option"><input type="radio" name="q_founder_meet" value="no"> Never met / Anonymous founders</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">18. Are the underlying assets (e.g., cows, land, inventory) insured?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_insurance" value="yes"> Insured by licensed insurance firm</label>
+          <label class="radio-option"><input type="radio" name="q_insurance" value="self"> "Self-insured" or unverified reserve fund</label>
+          <label class="radio-option"><input type="radio" name="q_insurance" value="no"> Uninsured / Not applicable</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">19. Does the business rely on a single client, supplier, or key person?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_concentration" value="high"> Yes, single dependency</label>
+          <label class="radio-option"><input type="radio" name="q_concentration" value="moderate"> Diversified operations</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">20. Is there an independent party or trustee monitoring funds?</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="q_trustee" value="yes"> Yes, independent trustee / escrow</label>
+          <label class="radio-option"><input type="radio" name="q_trustee" value="no"> No independent oversight</label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-text">21. Submit Role (Help build transparency)</div>
+        <select id="q_role">
+          <option value="investor">Prospective Investor</option>
+          <option value="investee">Founder / Business Representative</option>
+          <option value="analyst">Analyst / Curious Researcher</option>
+        </select>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn btn-secondary btn-full" onclick="SanityEngine.prevStep(3)">← Back</button>
+        <button type="button" class="btn btn-full" onclick="SanityEngine.generateAssessment()">Generate Diagnostic Assessment 🚀</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- RESULTS PANEL -->
+<div class="card hidden" id="resultsCard">
+  <div class="card-title">📊 Qualitative Sanity Check Diagnostic</div>
+  <div id="resultsSummary"></div>
+
+  <div style="margin-top:24px; display:flex; gap:12px;">
+    <button type="button" class="btn" onclick="SanityEngine.submitToDatabase()">📌 Submit Entry to Onucrom Public Registry</button>
+    <button type="button" class="btn btn-secondary" onclick="window.location.reload()">Reset Diagnostic</button>
   </div>
-
-  <!-- MILESTONE FORM CONTAINER -->
-  <div class="card" id="wizardCard">
-    <div id="wizardHeader">
-      <span class="milestone-badge" id="milestoneBadge">Milestone 1 of 4: Entity & Channel</span>
-      <div class="progress-bar-container">
-        <div class="progress-bar-fill" id="progressBar"></div>
-      </div>
-    </div>
-
-    <form id="sanityForm" onsubmit="return false;">
-      <!-- STEP 1: ENTITY & SOURCE (5 Qs) -->
-      <div id="step1" class="wizard-step">
-        <div class="card-title">Phase 1: Entity & Channel Verification</div>
-        
-        <div class="question-block">
-          <div class="question-text">1. What is the name of the investment/organization?</div>
-          <input type="text" id="q_name" placeholder="Entity name">
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">2. Where did you first discover this investment opportunity?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_source" value="facebook" onchange="SanityEngine.triggerFeedback(1, 'fb')"> Facebook / Social Media Ad</label>
-            <label class="radio-option"><input type="radio" name="q_source" value="whatsapp" onchange="SanityEngine.triggerFeedback(1, 'wa')"> WhatsApp / Telegram Group Forward</label>
-            <label class="radio-option"><input type="radio" name="q_source" value="referral" onchange="SanityEngine.triggerFeedback(1, 'ref')"> Friend or Family Recommendation</label>
-            <label class="radio-option"><input type="radio" name="q_source" value="official" onchange="SanityEngine.triggerFeedback(1, 'off')"> Official Website / Registered Broker</label>
-          </div>
-          <div id="fb_feedback_1"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">3. What is the legal formation of the enterprise?</div>
-          <select id="q_firm" onchange="SanityEngine.triggerFeedback(1, 'firm')">
-            <option value="">-- Select Legal Structure --</option>
-            <option value="pvt">Private Limited Company (Pvt Ltd)</option>
-            <option value="partnership">Partnership Firm</option>
-            <option value="proprietorship">Sole Proprietorship</option>
-            <option value="individual">Individual Person (No Entity)</option>
-            <option value="unclear">Unclear / Not Stated</option>
-          </select>
-          <div id="fb_feedback_firm"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">4. Is there a verified physical office or operational site you can visit?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_physical" value="yes"> Yes, visited and verified operations</label>
-            <label class="radio-option"><input type="radio" name="q_physical" value="claimed"> Address provided, but haven't visited</label>
-            <label class="radio-option"><input type="radio" name="q_physical" value="no"> Online only / No physical address</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">5. Is the company registered with RJSC, Bangladesh Bank, or BSEC?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_reg" value="verified"> Yes, registration document verified</label>
-            <label class="radio-option"><input type="radio" name="q_reg" value="claimed"> Claimed, but no document shown</label>
-            <label class="radio-option"><input type="radio" name="q_reg" value="no"> No registration</label>
-          </div>
-        </div>
-
-        <button class="btn btn-full" onclick="SanityEngine.nextStep(2)">Continue to Phase 2 →</button>
-      </div>
-
-      <!-- STEP 2: FINANCIAL RETURNS & CLAIMS (5 Qs) -->
-      <div id="step2" class="wizard-step hidden">
-        <div class="card-title">Phase 2: Financial Terms & Return Logic</div>
-
-        <div class="question-block">
-          <div class="question-text">6. What is the stated annual return percentage (%)?</div>
-          <input type="number" id="q_return" placeholder="e.g. 24" oninput="SanityEngine.triggerFeedback(2, 'return')">
-          <div id="fb_feedback_return"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">7. How are the returns described?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_guarantee" value="guaranteed" onchange="SanityEngine.triggerFeedback(2, 'guarantee')"> Guaranteed / Fixed Monthly Return</label>
-            <label class="radio-option"><input type="radio" name="q_guarantee" value="projected"> Projected / Profit-Loss Sharing (Variable)</label>
-          </div>
-          <div id="fb_feedback_guarantee"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">8. What is the investment instrument type?</div>
-          <select id="q_type" onchange="SanityEngine.triggerFeedback(2, 'type')">
-            <option value="">-- Select Type --</option>
-            <option value="equity">Equity / Share Holding</option>
-            <option value="deposit">Deposit Scheme / Fixed Return</option>
-            <option value="murabaha">Murabaha / Cost-Plus Asset Purchase</option>
-            <option value="debt">Private Loan / Debt Security</option>
-          </select>
-          <div id="fb_feedback_type"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">9. When do payouts begin relative to capital investment?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_payout" value="immediate" onchange="SanityEngine.triggerFeedback(2, 'payout')"> Immediately (Month 1)</label>
-            <label class="radio-option"><input type="radio" name="q_payout" value="gestation"> After a clear business gestation period (e.g., 3–6 months)</label>
-            <label class="radio-option"><input type="radio" name="q_payout" value="maturity"> At project completion / maturity</label>
-          </div>
-          <div id="fb_feedback_payout"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">10. Why is the business seeking retail capital instead of a bank loan (9–14% rate)?</div>
-          <select id="q_bank_reason">
-            <option value="valid">Early stage / Equity expansion (Banks don't give equity)</option>
-            <option value="partial">Asset-light business / Unfavorable bank collateral rules</option>
-            <option value="vague">They claim "banks take too long" or give no valid reason</option>
-            <option value="rejected">Bank rejected their credit proposal</option>
-          </select>
-        </div>
-
-        <div style="display:flex; gap:10px;">
-          <button class="btn btn-secondary btn-full" onclick="SanityEngine.prevStep(1)">← Back</button>
-          <button class="btn btn-full" onclick="SanityEngine.nextStep(3)">Continue to Phase 3 →</button>
-        </div>
-      </div>
-
-      <!-- STEP 3: LEGAL & BEHAVIORAL RED FLAGS (6 Qs) -->
-      <div id="step3" class="wizard-step hidden">
-        <div class="card-title">Phase 3: Legal Protections & Pressure Tactics</div>
-
-        <div class="question-block">
-          <div class="question-text">11. What documentation will you sign BEFORE sending funds?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_docs" value="stamped"> Registered / Stamped Legal Agreement (300 BDT Stamp)</label>
-            <label class="radio-option"><input type="radio" name="q_docs" value="un-stamped"> Plain paper agreement / Cheque only</label>
-            <label class="radio-option"><input type="radio" name="q_docs" value="none"> Verbal promise / Social media chat receipt</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">12. Is there sales pressure or "limited quota" urgency applied?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_pressure" value="urgent" onchange="SanityEngine.triggerFeedback(3, 'pressure')"> Heavy pressure ("Offer expires in 24 hours / Slots filling fast")</label>
-            <label class="radio-option"><input type="radio" name="q_pressure" value="none"> Normal timeline / Encouraged due diligence</label>
-          </div>
-          <div id="fb_feedback_pressure"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">13. Does the offering team provide historical audited financial statements?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_audit" value="yes"> Yes, independently audited accounts shown</label>
-            <label class="radio-option"><input type="radio" name="q_audit" value="internal"> Internal / Management accounts only</label>
-            <label class="radio-option"><input type="radio" name="q_audit" value="none"> No financial statements provided</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">14. Is capital pooled into a personal bank account or a business corporate account?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_account" value="corporate"> Company Official Account</label>
-            <label class="radio-option"><input type="radio" name="q_account" value="personal"> Personal Bank / Mobile Financial Services (bKash/Nagad)</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">15. Are you offered commissions to recruit other investors?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_mlm" value="yes" onchange="SanityEngine.triggerFeedback(3, 'mlm')"> Yes, multi-tier / referral commission</label>
-            <label class="radio-option"><input type="radio" name="q_mlm" value="no"> No referral rewards</label>
-          </div>
-          <div id="fb_feedback_mlm"></div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">16. What is the exit / capital lock-in period?</div>
-          <select id="q_lockin">
-            <option value="clear">Clear exit terms in writing</option>
-            <option value="long">Strict lock-in without clear exit path</option>
-            <option value="vague">Vague ("You can leave whenever" without process)</option>
-          </select>
-        </div>
-
-        <div style="display:flex; gap:10px;">
-          <button class="btn btn-secondary btn-full" onclick="SanityEngine.prevStep(2)">← Back</button>
-          <button class="btn btn-full" onclick="SanityEngine.nextStep(4)">Continue to Final Phase →</button>
-        </div>
-      </div>
-
-      <!-- STEP 4: OPERATIONAL DUE DILIGENCE (5 Qs) -->
-      <div id="step4" class="wizard-step hidden">
-        <div class="card-title">Phase 4: Operational Due Diligence</div>
-
-        <div class="question-block">
-          <div class="question-text">17. Have you met the founders/key managers in person?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_founder_meet" value="yes"> Yes, in-person meeting conducted</label>
-            <label class="radio-option"><input type="radio" name="q_founder_meet" value="video"> Video call only</label>
-            <label class="radio-option"><input type="radio" name="q_founder_meet" value="no"> Never met / Anonymous founders</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">18. Are the underlying assets (e.g., cows, land, inventory) insured?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_insurance" value="yes"> Insured by licensed insurance firm</label>
-            <label class="radio-option"><input type="radio" name="q_insurance" value="self"> "Self-insured" or unverified reserve fund</label>
-            <label class="radio-option"><input type="radio" name="q_insurance" value="no"> Uninsured / Not applicable</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">19. Does the business rely on a single client, supplier, or key person?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_concentration" value="high"> Yes, single dependency</label>
-            <label class="radio-option"><input type="radio" name="q_concentration" value="moderate"> Diversified operations</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">20. Is there an independent party or trustee monitoring funds?</div>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="q_trustee" value="yes"> Yes, independent trustee / escrow</label>
-            <label class="radio-option"><input type="radio" name="q_trustee" value="no"> No independent oversight</label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-text">21. Submit Role (Help build transparency)</div>
-          <select id="q_role">
-            <option value="investor">Prospective Investor</option>
-            <option value="investee">Founder / Business Representative</option>
-            <option value="analyst">Analyst / Curious Researcher</option>
-          </select>
-        </div>
-
-        <div style="display:flex; gap:10px;">
-          <button class="btn btn-secondary btn-full" onclick="SanityEngine.prevStep(3)">← Back</button>
-          <button class="btn btn-full" onclick="SanityEngine.generateAssessment()">Generate Diagnostic Assessment 🚀</button>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!-- RESULTS PANEL (Subjective Summary + Mitigants) -->
-  <div class="card hidden" id="resultsCard">
-    <div class="card-title">📊 Qualitative Sanity Check Diagnostic</div>
-    
-    <div id="resultsSummary"></div>
-
-    <div class="shariah-box">
-      <strong>🌙 Want Shariah Compliance Verification?</strong>
-      <p style="font-size:0.82rem; color:var(--muted); margin: 6px 0 12px 0;">
-        If you require Shariah-compliant structuring (Murabaha, Mudaraba, Musharaka), run our dedicated compliance check.
-      </p>
-      <a href="https://onucrom.com/shariah-checker" class="btn btn-secondary" target="_blank">Open Shariah Compliance Checker →</a>
-    </div>
-
-    <div style="margin-top:24px; display:flex; gap:12px;">
-      <button class="btn" onclick="SanityEngine.submitToDatabase()">📌 Submit Entry to Onucrom Public Registry</button>
-      <button class="btn btn-secondary" onclick="window.location.reload()">Reset Diagnostic</button>
-    </div>
-    <div id="submissionStatus" class="mt-12"></div>
-  </div>
-
-
- <?!= include('js/sanity-engine.js') ?></main><footer><p class="footer-tagline">Promoting sensible investments — Verify first, invest informed.</p><p class="footer-links"><a href="/">Home</a> · <a href="/tools.html">Tools</a> · <a href="/sanity_check.html">Safety Checker</a> · <a href="/listing_inv.html">Investment Listing</a> · <a href="/shariah_screener.html">Shariah Screener</a> · <a href="/about.html">About</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/privacy.html">Privacy</a> · <a href="/methodology.html">Sanity Methodology</a> · <a href="/shariah_method.html">Shariah Method</a> · <a href="/terms.html">Terms</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="mailto:onucromcorp@gmail.com">Contact</a></p><p class="footer-tagline">An Afzal Foundation Initiative</p><span class="footer-updated">© 2026 Onucrom. Updated 2026-10-12 21:39 Bangladesh Time</span></footer><script>(function(){var d=document.querySelectorAll(".dropdown");d.forEach(function(x){x.querySelector(".dropdown-toggle").addEventListener("click",function(e){e.preventDefault();var o=x.classList.contains("open");d.forEach(function(y){y.classList.remove("open")});if(!o)x.classList.add("open")})});document.addEventListener("click",function(e){if(!e.target.closest(".dropdown"))d.forEach(function(y){y.classList.remove("open")})})})();</script><script src="/js/sanity-check-ui.js"></script><script src="/js/sanity-check-score.js"></script><script src="/js/sanity-check-db.js"></script></body></html>
+  <div id="submissionStatus" class="mt-12"></div>
+</div></main><footer><p class="footer-tagline">Promoting sensible investments — Verify first, invest informed.</p><p class="footer-links"><a href="/">Home</a> · <a href="/tools.html">Tools</a> · <a href="/sanity_check.html">Safety Checker</a> · <a href="/listing_inv.html">Investment Listing</a> · <a href="/shariah_screener.html">Shariah Screener</a> · <a href="/about.html">About</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/privacy.html">Privacy</a> · <a href="/methodology.html">Sanity Methodology</a> · <a href="/shariah_method.html">Shariah Method</a> · <a href="/terms.html">Terms</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="mailto:onucromcorp@gmail.com">Contact</a></p><p class="footer-tagline">An Afzal Foundation Initiative</p><span class="footer-updated">© 2026 Onucrom. Updated 2026-10-13 23:12 Bangladesh Time</span></footer><script>(function(){var d=document.querySelectorAll(".dropdown");d.forEach(function(x){x.querySelector(".dropdown-toggle").addEventListener("click",function(e){e.preventDefault();var o=x.classList.contains("open");d.forEach(function(y){y.classList.remove("open")});if(!o)x.classList.add("open")})});document.addEventListener("click",function(e){if(!e.target.closest(".dropdown"))d.forEach(function(y){y.classList.remove("open")})})})();</script><script src="/js/sanity-check-ui.js"></script><script src="/js/sanity-check-score.js"></script><script src="/js/sanity-check-db.js"></script></body></html>
