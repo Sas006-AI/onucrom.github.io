@@ -843,3 +843,25 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
     grid-template-columns: 1fr;
   }
 }
+/* Exact fix for Section 3 methodology data tables */
+.data-table-container, .ac-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+.data-table th, .data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.data-table th {
+  font-weight: 700;
+  color: var(--text);
+  background: var(--bg);
+  white-space: nowrap; /* Prevents header text breaking */
+}
