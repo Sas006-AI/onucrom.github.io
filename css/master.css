@@ -569,3 +569,277 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
   .env-stat-card { padding: 12px; }
   .env-stat-value { font-size: 1rem; }
 }
+/* ============================================================
+   UNIFIED PAGE EXTENSIONS & INLINE-STYLE REPLACEMENTS
+   ============================================================ */
+
+/* --- 1. Utility & Layout Helpers --- */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.w-full { width: 100%; }
+.mt-0 { margin-top: 0 !important; }
+.mt-4 { margin-top: 4px; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-20 { margin-top: 20px; }
+.mt-24 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-4 { margin-bottom: 4px; }
+.mb-6 { margin-bottom: 6px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-14 { margin-bottom: 14px; }
+.mb-15 { margin-bottom: 15px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Flex & Grid Layouts */
+.flex-center-gap { display: flex; justify-content: center; gap: 12px; }
+.flex-between-center { display: flex; justify-content: space-between; align-items: center; }
+.flex-column-gap { display: flex; flex-direction: column; gap: 8px; }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Text & Typography Extensions */
+.hero-subtitle-narrow { max-width: 600px; margin: 0 auto; }
+.prose-container { max-width: 800px; margin: 0 auto; }
+.code-block-pre {
+  background: var(--bg);
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+}
+
+/* --- 2. Draft & Alert Callout Banners --- */
+.banner-amber {
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid var(--accent);
+  margin-bottom: 20px;
+}
+.banner-amber-quote {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+  margin-bottom: 20px;
+}
+
+/* --- 3. Step Wizards & Progress Bar --- */
+.progress-container {
+  width: 100%;
+  background: var(--bg);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+}
+.progress-fill {
+  width: 25%;
+  background: var(--accent);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* --- 4. Form Labels, Inputs & Controls --- */
+.form-label-styled {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 6px;
+}
+.form-label-styled-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.form-input-styled {
+  width: 100%;
+  padding: 10px;
+  background: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+/* --- 5. Custom Grid Systems (Pitch & Shariah) --- */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.choice-card-green { border-left: 3px solid var(--up); }
+.choice-card-amber { border-left: 3px solid var(--accent); }
+
+.principle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.principle-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 3px solid var(--accent);
+}
+.principle-card.red-border { border-left-color: var(--down); }
+.principle-title { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 0.95rem; }
+.principle-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+/* Flowchart Stepper */
+.flowchart { display: flex; flex-direction: column; gap: 0; margin-top: 20px; position: relative; }
+.flow-step { display: flex; gap: 16px; align-items: flex-start; position: relative; padding-bottom: 24px; }
+.flow-step:not(:last-child)::before {
+  content: ''; position: absolute; left: 15px; top: 32px; bottom: 0; width: 2px; background: var(--border);
+}
+.step-indicator {
+  flex-shrink: 0; width: 32px; height: 32px; background: var(--card); border: 2px solid var(--accent);
+  color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-family: var(--font-mono, monospace); z-index: 2;
+}
+.step-content { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; flex-grow: 1; }
+.step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+.step-title { font-weight: 700; color: var(--text); font-size: 1rem; }
+.step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+/* Badges Grid */
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+.result-badge-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.verdict-badge-blue { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6; }
+
+/* Disclaimer & Footer Overrides */
+.hero-disclaimer {
+  font-size: 0.85rem; color: var(--muted); max-width: 800px; margin: 16px auto 0;
+  line-height: 1.6; border-top: 1px dashed var(--border); padding-top: 16px; text-align: left;
+}
+
+@media (max-width: 768px) {
+  .grid-2col { grid-template-columns: 1fr; }
+  .flow-step:not(:last-child)::before { left: 15px; }
+  .step-header { flex-direction: column; align-items: flex-start; }
+}
+/* ============================================================
+   TOOLS & FINANCIAL CALCULATOR MODULE (.tools-grid)
+   ============================================================ */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+.card-full {
+  grid-column: 1 / -1;
+}
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: var(--input-bg, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+.input-row input {
+  background: transparent;
+  border: none;
+  color: var(--input-text, var(--text));
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.input-icon {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  min-width: 45px;
+}
+.input-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  flex-grow: 1;
+}
+.results-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.result-row:last-child {
+  margin-bottom: 0;
+}
+.result-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.result-value {
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.result-value.up { color: var(--up, #10b981); }
+.result-value.down { color: var(--down, #ef4444); }
+.result-value.caution { color: var(--accent, #f59e0b); }
+
+.verdict-section {
+  border-top: 1px dashed var(--border);
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.verdict-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.verdict-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.verdict-caution { color: var(--accent, #f59e0b); }
+
+.explanation {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+.explanation ul {
+  margin: 0;
+  padding-left: 16px;
+}
+.explanation li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
