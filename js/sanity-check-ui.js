@@ -2,7 +2,7 @@
 // SANITY CHECK — UI CONTROLLER
 // ============================================
 var SanityCheck = (function() {
-  var API_URL = 'YOUR_SCRIPT_URL_HERE'; // Replace with your deployed web app URL
+  var API_URL = 'https://script.google.com/macros/s/AKfycbyM8sgFMRmVZW9WZxdeNnZDpAhPH6tovixb2KI7kjFPBjcj9eHiigU3AANpAPhgjma5Qw/exec'; // Replace with your deployed web app URL
   var assessmentData = {};
 
   function init() {
