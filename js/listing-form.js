@@ -1,6 +1,6 @@
 /* Onucrom listing forms (enlist + update). Dependency-free.
    Renders into #lf-root. Config comes from data- attributes written by the site build:
-   data-mode="enlist|update"  data-endpoint=<Apps Script web app URL>  data-cap=<daily cap, display only> */
+   data-mode="enlist|update"  data-endpoint=<"https://script.google.com/macros/s/AKfycbyM8sgFMRmVZW9WZxdeNnZDpAhPH6tovixb2KI7kjFPBjcj9eHiigU3AANpAPhgjma5Qw/exec">  data-cap=<daily cap, display only> */
 (function () {
   'use strict';
 
