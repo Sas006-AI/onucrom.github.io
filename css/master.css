@@ -29,34 +29,40 @@
 }
 
 :root {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --border: #334155;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --accent: #f59e0b;
-  --up: #22c55e;
-  --down: #ef4444;
-  --caution: #f59e0b;
-  --input-bg: #fef3c7;
-  --input-text: #1e293b;
+  --bg: #f7f6f2;
+  --card: #ffffff;
+  --border: #e2dfd7;
+  --text: #1c242b;
+  --muted: #5c6670;
+  --accent: #0f766e;
+  --up: #15803d;
+  --down: #b91c1c;
+  --caution: #b45309;
+  --input-bg: #ffffff;
+  --input-text: #1c242b;
   --radius: 10px;
   --radius-sm: 8px;
   --font-mono: "JetBrains Mono", monospace;
   --transition: all 0.2s ease;
-  --text-soft: #cbd5e1;
-  --faint: #64748b;
+  --text-soft: #374151;
+  --faint: #7c858e;
+
+  /* New helper tokens for light theme & hover states */
+  --accent-hover: #115e59;
+  --accent-soft: rgba(15, 118, 110, 0.1);
+  --on-accent: #ffffff;
+  --input-border: #cbd5e1;
 
   /* Asset Class Design Tokens */
   --ac-primary: var(--accent);
-  --ac-primary-dark: #d97706;
+  --ac-primary-dark: var(--accent-hover);
   --ac-bg-body: var(--bg);
   --ac-card-bg: var(--card);
   --ac-text-main: var(--text);
   --ac-text-muted: var(--muted);
   --ac-border: var(--border);
   --ac-success: var(--up);
-  --ac-badge-risk-bg: rgba(34, 197, 94, 0.15);
+  --ac-badge-risk-bg: rgba(21, 128, 61, 0.12);
   --ac-badge-risk-text: var(--up);
 }
 
