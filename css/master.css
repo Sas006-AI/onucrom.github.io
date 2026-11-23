@@ -1225,6 +1225,7 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
     grid-template-columns: 1fr;
   }
 }
+
 /* Exact fix for Section 3 methodology data tables */
 .data-table-container, .ac-table-responsive {
   width: 100%;
