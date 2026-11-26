@@ -381,6 +381,19 @@ footer { margin-top: 60px; padding: 24px; text-align: center; color: var(--muted
 .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
 .subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 16px; }
 
+.news-meta { font-size: 0.9rem; opacity: 0.75; margin-bottom: 12px; }
+.news-groups { display: flex; flex-direction: column; gap: 18px; }
+.news-group-title { margin: 0 0 8px; font-size: 1.05rem; font-weight: 700; }
+.news-items { display: flex; flex-direction: column; gap: 8px; }
+.news-item-box {
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  background: var(--bg, #fafafa);
+  line-height: 1.5;
+}
+.news-num { font-weight: 700; margin-right: 4px; }
+
 /* 2.B TOOLS PAGE V2 (PILL SELECTOR + TWO-PANEL LAYOUT)
    ============================================================ */
 
